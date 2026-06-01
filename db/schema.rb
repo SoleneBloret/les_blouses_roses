@@ -10,9 +10,66 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_06_01_134528) do
+ActiveRecord::Schema[8.1].define(version: 2026_06_01_151353) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
+
+  create_table "locations", force: :cascade do |t|
+    t.string "address"
+    t.datetime "created_at", null: false
+    t.float "latitude"
+    t.float "longitude"
+    t.string "name"
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "participations", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.bigint "permanence_id", null: false
+    t.boolean "substitute"
+    t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.integer "week_number"
+    t.index ["permanence_id"], name: "index_participations_on_permanence_id"
+    t.index ["user_id"], name: "index_participations_on_user_id"
+  end
+
+  create_table "permanences", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.integer "end_time"
+    t.boolean "formation"
+    t.bigint "location_id", null: false
+    t.string "service"
+    t.integer "start_time"
+    t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.string "week_day"
+    t.integer "year"
+    t.index ["location_id"], name: "index_permanences_on_location_id"
+    t.index ["user_id"], name: "index_permanences_on_user_id"
+  end
+
+  create_table "profiles", force: :cascade do |t|
+    t.string "address"
+    t.datetime "created_at", null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.string "phone_number"
+    t.string "role"
+    t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_profiles_on_user_id"
+  end
+
+  create_table "reports", force: :cascade do |t|
+    t.text "comment"
+    t.datetime "created_at", null: false
+    t.integer "patients_number"
+    t.bigint "permanence_id", null: false
+    t.datetime "updated_at", null: false
+    t.integer "week_number"
+    t.index ["permanence_id"], name: "index_reports_on_permanence_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -25,4 +82,11 @@ ActiveRecord::Schema[8.1].define(version: 2026_06_01_134528) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
+
+  add_foreign_key "participations", "permanences"
+  add_foreign_key "participations", "users"
+  add_foreign_key "permanences", "locations"
+  add_foreign_key "permanences", "users"
+  add_foreign_key "profiles", "users"
+  add_foreign_key "reports", "permanences"
 end
