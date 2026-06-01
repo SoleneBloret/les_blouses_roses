@@ -1,0 +1,2 @@
+class PermanencesController < ApplicationController
+end
