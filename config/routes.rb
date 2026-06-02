@@ -15,10 +15,10 @@ Rails.application.routes.draw do
   # root "posts#index"
 
   # ---------- DEFINITION DES ROUTES ----------
-  resources :profiles, only: [:create, :show, :update]
+  resources :profiles, only: [:new, :create, :show, :edit, :update]
 
   resources :participations, only: [:index, :update, :create] do
     resources :reports, only: [:create]
   end
-  
+
 end
