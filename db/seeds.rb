@@ -40,20 +40,20 @@ locations = [
     longitude: -1.6408
   },
   {
-    name: "EHPAD Le Bois Hercé",
-    address: "Nantes",
+    name: "EHPAD Renoir",
+    address: "3 Rue Ernest Meissonnier, Nantes",
     latitude: 47.2270,
     longitude: -1.5600
   },
   {
     name: "EHPAD Les Jardins de l'Erdre",
-    address: "Nantes",
+    address: "12 Rue des Platanes, Vallons-de-l'Erdre",
     latitude: 47.2450,
     longitude: -1.5300
   },
   {
     name: "EHPAD Notre-Dame du Chêne",
-    address: "Orvault",
+    address: "13 Rue de la Brianderie,  Nantes",
     latitude: 47.2700,
     longitude: -1.6200
   }
@@ -82,9 +82,9 @@ Profile.create!(
   user: demo_user,
   first_name: "Marie",
   last_name: "Dupont",
-  role: "benevole référent",
+  role: "🏥 Bénévole référent",
   phone_number: "0612345678",
-  address: "Nantes"
+  address: "10 Passage de la Poule Noire, 44000 Nantes"
 )
 
 users << demo_user
@@ -112,11 +112,39 @@ end
 
 puts "📅 Création des permanences..."
 
-services = [
-  "Pédiatrie",
-  "EHPAD",
-  "Hôpital"
-]
+services_by_location = {
+  "CHU de Nantes" => [
+    "Urgences pédiatriques",
+    "ORL",
+    "Service Mère-Enfant",
+    "Ophtalmologie",
+    "Stomatologie"
+  ],
+
+  "Hôpital Saint-Jacques" => [
+    "ORL",
+    "Ophtalmologie",
+    "Stomatologie"
+  ],
+
+  "Hôpital Nord Laennec" => [
+    "Hémodialyse",
+    "ORL",
+    "Ophtalmologie"
+  ],
+
+  "EHPAD Renoir" => [
+    "Animation EHPAD"
+  ],
+
+  "EHPAD Les Jardins de l'Erdre" => [
+    "Animation EHPAD"
+  ],
+
+  "EHPAD Notre-Dame du Chêne" => [
+    "Animation EHPAD"
+  ]
+}
 
 week_days = [
   "Lundi",
@@ -126,16 +154,30 @@ week_days = [
   "Vendredi"
 ]
 
+creneaux = [
+  [14, 17],
+  [14, 18],
+  [15, 17],
+  [18, 20],
+  [9, 12]
+]
+
 permanences = []
 
 20.times do
+  location = locations.sample
+
+  service = services_by_location[location.name].sample
+
+  start_time, end_time = creneaux.sample
+
   permanences << Permanence.create!(
     user: users.sample,
-    location: locations.sample,
-    service: services.sample,
+    location: location,
+    service: service,
     week_day: week_days.sample,
-    start_time: [9, 10, 14].sample,
-    end_time: [12, 13, 17].sample,
+    start_time: start_time,
+    end_time: end_time,
     formation: [true, false, false].sample,
     year: 2026
   )
