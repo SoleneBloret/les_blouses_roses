@@ -8,5 +8,5 @@ class Profile < ApplicationRecord
 
   validates :phone_number, presence: true
   validates :phone_number, uniqueness: true
-  validates :phone_number, format: { with: /^(?:0|\+33 ?|0?0?33 ?|)([1-9] ?(?:[0-9] ?){8})$/, message: "Numéros français uniquement" }
+  validates :phone_number, format: { with: /\A(?:(?:\+|00)33|0)[67]\d{8}\z/, message: "Numéros français uniquement" }
 end

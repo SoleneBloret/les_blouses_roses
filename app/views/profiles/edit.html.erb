@@ -6,10 +6,10 @@
 
   <!-- FORMULAIRE -->
   <%= simple_form_for(@profile) do |f| %>
-    <%= f.input :first_name, required: true, label: "Prénom" %>
-    <%= f.input :last_name, required: true, label: "Nom" %>
-    <%= f.input :phone_number, required: true, label: "Téléphone portable" %>
-    <%= f.input :address, required: true, label: "Adresse" %>
+    <%= f.input :first_name, label: "Prénom" %>
+    <%= f.input :last_name, label: "Nom" %>
+    <%= f.input :phone_number, label: "Téléphone portable" %>
+    <%= f.input :address, label: "Adresse" %>
     <%= f.input :role,
         collection: ["🎓 En formation", "🎀 Bénévole confirmé", "🏥 Bénévole référent", "🔐 Administrateur"], label: "Mon statut de bénévole" %>
     <%= f.submit "Enregistrer", class: "btn btn-primary" %>
