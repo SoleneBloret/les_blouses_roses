@@ -2,11 +2,19 @@
 
   <!-- MENU TABS -->
   <ul class="nav nav-pills nav-fill p-1 participations-tabs">
+    <!-- TAB 1 -->
     <li class="nav-item">
-      <a class="nav-link active rounded-pill" aria-current="page" href="#">Mes permanences</a>
+      <%= link_to "Mes permanences", participations_path,
+      class: "nav-link active rounded-pill",
+      aria: { current: "page" } %>
     </li>
+    <!-- TAB 2 -->
     <li class="nav-item">
-      <a class="nav-link rounded-pill disabled" aria-disabled="true">Permanences dispo</a>
+      <%= link_to "Permanences dispo", root_path,
+      class: "nav-link rounded-pill disabled",
+      aria: { disabled: "true" } %>
+      <!-- </li> -->
+        <!-- <a class="nav-link rounded-pill disabled" aria-disabled="true">Permanences dispo</a> -->
     </li>
   </ul>
 
@@ -14,19 +22,27 @@
   <!-- CALENDRIER DES PERMANENCES -->
   <!-- -------TODO ------- -->
 
+
   <!-- CARDS DES PERMANENCES -->
-  <ul>
-    <% @participations.each do |participation| %>
-      <div class="participation-card row">
-        <li class="date-badge col-1">
-          <span class="day-title"><%= participation.permanence.start_time %></span>
-        </li>
-        <li class=" col-4">
-          Nom de la permanence
-        </li>
-      </div>
-    <% end %>
-  </ul>
+  <% @participations.each do |participation| %>
+    <!-- CARD DE PERMANENCE-->
+    <div class="participation-card row">
+
+      <!-- BADGE AVEC LA DATE-->
+      <li class="date-badge col-1">
+        <span class="day-title"><%= participation.date.strftime("%d") %></span>
+        <span class="month-title"><%= participation.date.strftime("%b") %></span>
+      </li>
+
+      <!-- TITRE ET RESUME DE LA CARD-->
+      <li class=" col-4">
+         <p><%= participation.permanence.location.name %></p>
+         <p><%= participation.permanence.service %></p>
+         <p><%= participation.permanence.week_day %> - <%= participation.permanence.start_time %> à <%= participation.permanence.end_time %></p>
+      </li>
+
+    </div>
+  <% end %>
 
 
 </div>

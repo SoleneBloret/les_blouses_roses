@@ -1,36 +1,38 @@
+// CARDS DES PERMANCENCES
 .participation-card {
   display: flex;
+  flex-direction: row;
   background-color: #ffffff;
-  border-color: $pink;
-  border-width: 1rem;
-  margin-top: 5%;
-  margin-bottom: 5%;
-  border-radius: 20px;
-}
-
-.date-badge {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 60px;
-  height: 65px;
-  background-color: #f6c1e39b;
-  border-radius: 14px;
+  border: 1px solid #f2b2d3e0 !important;
+  border-width: 10px;
   margin: 2%;
+  border-radius: 20px;
 
-  .day-title {
-    font-size: 1.6rem;
-    font-weight: 700;
-    color: $pink;
-    line-height: 1;
-  }
-
-  .month-title {
-    font-size: 0.7rem;
-    font-weight: 500;
-    color: $pink;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
+    // BADGE AVEC LA DATE
+    .date-badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 65px;
+    background-color: #f6c1e39b;
+    border-radius: 14px;
+    margin: 2%;
+      // TITRE BADGE POUR LE JOUR
+      .day-title {
+        font-size: 1.6rem;
+        font-weight: 700;
+        color: $pink;
+        line-height: 1;
+      }
+      // TITRE BADGE POUR LE MOIS
+      .month-title {
+        font-size: 0.7rem;
+        font-weight: 500;
+        color: $pink;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
   }
 }

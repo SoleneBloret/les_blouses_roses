@@ -1,3 +1,4 @@
+// AFFICHAGE GLOBAL DE LA PAGE
 .page-layout {
   min-height: 100vh;
   background-color: #FFF8F5;
@@ -6,16 +7,21 @@
   flex-direction: column;
 }
 
+// ------------------------------ \\
+// MENU TABS EN HAUT DE LA PAGE
 .participations-tabs {
   background-color: white;
   border-radius: 50rem;
   border-color: $pink;
+  margin-bottom: 15px;
 
+  // ONGLET ACTIF
   .nav-link.active {
     background-color: $pink;
     color: white;
   }
 
+  // ONGLET INACTIF
   .nav-link.disabled {
     color: rgb(110, 67, 110);
   }
