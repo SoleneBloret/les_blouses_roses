@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   # ---------- DEFINITION DES ROUTES ----------
   resources :profiles, only: [:new, :create, :show, :edit, :update]
 
-  resources :participations, only: [:index, :update, :create] do
+  resources :participations, only: [:index, :show, :update, :create] do
     resources :reports, only: [:create]
   end
 

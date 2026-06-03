@@ -1,0 +1,47 @@
+<div class="page-layout">
+
+  <!-- MENU TABS -->
+  <ul class="nav nav-pills nav-fill p-1 participations-tabs">
+    <!-- TAB 1 -->
+    <li class="nav-item">
+      <%= link_to "Mes permanences", participations_path,
+      class: "nav-link active rounded-pill",
+      aria: { current: "page" } %>
+    </li>
+    <!-- TAB 2 -->
+    <li class="nav-item">
+      <%= link_to "Permanences dispo", root_path,
+      class: "nav-link rounded-pill disabled",
+      aria: { disabled: "true" } %>
+      <!-- </li> -->
+        <!-- <a class="nav-link rounded-pill disabled" aria-disabled="true">Permanences dispo</a> -->
+    </li>
+  </ul>
+
+
+  <!-- CALENDRIER DES PERMANENCES -->
+  <!-- -------TODO ------- -->
+
+
+  <!-- CARDS DES PERMANENCES -->
+  <% @participations.each do |participation| %>
+    <!-- CARD DE PERMANENCE-->
+    <%= link_to participation_path(participation), class: "participation-card row" do %>
+
+      <!-- BADGE AVEC LA DATE-->
+      <li class="date-badge col-1">
+        <span class="day-title"><%= participation.date.strftime("%d") %></span>
+        <span class="month-title"><%= participation.date.strftime("%b") %></span>
+      </li>
+
+      <!-- TITRE ET RESUME DE LA CARD-->
+      <li class="card-content col">
+        <p class="card-title"><%= participation.permanence.location.name %> – <%= participation.permanence.service %></p>
+        <p class="card-subtitle"><%= participation.permanence.week_day %> · <%= participation.permanence.start_time %>h00 – <%= participation.permanence.end_time %>h00</p>
+      </li>
+
+    <% end %>
+  <% end %>
+
+
+</div>
