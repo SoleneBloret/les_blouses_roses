@@ -26,3 +26,9 @@ $border-radius-xl:            .5rem;
 $border-radius-xxl:           1rem;
 
 // Override other variables below!
+// Semantic color scheme
+$brand-primary:   $lbr-rose; // Primary color of bootstrap is now the $my-blue defined in variables.scss
+$brand-success:   $lbr-success;
+$brand-danger:    $red;
+$brand-warning:   $lbr-error;
+$brand-info:      $yellow;
