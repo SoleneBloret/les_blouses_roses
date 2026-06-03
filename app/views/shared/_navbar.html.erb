@@ -1,41 +1,58 @@
-<nav class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <div class="container-fluid">
-    <%= link_to "#", class: "navbar-brand" do %>
-      <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
-    <% end %>
+<%#
+  NAVBAR / HEADER CARD
+  - Utilisateur connecté : affiche une carte rose avec le titre de la page (déterminé
+    automatiquement via controller_name + action_name), le nom complet de l'utilisateur
+    et un cercle avec ses initiales (cliquable → dropdown : Accueil, Mon profil, Déconnexion).
+  - Utilisateur non connecté : affiche une barre blanche simple avec un lien "Se connecter".
+  - Les styles associés sont dans app/assets/stylesheets/components/_navbar.scss (.header-card, etc.)
+  - Pour ajouter un nouveau titre de page, compléter le hash `page_label` ci-dessous.
+%>
+<% if user_signed_in? %>
+  <%
+    page_label = {
+      "pages"         => { "home"   => "Accueil" },
+      "profiles"      => { "show"   => "Mon profil", "edit" => "Modifier mon profil", "new" => "Créer mon profil" },
+      "participations"=> { "index"  => "Mes permanences" }
+    }.dig(controller_name, action_name) || "Les Blouses Roses"
+  %>
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto">
-        <% if user_signed_in? %>
-          <li class="nav-item active">
-            <%= link_to "Home", "#", class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "Messages", "#", class: "nav-link" %>
-          </li>
-          <li class="nav-item dropdown">
-          <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar", alt: "dropdown menu" %>
-          </a>
-            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <% if current_user.profile %>
-                <%= link_to "Mon profil", profile_path(current_user.profile), class: "dropdown-item" %>
-              <% else %>
-                <%= link_to "Créer mon profil", new_profile_path, class: "dropdown-item" %>
-              <% end %>
-              <%= link_to "Déconnexion", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
-            </div>
-          </li>
+  <div class="header-card">
+    <div class="header-card-left">
+      <span class="header-page-label"><%= page_label %></span>
+      <span class="header-user-name">
+        <% if current_user.profile %>
+          <%= current_user.profile.first_name %> <%= current_user.profile.last_name %>
         <% else %>
-          <li class="nav-item">
-            <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-          </li>
+          Les Blouses Roses
         <% end %>
-      </ul>
+      </span>
+    </div>
+
+    <div class="dropdown">
+      <a href="#" class="header-avatar-btn" id="headerDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+        <% if current_user.profile %>
+          <%= "#{current_user.profile.first_name[0]}#{current_user.profile.last_name[0]}".upcase %>
+        <% else %>
+          <i class="fa-solid fa-user"></i>
+        <% end %>
+      </a>
+      <div class="dropdown-menu dropdown-menu-end" aria-labelledby="headerDropdown">
+        <%= link_to "Accueil", root_path, class: "dropdown-item" %>
+        <% if current_user.profile %>
+          <%= link_to "Mon profil", profile_path(current_user.profile), class: "dropdown-item" %>
+        <% else %>
+          <%= link_to "Créer mon profil", new_profile_path, class: "dropdown-item" %>
+        <% end %>
+        <div class="dropdown-divider"></div>
+        <%= link_to "Déconnexion", destroy_user_session_path, data: { turbo_method: :delete }, class: "dropdown-item" %>
+      </div>
     </div>
   </div>
-</nav>
+
+<% else %>
+  <nav class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+    <div class="container-fluid justify-content-end">
+      <%= link_to "Se connecter", new_user_session_path, class: "nav-link" %>
+    </div>
+  </nav>
+<% end %>
