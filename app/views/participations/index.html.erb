@@ -1,0 +1,26 @@
+<div class="page-layout">
+
+  <!-- MENU TABS -->
+  <ul class="nav nav-pills nav-fill rounded-pill overflow-hidden border">
+    <li class="nav-item">
+      <a class="nav-link active" aria-current="page" href="#">Mes permanences</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link disabled" aria-disabled="true">Permanences dispo</a>
+    </li>
+  </ul>
+
+
+  <!-- CALENDRIER DES PERMANENCES -->
+  <!-- -------TODO ------- -->
+
+  <!-- CARDS DES PERMANENCES -->
+  <h2>Mes permanences</h2>
+  <ul>
+    <% @participations.each do |participation| %>
+      <li>heure de début : <%= participation.permanence.start_time %></li>
+    <% end %>
+  </ul>
+
+
+</div>
