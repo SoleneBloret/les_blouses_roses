@@ -35,10 +35,9 @@
       </li>
 
       <!-- TITRE ET RESUME DE LA CARD-->
-      <li class=" col-4">
-         <p><%= participation.permanence.location.name %></p>
-         <p><%= participation.permanence.service %></p>
-         <p><%= participation.permanence.week_day %> - <%= participation.permanence.start_time %> à <%= participation.permanence.end_time %></p>
+      <li class="card-content col">
+        <p class="card-title"><%= participation.permanence.location.name %> – <%= participation.permanence.service %></p>
+        <p class="card-subtitle"><%= participation.permanence.week_day %> · <%= participation.permanence.start_time %>h00 – <%= participation.permanence.end_time %>h00</p>
       </li>
 
     </div>

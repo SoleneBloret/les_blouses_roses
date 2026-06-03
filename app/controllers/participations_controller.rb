@@ -1,6 +1,6 @@
 class ParticipationsController < ApplicationController
   def index
-    @participations = Participation.all
+    @participations = Participation.sorted_by_date_desc
   end
 
   def show
