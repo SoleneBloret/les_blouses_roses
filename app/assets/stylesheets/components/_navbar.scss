@@ -13,7 +13,7 @@
 
 // Header card — utilisateur connecté
 .header-card {
-  background-color: $rose;
+  background-color: $lbr-rose;
   border-radius: 16px;
   padding: 20px 24px;
   display: flex;
@@ -49,8 +49,8 @@
   width: 56px;
   height: 56px;
   border-radius: 50%;
-  background-color: $creme;
-  color: $rose;
+  background-color: $lbr-creme;
+  color: $lbr-rose;
   font-size: 1.1rem;
   font-weight: 700;
   flex-shrink: 0;
