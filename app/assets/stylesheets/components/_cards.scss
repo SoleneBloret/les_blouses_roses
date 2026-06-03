@@ -1,0 +1,36 @@
+.participation-card {
+  display: flex;
+  background-color: #ffffff;
+  border-color: $pink;
+  border-width: 1rem;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  border-radius: 20px;
+}
+
+.date-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 65px;
+  background-color: #f6c1e39b;
+  border-radius: 14px;
+  margin: 2%;
+
+  .day-title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: $pink;
+    line-height: 1;
+  }
+
+  .month-title {
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: $pink;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+}
