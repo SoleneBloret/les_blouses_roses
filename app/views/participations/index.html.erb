@@ -26,7 +26,7 @@
   <!-- CARDS DES PERMANENCES -->
   <% @participations.each do |participation| %>
     <!-- CARD DE PERMANENCE-->
-    <div class="participation-card row">
+    <%= link_to participation_path(participation), class: "participation-card row" do %>
 
       <!-- BADGE AVEC LA DATE-->
       <li class="date-badge col-1">
@@ -40,7 +40,7 @@
         <p class="card-subtitle"><%= participation.permanence.week_day %> · <%= participation.permanence.start_time %>h00 – <%= participation.permanence.end_time %>h00</p>
       </li>
 
-    </div>
+    <% end %>
   <% end %>
 
 
