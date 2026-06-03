@@ -14,7 +14,7 @@
   flex-direction: column;
   background: white;
   border-radius: 16px;
-  border-left: 6px solid $pink;
+  border-left: 6px solid $rose;
   padding: 24px;
   width: 100%;
   max-width: 480px;
@@ -33,7 +33,7 @@
   }
 
   .participation-label {
-    color: $pink;
+    color: $rose;
     font-weight: 700;
     margin-bottom: 2px;
   }
@@ -46,7 +46,7 @@
   .btn-map {
     display: block;
     width: 100%;
-    background-color: $pink;
+    background-color: $rose;
     color: white;
     border: none;
     border-radius: 50rem;
@@ -57,7 +57,7 @@
     text-decoration: none;
 
     &:hover {
-      background-color: darken($pink, 10%);
+      background-color: darken($rose, 10%);
       color: white;
     }
   }
@@ -68,12 +68,12 @@
 .participations-tabs {
   background-color: white;
   border-radius: 50rem;
-  border-color: $pink;
+  border-color: ;
   margin-bottom: 15px;
 
   // ONGLET ACTIF
   .nav-link.active {
-    background-color: $pink;
+    background-color: $rose;
     color: white;
   }
 
