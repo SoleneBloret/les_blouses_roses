@@ -1,18 +1,39 @@
 <div class="profile-container container-sm">
 
-  <!-- TITRE -->
-  <h2>Modifier mon profil</h2>
+  <%# TITRE SUPPRIMÉ : LE NOM DE LA PAGE EST DÉJÀ AFFICHÉ DANS LE HEADER %>
 
+  <%= simple_form_for(@profile, html: { multipart: true }) do |f| %>
 
-  <!-- FORMULAIRE -->
-  <%= simple_form_for(@profile) do |f| %>
+  <!-- PHOTO DE PROFIL PAR DÉFAUT -->
+  <div class="profile-picture-section">
+
+    <%= image_tag "photopro.jpeg",
+          class: "profile-photo",
+          id: "photo-preview",
+          alt: "Photo de profil par défaut" %>
+
+    <!-- BOUTON POUR AJOUTER UNE PHOTO -->
+    <label for="photo-input" class="change-photo-btn">
+        Ajouter une photo
+    </label>
+
+    <!-- CHAMP FICHIER MASQUÉ -->
+      <%= f.file_field :photo,
+          class: "hidden-file-input",
+          id: "photo-input" %>
+    </div>
+
     <%= f.input :first_name, label: "Prénom" %>
     <%= f.input :last_name, label: "Nom" %>
     <%= f.input :phone_number, label: "Téléphone portable" %>
     <%= f.input :address, label: "Adresse" %>
+
     <%= f.input :role,
-        collection: ["🎓 En formation", "🎀 Bénévole confirmé", "🏥 Bénévole référent", "🔐 Administrateur"], label: "Mon statut de bénévole" %>
+        label: "Mon statut de bénévole",
+        collection: ["🎓 En formation", "🎀 Bénévole confirmé", "🏥 Bénévole référent", "🔐 Administrateur"] %>
+
     <%= f.submit "Enregistrer", class: "btn btn-primary" %>
+
   <% end %>
 
 </div>

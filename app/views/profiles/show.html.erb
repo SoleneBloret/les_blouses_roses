@@ -1,18 +1,29 @@
 <div class="profile-container container-sm">
-  <!-- BOUTON RETOUR -->
-  <%= link_to "Retour", root_path, class: "btn btn-secondary" %>
+
+    <!-- PHOTO DE PROFIL -->
+   <% if @profile.photo.attached? %>
+    <%= image_tag @profile.photo, class: "profile-photo" %>
+  <% else %>
+    <%= image_tag "photopro.jpeg", class: "profile-photo", alt: "photo de profil par défaut" %>
+  <% end %>
+
+  <%# BOUTON RETOUR SUPPRIMÉ : LA NAVIGATION SE FAIT VIA LE HEADER %>
+  <%#= link_to "Retour", root_path, class: "btn btn-secondary" %>
 
   <!-- TITRE -->
-  <h2>Mon profil</h2>
+  <%# TITRE SUPPRIMÉ : LE NOM DE LA PAGE EST DÉJÀ AFFICHÉ DANS LE HEADER %>
 
 
   <!-- FORMULAIRE -->
   <ul class="list-group">
-    <li class="list-group-item"><%= @profile.first_name %> <%= @profile.last_name %></li>
+    <li class="list-group-item"><%= @profile.first_name %></li>
+    <li class="list-group-item"><%= @profile.last_name %></li>
     <li class="list-group-item"><%= @profile.phone_number %></li>
     <li class="list-group-item"><%= @profile.address %></li>
     <li class="list-group-item"><%= @profile.role %></li>
   </ul>
 
   <%= link_to "Modifier", edit_profile_path(@profile), class: "btn btn-primary" %>
+
+  <%= button_to "Se déconnecter", destroy_user_session_path, method: :delete, class: "btn btn-logout" %>
 </div>

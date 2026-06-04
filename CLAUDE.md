@@ -35,8 +35,11 @@ Rails 8.1 app (Ruby 3.3.5) for Les Blouses Roses — a volunteer management plat
 
 **Domain model**:
 - A `User` (Devise) has one `Profile` (personal info + role) and many `Permanences`
+- `Profile` has `has_one_attached :photo` via Active Storage
 - A `Permanence` is a recurring volunteer shift: it belongs to a `User` (organizer) and a `Location`, has many `Participations` (volunteers signing up) and `Reports` (post-shift summaries)
 - `Participation` links a `User` to a `Permanence` for a given `week_number`; `substitute: true` marks fill-in volunteers
+- `Participation#date` computes an actual `Date` from `permanence.year`, `week_number`, and `permanence.week_day` via `Date.commercial` + the `FRENCH_WEEKDAYS` constant (`"Lundi" => 1` … `"Dimanche" => 7`)
+- `Participation.sorted_by_date_desc` eager-loads `permanence: :location`, sorts by `date`, and filters out past entries (`>= Date.today`)
 
 **Non-obvious schema choices**:
 - `permanences.start_time` / `end_time` are plain integers representing hours (e.g., `14` = 14h00), not timestamps
@@ -45,7 +48,7 @@ Rails 8.1 app (Ruby 3.3.5) for Les Blouses Roses — a volunteer management plat
 - `participations.week_number` and `reports.week_number` are integers 1–52 (ISO week number)
 - `profile.role` is a free-form string; seed values are `"benevole en integration"`, `"benevole en formation"`, `"benevole confirmé"`, `"benevole référent"`
 
-**Route state**: Only `profiles` and `participations` (with nested `reports`) are currently routed. `PermanencesController` and `LocationsController` exist as empty stubs with no routes yet.
+**Route state**: Only `profiles` and `participations` (with nested `reports`) are currently routed. `PermanencesController` and `LocationsController` exist as empty stubs with no routes yet. `participations` routes include `update` and `create`, but those controller actions are not yet implemented.
 
 **Frontend**: Hotwire (Turbo + Stimulus) with Bootstrap 5 and Font Awesome. Forms use `simple_form` (loaded from GitHub HEAD, not rubygems). Assets compiled via Sprockets + importmap (no webpack/esbuild).
 

@@ -1,4 +1,161 @@
+/* ==================================================
+   PROFILE
+   Styles utilisés par :
+   - profiles/new
+   - profiles/edit
+   - profiles/show
+================================================== */
+
+
+/* ===== CONTENEUR PRINCIPAL ===== */
 .profile-container {
-  max-width: 430px;
-  margin: 0 auto;
+  min-height: 100vh;
+  background-color: #FFF8F5;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+
+/* ===== TITRES ===== */
+.profile-container h2 {
+  text-align: center;
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 24px;
+  color: #333;
+}
+
+
+/* ===== FORMULAIRES (NEW + EDIT) ===== */
+.profile-container .form-control {
+  background-color: white;
+  border: 2px solid #FDE8F3;
+  border-radius: 16px;
+  min-height: 56px;
+}
+
+.profile-container .form-label {
+  font-weight: 600;
+  color: $lbr-text2;
+}
+
+/* ESPACEMENT ENTRE LES CHAMPS */
+.profile-container .mb-3 {
+  margin-bottom: 16px;
+}
+
+
+/* ===== PHOTO DE PROFIL ===== */
+.profile-picture-section {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+/* PHOTO UTILISATEUR */
+.profile-photo {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto 12px;
+  border: 3px solid #FDE8F3;
+}
+
+/* PHOTO PAR DÉFAUT SI AUCUNE PHOTO N'EST UPLOADÉE */
+.profile-photo-placeholder {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: #FDE8F3;
+  margin: 0 auto 12px;
+}
+
+/* LIEN AJOUTER / MODIFIER LA PHOTO */
+.change-photo-btn {
+  color: #E5007D;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-block;
+  margin-top: 8px;
+}
+
+/* MASQUE LE CHAMP "CHOISIR UN FICHIER" NATIF */
+.hidden-file-input {
+  display: none;
+}
+
+
+/* ===== AFFICHAGE DU PROFIL (SHOW) ===== */
+
+/* CONTENEUR DES INFORMATIONS */
+.list-group {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 2px solid #FDE8F3;
+}
+
+/* LIGNE D'INFORMATION */
+.list-group-item {
+  background-color: white;
+  border: 1px solid #FDE8F3;
+  padding: 16px;
+}
+
+
+/* ===== BOUTONS PRINCIPAUX ===== */
+
+/* BOUTON ROSE */
+.btn-primary {
+  width: 100%;
+  height: 56px;
+  background-color: #E5007D;
+  border: none;
+  border-radius: 24px;
+  color: white;
+  font-weight: 700;
+  text-decoration: none;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* EFFET AU SURVOL */
+.btn-primary:hover {
+  opacity: 0.9;
+}
+
+
+/* ===== BOUTON SECONDAIRE ===== */
+.btn-secondary {
+  background: white;
+  border: 2px solid #FDE8F3;
+  color: $lbr-text2;
+  border-radius: 24px;
+  padding: 12px;
+  text-align: center;
+  text-decoration: none;
+  margin-bottom: 16px;
+}
+
+
+/* ===== BOUTON DÉCONNEXION ===== */
+.btn-logout {
+  width: 100%;
+  height: 56px;
+  background-color: white;
+  border: 2px solid #E5007D;
+  color: #E5007D;
+  border-radius: 24px;
+  font-weight: 700;
+  margin-top: 16px;
+}
+
+/* EFFET AU SURVOL */
+.btn-logout:hover {
+  opacity: 0.9;
 }

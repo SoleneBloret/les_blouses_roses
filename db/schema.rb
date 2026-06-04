@@ -242,6 +242,16 @@ ActiveRecord::Schema[8.1].define(version: 2026_06_04_095652) do
     t.index ["key"], name: "index_solid_queue_semaphores_on_key", unique: true
   end
 
+  create_table "unavailabilities", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.date "end_date"
+    t.string "reason"
+    t.date "start_date"
+    t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_unavailabilities_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.string "email", default: "", null: false
@@ -268,4 +278,5 @@ ActiveRecord::Schema[8.1].define(version: 2026_06_04_095652) do
   add_foreign_key "solid_queue_ready_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
   add_foreign_key "solid_queue_recurring_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
   add_foreign_key "solid_queue_scheduled_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
+  add_foreign_key "unavailabilities", "users"
 end

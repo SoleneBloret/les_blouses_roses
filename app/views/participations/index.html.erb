@@ -1,0 +1,58 @@
+<div class="page-layout"
+     data-controller="calendar"
+     data-calendar-dates-value="<%= @participations.map { |p| { id: p.id, date: p.date.iso8601 } }.to_json %>">
+
+  <!-- MENU TABS -->
+  <ul class="nav nav-pills nav-fill p-1 participations-tabs">
+    <!-- TAB 1 -->
+    <li class="nav-item">
+      <%= link_to "Mes permanences", participations_path,
+      class: "nav-link active rounded-pill",
+      aria: { current: "page" } %>
+    </li>
+    <!-- TAB 2 -->
+    <li class="nav-item">
+      <%= link_to "Permanences dispo", root_path,
+      class: "nav-link rounded-pill disabled",
+      aria: { disabled: "true" } %>
+    </li>
+  </ul>
+
+
+  <!-- CALENDRIER DES PERMANENCES -->
+  <div class="calendar-widget">
+    <div class="calendar-header">
+      <button class="calendar-nav-btn" data-action="click->calendar#prev">&#8249;</button>
+      <span class="calendar-title" data-calendar-target="title"></span>
+      <button class="calendar-nav-btn" data-action="click->calendar#next">&#8250;</button>
+    </div>
+    <div class="calendar-weekdays">
+      <span>L</span><span>M</span><span>M</span><span>J</span><span>V</span><span>S</span><span>D</span>
+    </div>
+    <div class="calendar-grid" data-calendar-target="grid"></div>
+  </div>
+
+
+  <!-- CARDS DES PERMANENCES -->
+  <% @participations.each do |participation| %>
+    <%= link_to participation_path(participation),
+        class: "participation-index-card row",
+        data: { calendar_target: "card", participation_date: participation.date.iso8601 } do %>
+
+      <!-- BADGE AVEC LA DATE-->
+      <li class="date-badge col-1">
+        <span class="day-title"><%= participation.date.strftime("%d") %></span>
+        <span class="month-title"><%= participation.date.strftime("%b") %></span>
+      </li>
+
+      <!-- TITRE ET RESUME DE LA CARD-->
+      <li class="card-content col">
+        <p class="card-title"><%= participation.permanence.location.name %> – <%= participation.permanence.service %></p>
+        <p class="card-subtitle"><%= participation.permanence.week_day %> · <%= participation.permanence.start_time %>h00 – <%= participation.permanence.end_time %>h00</p>
+      </li>
+
+    <% end %>
+  <% end %>
+
+
+</div>

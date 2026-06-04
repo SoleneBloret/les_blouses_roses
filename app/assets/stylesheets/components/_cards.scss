@@ -1,0 +1,113 @@
+// CARDS DES PERMANENCES
+a.participation-index-card {
+  text-decoration: none;
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+    transition: box-shadow 0.2s ease;
+  }
+}
+
+// ------------------------------ \\
+
+// CARDS PARTICIPATION INDEX
+.participation-index-card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: #ffffff;
+  border: 1px solid rgba(242, 178, 211, 0.4);
+  border-radius: 16px;
+  padding: 12px 16px;
+  margin: 6px 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+
+  // BADGE AVEC LA DATE
+  .date-badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 60px;
+    height: 65px;
+    background-color: #f6c1e39b;
+    border-radius: 14px;
+
+    .day-title {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: $lbr-rose;
+      line-height: 1;
+    }
+
+    .month-title {
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: $lbr-rose;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+  }
+
+  // CONTENU TEXTE
+  .card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 16px;
+    list-style: none;
+
+    .card-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: $lbr-text;
+      margin-bottom: 3px;
+    }
+
+    .card-subtitle {
+      font-size: 0.85rem;
+      color: $lbr-text2;
+      margin-bottom: 0;
+    }
+  }
+}
+
+// ------------------------------ \\
+
+// CARD PARTICIPATION SHOW
+.participation-show-card {
+  display: flex;
+  flex-direction: column;
+  background: white;
+  border-radius: 16px;
+  border-left: 6px solid $lbr-rose;
+  padding: 24px;
+  width: 100%;
+  max-width: 480px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  align-items: start;
+
+  .participation-location {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 20px;
+  }
+
+  .participation-section {
+    margin-bottom: 16px;
+  }
+
+  .participation-label {
+    color: $lbr-rose;
+    font-weight: 700;
+    margin-bottom: 2px;
+  }
+
+  .participation-value {
+    color: $lbr-text2;
+    margin-bottom: 2px;
+  }
+}
