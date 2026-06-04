@@ -6,4 +6,8 @@ class ParticipationsController < ApplicationController
   def show
     @participation = Participation.find(params[:id])
   end
+
+  def map
+    @participation = Participation.find(params[:id])
+  end
 end
