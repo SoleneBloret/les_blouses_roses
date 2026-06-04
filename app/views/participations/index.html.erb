@@ -1,4 +1,6 @@
-<div class="page-layout">
+<div class="page-layout"
+     data-controller="calendar"
+     data-calendar-dates-value="<%= @participations.map { |p| { id: p.id, date: p.date.iso8601 } }.to_json %>">
 
   <!-- MENU TABS -->
   <ul class="nav nav-pills nav-fill p-1 participations-tabs">
@@ -13,20 +15,29 @@
       <%= link_to "Permanences dispo", root_path,
       class: "nav-link rounded-pill disabled",
       aria: { disabled: "true" } %>
-      <!-- </li> -->
-        <!-- <a class="nav-link rounded-pill disabled" aria-disabled="true">Permanences dispo</a> -->
     </li>
   </ul>
 
 
   <!-- CALENDRIER DES PERMANENCES -->
-  <!-- -------TODO ------- -->
+  <div class="calendar-widget">
+    <div class="calendar-header">
+      <button class="calendar-nav-btn" data-action="click->calendar#prev">&#8249;</button>
+      <span class="calendar-title" data-calendar-target="title"></span>
+      <button class="calendar-nav-btn" data-action="click->calendar#next">&#8250;</button>
+    </div>
+    <div class="calendar-weekdays">
+      <span>L</span><span>M</span><span>M</span><span>J</span><span>V</span><span>S</span><span>D</span>
+    </div>
+    <div class="calendar-grid" data-calendar-target="grid"></div>
+  </div>
 
 
   <!-- CARDS DES PERMANENCES -->
   <% @participations.each do |participation| %>
-    <!-- CARD DE PERMANENCE-->
-    <%= link_to participation_path(participation), class: "participation-card row" do %>
+    <%= link_to participation_path(participation),
+        class: "participation-index-card row",
+        data: { calendar_target: "card", participation_date: participation.date.iso8601 } do %>
 
       <!-- BADGE AVEC LA DATE-->
       <li class="date-badge col-1">
