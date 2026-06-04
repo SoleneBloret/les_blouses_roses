@@ -1,3 +1,10 @@
+/* ==================================================
+   PARTICIPATION
+   Styles utilisés par :
+   - participations/show
+   - participations/index
+================================================== */
+
 // ------------------------------ \\
 // CALENDRIER DES PERMANENCES
 .calendar-widget {
@@ -6,7 +13,7 @@
   padding: 14px 12px 10px;
   margin-bottom: 16px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-  border: 1px solid rgba(242, 178, 211, 0.4);
+  border: 1px solid $lbr-text2;
 
   .calendar-header {
     display: flex;
