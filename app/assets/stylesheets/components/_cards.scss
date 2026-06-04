@@ -1,5 +1,5 @@
 // CARDS DES PERMANENCES
-a.participation-card {
+a.participation-index-card {
   text-decoration: none;
   cursor: pointer;
 
@@ -9,7 +9,10 @@ a.participation-card {
   }
 }
 
-.participation-card {
+// ------------------------------ \\
+
+// CARDS PARTICIPATION INDEX
+.participation-index-card {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -59,14 +62,52 @@ a.participation-card {
     .card-title {
       font-size: 1rem;
       font-weight: 700;
-      color: #2d1a2e;
+      color: $lbr-text;
       margin-bottom: 3px;
     }
 
     .card-subtitle {
       font-size: 0.85rem;
-      color: #7f588e;
+      color: $lbr-text2;
       margin-bottom: 0;
     }
+  }
+}
+
+// ------------------------------ \\
+
+// CARD PARTICIPATION SHOW
+.participation-show-card {
+  display: flex;
+  flex-direction: column;
+  background: white;
+  border-radius: 16px;
+  border-left: 6px solid $lbr-rose;
+  padding: 24px;
+  width: 100%;
+  max-width: 480px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  align-items: start;
+
+  .participation-location {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 20px;
+  }
+
+  .participation-section {
+    margin-bottom: 16px;
+  }
+
+  .participation-label {
+    color: $lbr-rose;
+    font-weight: 700;
+    margin-bottom: 2px;
+  }
+
+  .participation-value {
+    color: $lbr-text2;
+    margin-bottom: 2px;
   }
 }

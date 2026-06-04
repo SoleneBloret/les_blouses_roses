@@ -24,8 +24,11 @@
   </head>
 
   <body><%= render "shared/navbar" %>
-<%= render "shared/flashes" %>
+    <%= render "shared/flashes" %>
 
     <%= yield %>
+
+    <%# Bottom navigation bar — visible sur toutes les pages %>
+    <%= render "shared/bottom_nav" %>
   </body>
 </html>

@@ -1,66 +1,142 @@
-// AFFICHAGE GLOBAL DE LA PAGE
+/* ==================================================
+   PARTICIPATION
+   Styles utilisés par :
+   - participations/show
+   - participations/index
+================================================== */
+
+// ------------------------------ \\
+// CALENDRIER DES PERMANENCES
+.calendar-widget {
+  background: white;
+  border-radius: 16px;
+  padding: 14px 12px 10px;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  border: 1px solid $lbr-text2;
+
+  .calendar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+
+  .calendar-title {
+    font-weight: 700;
+    font-size: 1rem;
+    color: $lbr-text;
+  }
+
+  .calendar-nav-btn {
+    background: none;
+    border: none;
+    color: $lbr-rose;
+    font-size: 1.6rem;
+    line-height: 1;
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+
+    &:hover {
+      background-color: $lbr-rose_pale;
+    }
+  }
+
+  .calendar-weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    margin-bottom: 4px;
+
+    span {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: $lbr-text2;
+    }
+  }
+
+  .calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+  }
+
+  .cal-day {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 40px;
+    padding: 2px 0;
+
+    &__num {
+      font-size: 0.85rem;
+      color: $lbr-text;
+      line-height: 1.2;
+      width: 28px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+    }
+
+    &__dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background-color: $lbr-rose;
+      margin-top: 2px;
+    }
+
+    &--has-event {
+      cursor: pointer;
+
+      &:hover .cal-day__num {
+        background-color: $lbr-rose_pale;
+      }
+    }
+
+    &--weekend .cal-day__num {
+      color: $lbr-text2;
+    }
+
+    &--today .cal-day__num {
+      background-color: $lbr-rose;
+      color: white;
+      font-weight: 700;
+    }
+
+    &--today.cal-day--has-event .cal-day__dot {
+      background-color: white;
+    }
+
+    &--selected .cal-day__num {
+      background-color: $lbr-rose_pale;
+      color: $lbr-rose;
+      font-weight: 700;
+    }
+
+    &--empty {
+      pointer-events: none;
+    }
+  }
+}
+
+// ------------------------------ \\
+// AFFICHAGE GLOBAL DES PAGES PARTICIPATION
 .page-layout {
   min-height: 100vh;
   background-color: #FFF8F5;
   padding: 40px 24px;
   display: flex;
   flex-direction: column ;
-  align-items: center;
-}
-
-// CARTE PARTICIPATION SHOW
-.participation-card {
-  display: flex;
-  flex-direction: column;
-  background: white;
-  border-radius: 16px;
-  border-left: 6px solid $lbr-rose;
-  padding: 24px;
-  width: 100%;
-  max-width: 480px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
-  align-items: start;
-
-  .participation-location {
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: #1a1a1a;
-    margin-bottom: 20px;
-  }
-
-  .participation-section {
-    margin-bottom: 16px;
-  }
-
-  .participation-label {
-    color: $lbr-rose;
-    font-weight: 700;
-    margin-bottom: 2px;
-  }
-
-  .participation-value {
-    color: #9e9e9e;
-    margin-bottom: 2px;
-  }
-
-  .btn-map {
-    display: block;
-    width: 100%;
-    background-color: $lbr-rose;
-    color: white;
-    border: none;
-    border-radius: 50rem;
-    padding: 14px;
-    font-weight: 700;
-    text-align: center;
-    margin-top: 24px;
-    text-decoration: none;
-
-    &:hover {
-      background-color: darken($lbr-rose, 10%);
-      color: white;
-    }
-  }
+  align-items: justify;
 }
 
 // ------------------------------ \\

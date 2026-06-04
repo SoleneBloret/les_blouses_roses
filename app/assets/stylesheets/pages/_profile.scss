@@ -38,7 +38,7 @@
 
 .profile-container .form-label {
   font-weight: 600;
-  color: #9B7FA0;
+  color: $lbr-text2;
 }
 
 /* ESPACEMENT ENTRE LES CHAMPS */
@@ -134,7 +134,7 @@
 .btn-secondary {
   background: white;
   border: 2px solid #FDE8F3;
-  color: #9B7FA0;
+  color: $lbr-text2;
   border-radius: 24px;
   padding: 12px;
   text-align: center;
