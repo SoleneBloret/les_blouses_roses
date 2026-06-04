@@ -14,6 +14,7 @@ puts "🧹 Nettoyage de la base..."
 Report.destroy_all
 Participation.destroy_all
 Permanence.destroy_all
+Unavailability.destroy_all
 Profile.destroy_all
 User.destroy_all
 Location.destroy_all

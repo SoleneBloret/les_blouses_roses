@@ -1,6 +1,6 @@
 class Participation < ApplicationRecord
   belongs_to :permanence
-  belongs_to :user
+  belongs_to :user, optional: true
 
   FRENCH_WEEKDAYS = {
     "Lundi" => 1, "Mardi" => 2, "Mercredi" => 3,
