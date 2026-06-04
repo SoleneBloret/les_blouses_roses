@@ -1,0 +1,77 @@
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #ffffff;
+  border-radius: 20px 20px 0 0;
+  overflow: hidden;
+  padding: 14px 8px calc(env(safe-area-inset-bottom, 0px) + 14px);
+  z-index: 1000;
+  box-shadow: 0 -4px 20px rgba($lbr-text2, 0.12);
+
+  // Liseré dégradé rose → violet en haut de la barre
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: $lbr-text2;
+  }
+}
+
+.bottom-nav__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  appearance: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 11px;
+  line-height: inherit;
+  color: $lbr-text2;
+  text-decoration: none;
+  font-size: 11px;
+  font-weight: 500;
+  padding: 6px 20px;
+  border-radius: 14px;
+  transition: color 0.2s ease, background-color 0.2s ease;
+
+  &:hover {
+    color: $lbr-violet;
+    text-decoration: none;
+  }
+
+  &--active {
+    color: $lbr-rose;
+    font-weight: 600;
+
+    .bottom-nav__icon {
+      filter: brightness(0) saturate(100%) invert(10%) sepia(90%) saturate(5000%) hue-rotate(310deg) brightness(90%);
+    }
+  }
+}
+
+.bottom-nav__separator {
+  width: 1px;
+  height: 32px;
+  background-color: #e5e7eb;
+  flex-shrink: 0;
+}
+
+.bottom-nav__icon {
+  width: 24px;
+  height: 24px;
+}
+
+body {
+  padding-bottom: calc(90px + env(safe-area-inset-bottom, 0px));
+}
