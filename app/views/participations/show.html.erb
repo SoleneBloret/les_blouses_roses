@@ -23,7 +23,10 @@
     </div>
 
     <%= link_to "Voir sur la carte", "#", class: "btn-rose-centre" %>
-    <%= link_to "J'ai une indisponibilité", "#", class: "btn-orange-centre" %>
+    <%= link_to "J'ai une indisponibilité", new_unavailability_path, class: "btn-orange-centre" %>
+    <% if @participation.date < Date.today %>
+      <%= link_to "Faire mon compte-rendu", new_participation_report_path(@participation), class: "btn-rose-centre" %>
+    <% end %>
   </div>
 
 </div>

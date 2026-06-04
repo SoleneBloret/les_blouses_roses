@@ -9,7 +9,12 @@ class UnavailabilitiesController < ApplicationController
     @unavailability = Unavailability.new(unavailability_params)
     @unavailability.user = current_user
     if @unavailability.save
-      redirect_to unavailabilities_path, notice: "Indisponibilité enregistrée."
+      # aller chercher les participations avec même week number
+      @participations = current_user.Participation.where(week_number: @unavailability.week_number)
+      @participations.each do |participation|
+        participation.update(user_id: nil, substitute: true)
+      end
+      redirect_to root_path, notice: "Indisponibilité enregistrée."
     else
       @upcoming = current_user.unavailabilities.upcoming
       @past = current_user.unavailabilities.past

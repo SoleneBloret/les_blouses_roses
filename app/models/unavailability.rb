@@ -12,6 +12,12 @@ class Unavailability < ApplicationRecord
     start_date == end_date
   end
 
+  def week_number
+    # condition : les deux dates sont dates sont identiques
+    # ruby doc date pour les méthodes
+    # condition : les deux dates sont diff (start and end)
+  end
+
   private
 
   def end_date_on_or_after_start_date
