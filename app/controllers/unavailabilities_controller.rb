@@ -1,26 +1,27 @@
 class UnavailabilitiesController < ApplicationController
-  def index
+  def new
     @upcoming = current_user.unavailabilities.upcoming
     @past = current_user.unavailabilities.past
     @unavailability = Unavailability.new
   end
 
   def create
-    @unavailability = current_user.unavailabilities.build(unavailability_params)
+    @unavailability = Unavailability.new(unavailability_params)
+    @unavailability.user = current_user
     if @unavailability.save
       redirect_to unavailabilities_path, notice: "Indisponibilité enregistrée."
     else
       @upcoming = current_user.unavailabilities.upcoming
       @past = current_user.unavailabilities.past
-      render :index, status: :unprocessable_entity
+      render :new, status: :unprocessable_entity
     end
   end
 
-  def destroy
-    @unavailability = current_user.unavailabilities.find(params[:id])
-    @unavailability.destroy
-    redirect_to unavailabilities_path, notice: "Indisponibilité supprimée."
-  end
+  # def destroy
+  #   @unavailability = current_user.unavailabilities.find(params[:id])
+  #   @unavailability.destroy
+  #   redirect_to unavailabilities_path, notice: "Indisponibilité supprimée."
+  # end
 
   private
 

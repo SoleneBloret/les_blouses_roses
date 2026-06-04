@@ -3,7 +3,7 @@ class Unavailability < ApplicationRecord
 
   validates :start_date, presence: true
   validates :end_date, presence: true
-  validate :end_date_on_or_after_start_date
+  validates :week_numbers, presence: true
 
   scope :upcoming, -> { where("end_date >= ?", Date.today).order(:start_date) }
   scope :past, -> { where("end_date < ?", Date.today).order(start_date: :desc) }

@@ -21,6 +21,6 @@ Rails.application.routes.draw do
     resources :reports, only: [:create]
   end
 
-  resources :unavailabilities, only: [:index, :create, :destroy]
+  resources :unavailabilities, only: [:new, :create]
 
 end
