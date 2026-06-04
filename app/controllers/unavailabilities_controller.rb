@@ -10,9 +10,9 @@ class UnavailabilitiesController < ApplicationController
     @unavailability.user = current_user
     if @unavailability.save
       # aller chercher les participations avec même week number
-      @participations = current_user.Participation.where(week_number: @unavailability.week_number)
+      @participations = current_user.participations.where(week_number: @unavailability.week_numbers)
       @participations.each do |participation|
-        participation.update(user_id: nil, substitute: true)
+        participation.update!(user_id: nil, substitute: "true")
       end
       redirect_to root_path, notice: "Indisponibilité enregistrée."
     else

@@ -5,6 +5,8 @@ class Unavailability < ApplicationRecord
   validates :end_date, presence: true
   validates :week_numbers, presence: true
 
+  before_validation :compute_week_numbers
+
   scope :upcoming, -> { where("end_date >= ?", Date.today).order(:start_date) }
   scope :past, -> { where("end_date < ?", Date.today).order(start_date: :desc) }
 
@@ -12,13 +14,13 @@ class Unavailability < ApplicationRecord
     start_date == end_date
   end
 
-  def week_number
-    # condition : les deux dates sont dates sont identiques
-    # ruby doc date pour les méthodes
-    # condition : les deux dates sont diff (start and end)
-  end
-
   private
+
+  def compute_week_numbers
+    return unless start_date && end_date
+
+    self.week_numbers = (start_date..end_date).map(&:cweek).uniq
+  end
 
   def end_date_on_or_after_start_date
     return unless start_date && end_date
