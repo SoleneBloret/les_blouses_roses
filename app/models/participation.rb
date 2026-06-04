@@ -21,4 +21,14 @@ class Participation < ApplicationRecord
     day_number = FRENCH_WEEKDAYS[permanence.week_day]
     Date.commercial(permanence.year, week_number, day_number)
   end
+
+  def binome
+    Participation
+      .where(permanence: permanence, week_number: week_number)
+      .where.not(user: user)
+      .includes(user: :profile)
+      .first
+      &.user
+      &.profile
+  end
 end
