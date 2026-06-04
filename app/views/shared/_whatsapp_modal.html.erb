@@ -1,0 +1,36 @@
+<%# Partial : modale WhatsApp, rendu depuis _bottom_nav.html.erb %>
+<% user_location = current_user.permanences.first&.location || current_user.participations.first&.permanence&.location %>
+
+<div class="whatsapp-overlay whatsapp-modal--hidden"
+     data-whatsapp-modal-target="overlay"
+     data-action="click->whatsapp-modal#closeOnOverlay">
+
+  <div class="whatsapp-modal">
+    <button class="whatsapp-modal__close" data-action="click->whatsapp-modal#close" aria-label="Fermer">
+      &times;
+    </button>
+
+    <div class="whatsapp-modal__icon">
+      <%= image_tag "icons/whatsapp.png", alt: "WhatsApp", width: 48, height: 48 %>
+    </div>
+
+    <h2 class="whatsapp-modal__title">Ouvrir WhatsApp</h2>
+    <p class="whatsapp-modal__subtitle">
+      Groupe · <%= user_location&.name || "Votre hôpital" %>
+    </p>
+
+    <div class="whatsapp-modal__group-card">
+      <span class="whatsapp-modal__group-name">
+        <%= user_location&.name || "Groupe bénévoles" %>
+      </span>
+    </div>
+
+    <p class="whatsapp-modal__disclaimer">
+      Vous allez quitter l'application<br>pour ouvrir WhatsApp.
+    </p>
+
+    <a href="https://wa.me/" target="_blank" rel="noopener noreferrer" class="whatsapp-modal__btn">
+      Ouvrir dans WhatsApp
+    </a>
+  </div>
+</div>
