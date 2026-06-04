@@ -1,0 +1,109 @@
+<div class="unavailability-page" data-controller="unavailability-form">
+
+  <%= simple_form_for @unavailability, url: unavailabilities_path do |f| %>
+    <%= f.error_notification message: "Merci de corriger les erreurs ci-dessous :" %>
+
+    <!-- TOGGLE UNE SEULE DATE / PLUSIEURS JOURS -->
+    <div class="unavailability-toggle">
+      <button type="button" class="unavailability-tab"
+              data-unavailability-form-target="singleTab"
+              data-action="click->unavailability-form#showSingle">
+        Une seule date
+      </button>
+      <button type="button" class="unavailability-tab"
+              data-unavailability-form-target="multiTab"
+              data-action="click->unavailability-form#showMulti">
+        Plusieurs jours
+      </button>
+    </div>
+
+    <!-- DATE DE DÉBUT -->
+    <div class="unavailability-field-group">
+      <label class="unavailability-field-label">JE SERAI ABSENTE DU</label>
+      <div class="unavailability-date-input-wrapper">
+        <%= f.date_field :start_date,
+            class: "unavailability-date-input",
+            required: true,
+            data: { unavailability_form_target: "startDate", action: "input->unavailability-form#syncEndDate" } %>
+      </div>
+    </div>
+
+    <!-- DATE DE FIN (masquée par défaut) -->
+    <div class="unavailability-field-group d-none" data-unavailability-form-target="endDateWrapper">
+      <label class="unavailability-field-label">AU</label>
+      <div class="unavailability-date-input-wrapper">
+        <%= f.date_field :end_date,
+            class: "unavailability-date-input",
+            data: { unavailability_form_target: "endDate" } %>
+      </div>
+    </div>
+
+    <!-- NOTE -->
+    <div class="unavailability-field-group">
+      <label class="unavailability-field-label">NOTE (FACULTATIF)</label>
+      <%= f.text_area :reason, class: "unavailability-textarea", placeholder: "Précisez si besoin…", rows: 4 %>
+    </div>
+
+    <!-- INFO -->
+    <p class="unavailability-info-text">
+      Votre absence sera transmise à votre référent(e) et la (les) permanences concernées seront proposées aux autres bénévoles.
+    </p>
+
+    <!-- BOUTON SUBMIT -->
+    <%= f.submit "Confirmer mon absence", class: "btn-unavailability-submit" %>
+  <% end %>
+
+  <!-- LISTE DES INDISPONIBILITÉS -->
+  <% if @upcoming.any? || @past.any? %>
+    <div class="unavailability-list">
+
+      <% if @upcoming.any? %>
+        <h3 class="unavailability-list-title">À venir</h3>
+        <% @upcoming.each do |u| %>
+          <div class="unavailability-item">
+            <div class="unavailability-item-dates">
+              <% if u.single_day? %>
+                <span class="unavailability-date"><%= l(u.start_date, format: :long) %></span>
+              <% else %>
+                <span class="unavailability-date"><%= l(u.start_date, format: :short) %> → <%= l(u.end_date, format: :short) %></span>
+              <% end %>
+              <% if u.reason.present? %>
+                <span class="unavailability-reason"><%= u.reason %></span>
+              <% end %>
+            </div>
+            <%= button_to unavailability_path(u), method: :delete,
+                class: "btn-unavailability-delete",
+                form: { data: { turbo_confirm: "Supprimer cette indisponibilité ?" } } do %>
+              <i class="fa-solid fa-trash"></i>
+            <% end %>
+          </div>
+        <% end %>
+      <% end %>
+
+      <% if @past.any? %>
+        <h3 class="unavailability-list-title unavailability-list-title--past">Passées</h3>
+        <% @past.each do |u| %>
+          <div class="unavailability-item unavailability-item--past">
+            <div class="unavailability-item-dates">
+              <% if u.single_day? %>
+                <span class="unavailability-date"><%= l(u.start_date, format: :long) %></span>
+              <% else %>
+                <span class="unavailability-date"><%= l(u.start_date, format: :short) %> → <%= l(u.end_date, format: :short) %></span>
+              <% end %>
+              <% if u.reason.present? %>
+                <span class="unavailability-reason"><%= u.reason %></span>
+              <% end %>
+            </div>
+            <%= button_to unavailability_path(u), method: :delete,
+                class: "btn-unavailability-delete",
+                form: { data: { turbo_confirm: "Supprimer cette indisponibilité ?" } } do %>
+              <i class="fa-solid fa-trash"></i>
+            <% end %>
+          </div>
+        <% end %>
+      <% end %>
+
+    </div>
+  <% end %>
+
+</div>

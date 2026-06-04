@@ -6,4 +6,5 @@ class User < ApplicationRecord
   has_one :profile
   has_many :permanences
   has_many :participations
+  has_many :unavailabilities
 end

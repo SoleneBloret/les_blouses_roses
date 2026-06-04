@@ -12,11 +12,12 @@
     page_label = {
       "pages"         => { "home"   => "Accueil" },
       "profiles"      => { "show"   => "Mon profil", "edit" => "Modifier mon profil", "new" => "Créer mon profil" },
-      "participations"=> { "index"  => "Mes permanences" }
+      "participations"      => { "index"  => "Mes permanences" },
+      "unavailabilities"    => { "index"  => "Absence" }
     }.dig(controller_name, action_name) || "Les Blouses Roses"
   %>
 
-  <div class="header-card">
+  <div class="header-card <%= 'header-card--orange' if controller_name == 'unavailabilities' %>">
     <div class="header-card-left">
       <span class="header-page-label"><%= page_label %></span>
       <span class="header-user-name">
