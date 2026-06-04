@@ -1,3 +1,7 @@
+<%= content_for :head do %>
+  <link href="https://api.mapbox.com/mapbox-gl-js/v3.7.0/mapbox-gl.css" rel="stylesheet">
+<% end %>
+
 <div class="page-layout">
 
   <div class="participation-show-card">
@@ -22,7 +26,7 @@
       <p class="participation-value"><%= @participation.permanence.location.address %></p>
     </div>
 
-    <%= link_to "Voir sur la carte", "#", class: "btn-rose-centre" %>
+    <%= link_to "Voir sur la carte", map_participation_path(@participation), class: "btn-rose-centre" %>
     <%= link_to "J'ai une indisponibilité", "#", class: "btn-orange-centre" %>
   </div>
 
