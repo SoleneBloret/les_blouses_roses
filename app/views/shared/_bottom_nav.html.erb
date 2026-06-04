@@ -1,22 +1,37 @@
 <%# Partial : barre de navigation bottom, inclus dans application.html.erb pour apparaître sur toutes les pages de l'app %>
 <nav class="bottom-nav">
-  <button class="bottom-nav__item">
+
+  <!-- BOUTON - INDISPONIBILITE -->
+  <%= link_to unavailabilities_path, class: "bottom-nav__item #{current_page?(unavailabilities_path) ? 'bottom-nav__item--active' : ''}" do %>
     <%= image_tag "icons/absence.svg", class: "bottom-nav__icon", alt: "" %>
     <span>Absence</span>
-  </button>
+  <% end %>
+
+
   <div class="bottom-nav__separator"></div>
+
+  <!-- BOUTON - AGENDA -->
   <%= link_to participations_path, class: "bottom-nav__item #{current_page?(participations_path) ? 'bottom-nav__item--active' : ''}" do %>
     <%= image_tag "icons/agenda.svg", class: "bottom-nav__icon", alt: "" %>
     <span>Agenda</span>
   <% end %>
+
+
   <div class="bottom-nav__separator"></div>
+
+  <!-- BOUTON - MESSAGES -->
   <button class="bottom-nav__item">
     <%= image_tag "icons/messages.svg", class: "bottom-nav__icon", alt: "" %>
     <span>Messages</span>
   </button>
+
+
   <div class="bottom-nav__separator"></div>
+
+  <!-- BOUTON - MENU -->
   <button class="bottom-nav__item <%= current_page?(root_path) ? 'bottom-nav__item--active' : '' %>">
     <%= image_tag "icons/menu.svg", class: "bottom-nav__icon", alt: "" %>
     <span>Menu</span>
   </button>
+
 </nav>
