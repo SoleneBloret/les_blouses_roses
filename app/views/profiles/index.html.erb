@@ -1,0 +1,19 @@
+<div class="menu-page">
+  <div class="menu-page__content">
+    <p class="menu-section__title"><%= @profiles.count %> MEMBRES</p>
+    <div class="menu-section">
+      <% @profiles.each do |profile| %>
+        <%= link_to profile_path(profile), class: "menu-card" do %>
+          <div class="menu-card__icon-wrap">
+            <%= profile.first_name&.first %><%= profile.last_name&.first %>
+          </div>
+          <div class="menu-card__body">
+            <span class="menu-card__label"><%= profile.first_name %> <%= profile.last_name %></span>
+            <span class="menu-card__sublabel"><%= profile.role %></span>
+          </div>
+          <i class="fa-solid fa-chevron-right menu-card__arrow"></i>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
