@@ -88,7 +88,7 @@
   color: $lbr-text2;
 }
 
-.feeling-card--selected {
+.feeling-card:has(input:checked) {
   border-color: $lbr-rose;
   background-color: lighten($lbr-rose, 45%);
 
