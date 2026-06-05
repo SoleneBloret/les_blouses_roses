@@ -39,7 +39,7 @@
       <% @participations.each do |participation| %>
         <%= link_to participation_path(participation),
             class: "participation-index-card row",
-            data: { calendar_target: "card", participation_date: participation.date.iso8601 } do %>
+            data: { turbo_frame: "_top", calendar_target: "card", participation_date: participation.date.iso8601 } do %>
 
           <!-- BADGE AVEC LA DATE-->
           <li class="date-badge col-1">

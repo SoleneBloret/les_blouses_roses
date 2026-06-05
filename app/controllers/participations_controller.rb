@@ -9,7 +9,7 @@ class ParticipationsController < ApplicationController
 
   def available
     # TODO: charger ici les permanences disponibles (ex: Permanence.available_for(current_user))
-    @participations = Participation.where.not(user_id: current_user.id)
+    @participations = Participation.all.where(user: nil).sorted_by_date_desc
   end
 
   def map

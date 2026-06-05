@@ -13,7 +13,7 @@
   padding: 14px 12px 10px;
   margin-bottom: 16px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-  border: 1px solid $lbr-text2;
+  border: 1px solid $lbr-rose_pale;
 
   .calendar-header {
     display: flex;
@@ -216,8 +216,13 @@
     color: white;
   }
 
-  // ONGLET INACTIF
-  .nav-link.disabled {
-    color: rgb(110, 67, 110);
+  // ONGLET "PERMANENCES DISPO" ACTIF
+  .tab-available.active {
+    background-color: $lbr-orange;
   }
-}
+
+  // ONGLET INACTIF
+  .nav-link:not(.active) {
+    color: $lbr-text2;
+  }
+  }
