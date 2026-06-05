@@ -14,6 +14,7 @@ puts "🧹 Nettoyage de la base..."
 Report.destroy_all
 Participation.destroy_all
 Permanence.destroy_all
+Unavailability.destroy_all
 Profile.destroy_all
 User.destroy_all
 Location.destroy_all
@@ -89,7 +90,7 @@ Profile.create!(
 
 users << demo_user
 
-15.times do |i|
+4.times do |i|
   first_name = Faker::Name.first_name
   last_name = Faker::Name.last_name
 

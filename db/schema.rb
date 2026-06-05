@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_06_04_095652) do
+ActiveRecord::Schema[8.1].define(version: 2026_06_04_144622) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -54,9 +54,9 @@ ActiveRecord::Schema[8.1].define(version: 2026_06_04_095652) do
   create_table "participations", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.bigint "permanence_id", null: false
-    t.boolean "substitute"
+    t.boolean "substitute", default: false
     t.datetime "updated_at", null: false
-    t.bigint "user_id", null: false
+    t.bigint "user_id"
     t.integer "week_number"
     t.index ["permanence_id"], name: "index_participations_on_permanence_id"
     t.index ["user_id"], name: "index_participations_on_user_id"
@@ -249,6 +249,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_06_04_095652) do
     t.date "start_date"
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
+    t.integer "week_numbers", default: [], array: true
     t.index ["user_id"], name: "index_unavailabilities_on_user_id"
   end
 
