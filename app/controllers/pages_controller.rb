@@ -4,6 +4,7 @@ class PagesController < ApplicationController
   def home
     unless current_user
       redirect_to new_user_session_path
+      return
     end
 
     @profile = current_user.profile
