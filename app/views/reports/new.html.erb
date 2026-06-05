@@ -12,15 +12,16 @@
 
   <div class="report-section">
     <p class="section-label">RESSENTI DE LA PERMANENCE</p>
-    <div class="feeling-group">
+    <div class="feeling-group" data-controller="feeling">
       <% emojis = { 0 => "😒", 1 => "😐", 2 => "🙂", 3 => "😄" } %>
       <% Report::FEELINGS.each do |value, label| %>
         <div class="feeling-option">
           <%= f.radio_button :feeling, value,
-                class: "btn-check",
+                class: "visually-hidden",
                 id: "feeling_#{value}",
-                autocomplete: "off" %>
-          <label class="feeling-card" for="feeling_#{value}">
+                autocomplete: "off",
+                data: { action: "change->feeling#select" } %>
+          <label class="feeling-card" for="feeling_#{value}" data-feeling-target="card">
             <span class="feeling-emoji"><%= emojis[value] %></span>
             <span class="feeling-label"><%= label %></span>
           </label>
@@ -37,7 +38,7 @@
       NOTE LIBRE <span class="fw-normal text-muted">(FACULTATIF)</span>
     </p>
     <%= f.text_area :comment,
-          placeholder: "Ajoutez un commentaire pour votre responsable...",
+          placeholder: "Ajoutez un commentaire pour votre référente...",
           class: "form-control report-textarea",
           rows: 4 %>
   </div>
