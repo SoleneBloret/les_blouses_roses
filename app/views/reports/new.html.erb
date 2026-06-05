@@ -1,0 +1,47 @@
+<%= simple_form_for [@participation, @report], html: { class: "p-3" } do |f| %>
+  <div class="report-section">
+    <p class="section-label">PATIENTS VISITÉS</p>
+    <div class="counter-wrapper" data-controller="counter">
+      <i class="fa-solid fa-user-group counter-icon"></i>
+      <button type="button" class="counter-btn" data-action="click->counter#decrement">−</button>
+      <span class="counter-value" data-counter-target="value">0</span>
+      <button type="button" class="counter-btn counter-btn--plus" data-action="click->counter#increment">+</button>
+      <%= f.hidden_field :patients_number, value: 0, data: { counter_target: "input" } %>
+    </div>
+  </div>
+
+  <div class="report-section">
+    <p class="section-label">RESSENTI DE LA PERMANENCE</p>
+    <div class="feeling-group">
+      <% emojis = { 0 => "😒", 1 => "😐", 2 => "🙂", 3 => "😄" } %>
+      <% Report::FEELINGS.each do |value, label| %>
+        <div class="feeling-option">
+          <%= f.radio_button :feeling, value,
+                class: "btn-check",
+                id: "feeling_#{value}",
+                autocomplete: "off" %>
+          <label class="feeling-card" for="feeling_#{value}">
+            <span class="feeling-emoji"><%= emojis[value] %></span>
+            <span class="feeling-label"><%= label %></span>
+          </label>
+        </div>
+      <% end %>
+    </div>
+    <% if @report.errors[:feeling].any? %>
+      <p class="text-danger small"><%= @report.errors[:feeling].first %></p>
+    <% end %>
+  </div>
+
+  <div class="report-section">
+    <p class="section-label">
+      NOTE LIBRE <span class="fw-normal text-muted">(FACULTATIF)</span>
+    </p>
+    <%= f.text_area :comment,
+          placeholder: "Ajoutez un commentaire pour votre responsable...",
+          class: "form-control report-textarea",
+          rows: 4 %>
+  </div>
+
+  <%= f.submit "Envoyer le compte-rendu", class: "btn btn-report-submit w-100 mt-3" %>
+
+<% end %>

@@ -23,7 +23,7 @@ Rails.application.routes.draw do
     member do
       get :map
     end
-    resources :reports, only: [:create]
+    resources :reports, only: [:new, :create]
   end
 
   resources :unavailabilities, only: [:new, :create]
