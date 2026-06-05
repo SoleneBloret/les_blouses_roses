@@ -1,0 +1,31 @@
+<%= content_for :head do %>
+  <link href="https://api.mapbox.com/mapbox-gl-js/v3.7.0/mapbox-gl.css" rel="stylesheet">
+<% end %>
+
+<div class="participation-map-wrapper"
+     data-controller="map"
+     data-map-token-value="<%= ENV['MAPBOX_TOKEN'] %>"
+     data-map-latitude-value="<%= @participation.permanence.location.latitude %>"
+     data-map-longitude-value="<%= @participation.permanence.location.longitude %>">
+
+  <div class="participation-map-fullscreen" data-map-target="container"></div>
+
+  <!-- BOUTON RETOUR -->
+  <div class="map-overlay-btn map-overlay-btn--left">
+    <%= link_to participation_path(@participation), class: "map-action-btn map-action-btn--rose" do %>
+      <i class="fa-solid fa-arrow-left"></i>
+    <% end %>
+    <span class="map-btn-label">Retour</span>
+  </div>
+
+  <!-- BOUTON MA POSITION -->
+  <div class="map-overlay-btn map-overlay-btn--right">
+    <button class="map-action-btn map-action-btn--white"
+            data-map-target="locateBtn"
+            data-action="click->map#locateUser">
+      <i class="fa-solid fa-location-crosshairs"></i>
+    </button>
+    <span class="map-btn-label">Ma position</span>
+  </div>
+
+</div>

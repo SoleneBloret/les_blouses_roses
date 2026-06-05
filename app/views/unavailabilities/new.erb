@@ -53,6 +53,9 @@
     <%= f.submit "Confirmer mon absence", class: "btn-unavailability-submit" %>
   <% end %>
 
+
+  
+
   <!-- LISTE DES INDISPONIBILITÉS -->
   <% if @upcoming.any? || @past.any? %>
     <div class="unavailability-list">
@@ -62,20 +65,22 @@
         <% @upcoming.each do |u| %>
           <div class="unavailability-item">
             <div class="unavailability-item-dates">
-              <% if u.single_day? %>
-                <span class="unavailability-date"><%= l(u.start_date, format: :long) %></span>
-              <% else %>
-                <span class="unavailability-date"><%= l(u.start_date, format: :short) %> → <%= l(u.end_date, format: :short) %></span>
-              <% end %>
+              <span class="unavailability-date">
+                <% if u.single_day? %>
+                  <%= l(u.start_date, format: :long) %>
+                <% else %>
+                  <%= l(u.start_date, format: :short) %> → <%= l(u.end_date, format: :short) %>
+                <% end %>
+              </span>
               <% if u.reason.present? %>
                 <span class="unavailability-reason"><%= u.reason %></span>
               <% end %>
             </div>
-            <%= button_to unavailability_path(u), method: :delete,
-                class: "btn-unavailability-delete",
-                form: { data: { turbo_confirm: "Supprimer cette indisponibilité ?" } } do %>
-              <i class="fa-solid fa-trash"></i>
-            <% end %>
+            <%#= button_to unavailability_path(u), method: :delete,
+                <!-- class: "btn-unavailability-delete", -->
+                <!-- form: { data: { turbo_confirm: "Supprimer cette indisponibilité ?" } } do %> -->
+            <!-- <i class="fa-solid fa-trash"></i> -->
+            <%# end %>
           </div>
         <% end %>
       <% end %>
@@ -85,20 +90,22 @@
         <% @past.each do |u| %>
           <div class="unavailability-item unavailability-item--past">
             <div class="unavailability-item-dates">
-              <% if u.single_day? %>
-                <span class="unavailability-date"><%= l(u.start_date, format: :long) %></span>
-              <% else %>
-                <span class="unavailability-date"><%= l(u.start_date, format: :short) %> → <%= l(u.end_date, format: :short) %></span>
-              <% end %>
+              <span class="unavailability-date">
+                <% if u.single_day? %>
+                  <%= l(u.start_date, format: :long) %>
+                <% else %>
+                  <%= l(u.start_date, format: :short) %> → <%= l(u.end_date, format: :short) %>
+                <% end %>
+              </span>
               <% if u.reason.present? %>
                 <span class="unavailability-reason"><%= u.reason %></span>
               <% end %>
             </div>
-            <%= button_to unavailability_path(u), method: :delete,
-                class: "btn-unavailability-delete",
-                form: { data: { turbo_confirm: "Supprimer cette indisponibilité ?" } } do %>
-              <i class="fa-solid fa-trash"></i>
-            <% end %>
+            <%#= button_to unavailability_path(u), method: :delete,
+                <!-- class: "btn-unavailability-delete", -->
+                <!-- form: { data: { turbo_confirm: "Supprimer cette indisponibilité ?" } } do %> -->
+              <!-- <i class="fa-solid fa-trash"></i> -->
+            <%# end %>
           </div>
         <% end %>
       <% end %>

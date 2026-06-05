@@ -29,6 +29,8 @@
     <%= yield %>
 
     <%# Bottom navigation bar — visible sur toutes les pages %>
-    <%= render "shared/bottom_nav" %>
+    <% if current_user %>
+      <%= render "shared/bottom_nav" %>
+    <% end %>
   </body>
 </html>
