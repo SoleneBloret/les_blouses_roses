@@ -23,7 +23,8 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body><%= render "shared/navbar" %>
+  <body>
+    <%= render "shared/navbar" unless content_for?(:hide_navbar) %>
     <%= render "shared/flashes" %>
 
     <%= yield %>
