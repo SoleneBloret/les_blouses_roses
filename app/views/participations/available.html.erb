@@ -4,39 +4,20 @@
 
     <!-- MENU TABS -->
     <ul class="nav nav-pills nav-fill p-1 participations-tabs">
-      <!-- TAB 1 : actif -->
+      <!-- TAB 1 : inactif -->
       <li class="nav-item">
         <%= link_to "Mes permanences", participations_path,
-            class: "nav-link active rounded-pill",
-            aria: { current: "page" } %>
+            class: "nav-link rounded-pill" %>
       </li>
-      <!-- TAB 2 : inactif -->
+      <!-- TAB 2 : actif -->
       <li class="nav-item">
         <%= link_to "Permanences dispo", available_participations_path,
-            class: "nav-link rounded-pill" %>
+            class: "nav-link active rounded-pill tab-available",
+            aria: { current: "page" } %>
       </li>
     </ul>
 
-
-    <!-- CALENDRIER DES PERMANENCES -->
-    <div data-controller="calendar"
-         data-calendar-dates-value="<%= @participations.map { |p| { id: p.id, date: p.date.iso8601 } }.to_json %>">
-
-      <div class="calendar-widget">
-        <div class="calendar-header">
-          <button class="calendar-nav-btn" data-action="click->calendar#prev">&#8249;</button>
-          <span class="calendar-title" data-calendar-target="title"></span>
-          <button class="calendar-nav-btn" data-action="click->calendar#next">&#8250;</button>
-        </div>
-        <div class="calendar-weekdays">
-          <span>L</span><span>M</span><span>M</span><span>J</span><span>V</span><span>S</span><span>D</span>
-        </div>
-        <div class="calendar-grid" data-calendar-target="grid"></div>
-      </div>
-
-
-      <!-- CARDS DES PERMANENCES -->
-      <% @participations.each do |participation| %>
+    <% @participations.each do |participation| %>
         <%= link_to participation_path(participation),
             class: "participation-index-card row",
             data: { calendar_target: "card", participation_date: participation.date.iso8601 } do %>
@@ -56,7 +37,11 @@
         <% end %>
       <% end %>
 
-    </div>
+    <!-- ================================================ -->
+    <!-- TODO: ajouter ici le contenu de "Permanences dispo" -->
+    <!-- Données disponibles via @... (à définir dans le controller) -->
+    <!-- ================================================ -->
+
 
   <% end %>
 
