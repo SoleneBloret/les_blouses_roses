@@ -1,0 +1,173 @@
+.menu-page {
+  min-height: 100vh;
+  background: $lbr-creme;
+}
+
+// Contenu
+.menu-page__content {
+  padding: 24px 16px 32px;
+}
+
+// Titres de section
+.menu-section__title {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: $lbr-text2;
+  margin-bottom: 10px;
+  margin-top: 24px;
+
+  &:first-of-type {
+    margin-top: 0;
+  }
+}
+
+// Groupe de cards
+.menu-section {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba($lbr-text, 0.05);
+}
+
+// Card individuelle
+.menu-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px;
+  text-decoration: none;
+  color: $lbr-text;
+  border-bottom: 1px solid rgba($lbr-text2, 0.1);
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &:hover {
+    background: rgba($lbr-rose_pale, 0.5);
+    text-decoration: none;
+    color: $lbr-text;
+  }
+
+  &--disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  &--quiz {
+    background: #FFFBF0;
+    border-left: 4px solid $lbr-orange;
+    pointer-events: none;
+  }
+
+  &__icon-wrap {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: $lbr-rose_pale;
+    color: $lbr-rose;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+
+    &--gold {
+      background: rgba($lbr-orange, 0.15);
+      color: $lbr-orange;
+    }
+  }
+
+  &__body {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__label {
+    font-size: 15px;
+    font-weight: 600;
+    display: block;
+    color: $lbr-text;
+  }
+
+  &__sublabel {
+    font-size: 12px;
+    color: $lbr-text2;
+    display: block;
+    margin-top: 2px;
+  }
+
+  &__arrow {
+    color: $lbr-text2;
+    font-size: 13px;
+    flex-shrink: 0;
+  }
+
+  &__badge {
+    background: $lbr-rose_pale;
+    color: $lbr-rose;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 20px;
+    flex-shrink: 0;
+  }
+
+  &__progress {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 8px;
+  }
+
+  &__progress-bar {
+    flex: 1;
+    height: 6px;
+    background: rgba($lbr-orange, 0.2);
+    border-radius: 3px;
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: inherit;
+      background: $lbr-orange;
+      border-radius: 3px;
+    }
+  }
+
+  &__progress-label {
+    font-size: 12px;
+    font-weight: 700;
+    color: $lbr-orange;
+    flex-shrink: 0;
+  }
+}
+
+// Bouton Se déconnecter
+.menu-signout {
+  display: block;
+  width: 100%;
+  margin-top: 28px;
+  padding: 16px;
+  background: #fff;
+  border: 2px solid $lbr-rose;
+  border-radius: 50px;
+  color: $lbr-rose;
+  font-size: 17px;
+  font-weight: 700;
+  text-align: center;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+
+  &:hover {
+    background: $lbr-rose;
+    color: #fff;
+  }
+}
