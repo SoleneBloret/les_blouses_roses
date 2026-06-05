@@ -276,7 +276,8 @@ comments = [
     permanence: permanences.sample,
     week_number: rand(1..52),
     patients_number: rand(3..25),
-    comment: comments.sample
+    comment: comments.sample,
+    feeling: rand(1..5)
   )
 end
 
