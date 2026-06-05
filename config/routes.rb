@@ -15,7 +15,9 @@ Rails.application.routes.draw do
   # root "posts#index"
 
   # ---------- DEFINITION DES ROUTES ----------
-  resources :profiles, only: [:new, :create, :show, :edit, :update]
+  get "menu" => "pages#menu", as: :menu
+
+  resources :profiles, only: [:new, :create, :show, :edit, :update, :index]
 
   resources :participations, only: [:index, :show, :update, :create] do
     member do

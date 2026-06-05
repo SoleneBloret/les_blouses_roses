@@ -1,0 +1,88 @@
+<div class="menu-page">
+
+  <div class="menu-page__content">
+
+    <%# MON COMPTE %>
+    <p class="menu-section__title">MON COMPTE</p>
+    <div class="menu-section">
+      <% if current_user.profile %>
+        <%= link_to profile_path(current_user.profile), class: "menu-card" do %>
+          <div class="menu-card__icon-wrap"><i class="fa-solid fa-user"></i></div>
+          <div class="menu-card__body">
+            <span class="menu-card__label">Mon profil</span>
+            <span class="menu-card__sublabel">Informations personnelles · Photo</span>
+          </div>
+          <i class="fa-solid fa-chevron-right menu-card__arrow"></i>
+        <% end %>
+      <% end %>
+
+      <div class="menu-card menu-card--disabled">
+        <div class="menu-card__icon-wrap"><i class="fa-solid fa-bell"></i></div>
+        <div class="menu-card__body">
+          <span class="menu-card__label">Mes notifications</span>
+          <span class="menu-card__sublabel">Alertes · Rappels · Fréquence</span>
+        </div>
+        <i class="fa-solid fa-chevron-right menu-card__arrow"></i>
+      </div>
+    </div>
+
+    <%# DÉCOUVRIR %>
+    <p class="menu-section__title">DÉCOUVRIR</p>
+    <div class="menu-section">
+      <a href="https://www.lesblousesroses.asso.fr/fr/" target="_blank" rel="noopener noreferrer" class="menu-card">
+        <div class="menu-card__icon-wrap"><i class="fa-solid fa-circle-info"></i></div>
+        <div class="menu-card__body">
+          <span class="menu-card__label">Informations</span>
+          <span class="menu-card__sublabel">Actualités · Documents utiles</span>
+        </div>
+        <i class="fa-solid fa-chevron-right menu-card__arrow"></i>
+      </a>
+
+      <a href="https://www.lesblousesroses.asso.fr/fr/l-association" target="_blank" rel="noopener noreferrer" class="menu-card">
+        <div class="menu-card__icon-wrap"><i class="fa-solid fa-heart"></i></div>
+        <div class="menu-card__body">
+          <span class="menu-card__label">L'association</span>
+          <span class="menu-card__sublabel">Histoire · Valeurs · Organisation</span>
+        </div>
+        <i class="fa-solid fa-chevron-right menu-card__arrow"></i>
+      </a>
+    </div>
+
+    <%# COMMUNAUTÉ %>
+    <p class="menu-section__title">COMMUNAUTÉ</p>
+    <div class="menu-section">
+      <%= link_to profiles_path, class: "menu-card" do %>
+        <div class="menu-card__icon-wrap"><i class="fa-solid fa-user-group"></i></div>
+        <div class="menu-card__body">
+          <span class="menu-card__label">Annuaire des bénévoles</span>
+          <span class="menu-card__sublabel"><%= @profiles_count %> membres</span>
+        </div>
+        <span class="menu-card__badge"><%= @profiles_count %></span>
+        <i class="fa-solid fa-chevron-right menu-card__arrow"></i>
+      <% end %>
+    </div>
+
+    <%# SE FORMER %>
+    <p class="menu-section__title">SE FORMER</p>
+    <div class="menu-section">
+      <div class="menu-card menu-card--quiz">
+        <div class="menu-card__icon-wrap menu-card__icon-wrap--gold"><i class="fa-solid fa-trophy"></i></div>
+        <div class="menu-card__body">
+          <span class="menu-card__label">Quiz bénévole en or</span>
+          <span class="menu-card__sublabel">Testez vos connaissances</span>
+          <div class="menu-card__progress">
+            <div class="menu-card__progress-bar" style="width: 70%"></div>
+            <span class="menu-card__progress-label">7/10</span>
+          </div>
+        </div>
+        <i class="fa-solid fa-chevron-right menu-card__arrow"></i>
+      </div>
+    </div>
+
+    <%# Se déconnecter %>
+    <%= button_to destroy_user_session_path, method: :delete, class: "menu-signout" do %>
+      Se déconnecter
+    <% end %>
+
+  </div>
+</div>

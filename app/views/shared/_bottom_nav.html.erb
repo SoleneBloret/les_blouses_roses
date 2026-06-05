@@ -31,9 +31,10 @@
     <div class="bottom-nav__separator"></div>
 
     <!-- BOUTON MENU -->
-    <button class="bottom-nav__item <%= current_page?(root_path) ? 'bottom-nav__item--active' : '' %>">
+    <%= link_to menu_path, class: "bottom-nav__item #{current_page?(menu_path) ? 'bottom-nav__item--active' : ''}" do %>
       <%= image_tag "icons/menu.svg", class: "bottom-nav__icon", alt: "" %>
       <span>Menu</span>
-    </button>
+    <% end %>
+
   </nav>
 </div>

@@ -23,7 +23,8 @@
     <li class="list-group-item"><%= @profile.role %></li>
   </ul>
 
-  <%= link_to "Modifier", edit_profile_path(@profile), class: "btn btn-primary" %>
-
-  <%= button_to "Se déconnecter", destroy_user_session_path, method: :delete, class: "btn btn-logout" %>
+  <% if current_user.profile == @profile %>
+    <%= link_to "Modifier", edit_profile_path(@profile), class: "btn btn-primary" %>
+    <%= button_to "Se déconnecter", destroy_user_session_path, method: :delete, class: "btn btn-logout" %>
+  <% end %>
 </div>

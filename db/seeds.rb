@@ -165,23 +165,84 @@ creneaux = [
 
 permanences = []
 
-20.times do
+# Une permanence garantie par bénévole pour l'annuaire
+users.each do |user|
   location = locations.sample
-
-  service = services_by_location[location.name].sample
-
   start_time, end_time = creneaux.sample
 
   permanences << Permanence.create!(
-    user: users.sample,
+    user: user,
     location: location,
-    service: service,
+    service: services_by_location[location.name].sample,
     week_day: week_days.sample,
     start_time: start_time,
     end_time: end_time,
     formation: [true, false, false].sample,
     year: 2026
   )
+end
+
+4.times do
+  location = locations.sample
+  start_time, end_time = creneaux.sample
+
+  permanences << Permanence.create!(
+    user: users.sample,
+    location: location,
+    service: services_by_location[location.name].sample,
+    week_day: week_days.sample,
+    start_time: start_time,
+    end_time: end_time,
+    formation: [true, false, false].sample,
+    year: 2026
+  )
+end
+
+
+puts "🔁 Création des permanences récurrentes..."
+
+recurring_perm_1 = Permanence.create!(
+  user: demo_user,
+  location: locations.find { |l| l.name == "CHU de Nantes" },
+  service: "Service Mère-Enfant",
+  week_day: "Mercredi",
+  start_time: 14,
+  end_time: 17,
+  formation: false,
+  year: 2026
+)
+
+recurring_perm_2 = Permanence.create!(
+  user: users[1],
+  location: locations.find { |l| l.name == "Hôpital Saint-Jacques" },
+  service: "ORL",
+  week_day: "Vendredi",
+  start_time: 14,
+  end_time: 18,
+  formation: false,
+  year: 2026
+)
+
+permanences.push(recurring_perm_1, recurring_perm_2)
+
+puts "🙋 Création des participations récurrentes (semaines 20-28)..."
+
+(20..28).each do |week|
+  Participation.create!(user: demo_user, permanence: recurring_perm_1, week_number: week, substitute: false)
+  Participation.create!(user: users[1],  permanence: recurring_perm_2, week_number: week, substitute: false)
+end
+
+puts "📝 Rapports pour les semaines passées (20, 21, 22)..."
+
+recurring_comments = [
+  "Animation lecture très appréciée des enfants.",
+  "Bon accueil de l'équipe soignante et forte participation.",
+  "Atelier créatif particulièrement réussi."
+]
+
+[20, 21, 22].each_with_index do |week, i|
+  Report.create!(permanence: recurring_perm_1, week_number: week, patients_number: rand(5..20), comment: recurring_comments[i], feeling: rand(1..5))
+  Report.create!(permanence: recurring_perm_2, week_number: week, patients_number: rand(5..20), comment: recurring_comments[i], feeling: rand(1..5))
 end
 
 puts "🙋 Création des participations..."
