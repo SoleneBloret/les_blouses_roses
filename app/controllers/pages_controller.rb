@@ -2,7 +2,9 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[home]
 
   def home
-    redirect_to new_user_session_path and return unless current_user
+    unless current_user
+      redirect_to new_user_session_path
+    end
 
     @profile = current_user.profile
     load_participations_data
