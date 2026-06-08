@@ -1,6 +1,6 @@
 <div class="unavailability-page" data-controller="unavailability-form">
 
-  <%= simple_form_for @unavailability, url: unavailabilities_path do |f| %>
+  <%= simple_form_for @unavailability, url: unavailabilities_path, html: { data: { action: "submit->unavailability-form#confirmSubmit" } } do |f| %>
     <%= f.error_notification message: "Merci de corriger les erreurs ci-dessous :" %>
 
     <!-- TOGGLE UNE SEULE DATE / PLUSIEURS JOURS -->
