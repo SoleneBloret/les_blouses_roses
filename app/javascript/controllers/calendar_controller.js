@@ -39,7 +39,12 @@ export default class extends Controller {
     const monthName = new Intl.DateTimeFormat("fr-FR", { month: "long", year: "numeric" }).format(this.current)
     this.titleTarget.textContent = monthName.charAt(0).toUpperCase() + monthName.slice(1)
 
-    const participationDates = new Set(this.datesValue.map(d => d.date))
+    const dateMap = {}
+    this.datesValue.forEach(d => {
+      if (!dateMap[d.date]) dateMap[d.date] = { rose: false, green: false }
+      if (d.substitute) dateMap[d.date].green = true
+      else dateMap[d.date].rose = true
+    })
     const todayStr = this.isoDate(this.today)
 
     // ISO week starts Monday: JS getDay() is 0=Sun, so shift
@@ -56,7 +61,7 @@ export default class extends Controller {
       const dateStr = this.isoDate(new Date(year, month, day))
       const dow = new Date(year, month, day).getDay()
       const isToday = dateStr === todayStr
-      const hasEvent = participationDates.has(dateStr)
+      const hasEvent = !!dateMap[dateStr]
       const isSelected = dateStr === this.selectedDate
       const isWeekend = dow === 0 || dow === 6
 
@@ -70,7 +75,13 @@ export default class extends Controller {
 
       html += `<div class="${classes.join(" ")}" ${action}>`
       html += `<span class="cal-day__num">${day}</span>`
-      if (hasEvent) html += `<span class="cal-day__dot"></span>`
+      if (hasEvent) {
+        const { rose, green } = dateMap[dateStr]
+        html += `<span class="cal-day__dots">`
+        if (rose) html += `<span class="cal-day__dot cal-day__dot--rose"></span>`
+        if (green) html += `<span class="cal-day__dot cal-day__dot--green"></span>`
+        html += `</span>`
+      }
       html += `</div>`
     }
 

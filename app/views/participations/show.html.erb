@@ -7,6 +7,16 @@
   <% label_class = @participation.substitute ? "participation-label-vert" : "participation-label-rose" %>
   <% value_class = @participation.substitute ? "participation-value-vert" : "participation-value-rose" %>
 
+
+   <!-- BOUTON RETOUR -->
+  <div class="btn--left mb-3">
+    <%= link_to participations_path, class: "map-action-btn map-action-btn--rose" do %>
+      <i class="fa-solid fa-arrow-left"></i>
+    <% end %>
+    <span class="map-btn-label">Retour</span>
+  </div>
+
+  <!-- CARD DE LA PARTICIPATION -->
   <div class="<%= card_class %>">
     <h2 class="participation-location"><%= @participation.permanence.location.name %></h2>
 
@@ -29,16 +39,15 @@
       <p class="<%= value_class %>"><%= @participation.permanence.location.address %></p>
     </div>
 
+    <!-- CONDITION D'AFFICHAGE  -->
+    <!-- Boutons différents si c'est en remplacement ou une permanence (participation) récurrente -->
+    <% if @participation.substitute == true %>
+      <%= link_to "Voir sur la carte", map_participation_path(@participation), class: "btn-vert-centre" %>
+    <% else %>
+      <%= link_to "Voir sur la carte", map_participation_path(@participation), class: "btn-rose-centre" %>
+      <%= link_to "J'ai une indisponibilité", new_unavailability_path(start_date: @participation.date), class: "btn-orange-centre" %>
+    <% end %>
 
-  <% if @participation.substitute == true %>
-    <%= link_to "Voir sur la carte", map_participation_path(@participation), class: "btn-vert-centre" %>
-  <% else %>
-    <%= link_to "Voir sur la carte", map_participation_path(@participation), class: "btn-rose-centre" %>
-    <%= link_to "J'ai une indisponibilité", new_unavailability_path, class: "btn-orange-centre" %>
-  <% end %>
-
-    <%#= link_to "Voir sur la carte", map_participation_path(@participation), class: "btn-rose-centre" %>
-    <%#= link_to "J'ai une indisponibilité", new_unavailability_path, class: "btn-orange-centre" %>
   </div>
 
 </div>

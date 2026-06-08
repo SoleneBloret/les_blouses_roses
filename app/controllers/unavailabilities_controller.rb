@@ -2,7 +2,7 @@ class UnavailabilitiesController < ApplicationController
   def new
     @upcoming = current_user.unavailabilities.upcoming
     @past = current_user.unavailabilities.past
-    @unavailability = Unavailability.new
+    @unavailability = Unavailability.new(start_date: params[:start_date])
   end
 
   def create

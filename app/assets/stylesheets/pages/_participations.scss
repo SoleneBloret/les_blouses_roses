@@ -76,6 +76,7 @@
     justify-content: center;
     min-height: 40px;
     padding: 2px 0;
+    position: relative;
 
     &__num {
       font-size: 0.85rem;
@@ -89,12 +90,24 @@
       border-radius: 50%;
     }
 
-    &__dot {
-      width: 5px;
-      height: 5px;
-      border-radius: 50%;
-      background-color: $lbr-rose;
+    &__dots {
+      display: flex;
+      gap: 3px;
       margin-top: 2px;
+      position: absolute;
+      bottom: 2px; // ajuste selon ton design
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    &__dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+
+
+      &--rose { background-color: $lbr-rose; }
+      &--green { background-color: $lbr-success; }
     }
 
     &--has-event {
@@ -136,7 +149,7 @@
 .page-layout {
   min-height: 100vh;
   background-color: #FFF8F5;
-  padding: 40px 24px;
+  padding: 20px 24px;
   display: flex;
   flex-direction: column ;
   align-items: justify;
@@ -191,6 +204,11 @@
     color: #333;
     &:hover { background-color: #f0f0f0; }
   }
+  &--orange {
+    background-color: $lbr-orange;
+    color: white;
+    &:hover { background-color: darken($lbr-orange, 8%); color: white; }
+  }
 }
 
 .map-btn-label {
@@ -212,6 +230,19 @@
   border-radius: 50rem;
   border-color: $lbr-rose;
   margin-bottom: 15px;
+  flex-wrap: nowrap !important;
+
+  .nav-item {
+    flex: 1 1 0;
+    min-width: 0; // permet au flex item de rétrécir en dessous de son contenu
+  }
+
+  .nav-link {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: center;
+  }
 
   // ONGLET ACTIF
   .nav-link.active {
