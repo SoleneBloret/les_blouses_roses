@@ -72,16 +72,16 @@
       <p class="home-substitute-card__title">Demandes de remplacement</p>
       <div class="home-substitute-card__body">
         <div class="home-stat home-stat--orange">
-          <span class="home-stat__number">08</span>
+          <span class="home-stat__number"><%= @substitute_count %></span>
           <span class="home-stat__label">demandes en attente</span>
         </div>
-        <%= link_to "Voir plus", "#", class: "btn-home-outline-orange" %>
+        <%= link_to "Voir plus", available_participations_path, class: "btn-home-outline-orange" %>
       </div>
     </div>
 
     <!-- DERNIÈRE PERMANENCE -->
     <% if @last_participation %>
-      <div class="home-last-card">
+      <%= link_to new_participation_report_path(@last_participation), class: "home-last-card" do %>
         <p class="home-last-card__title">Dernière permanence : rédiger le compte-rendu</p>
         <div class="home-last-card__perm">
           <div class="home-date-badge">
@@ -93,7 +93,7 @@
             <p class="home-last-card__perm-subtitle"><%= @last_participation.permanence.week_day %> · <%= @last_participation.permanence.start_time %>h00 – <%= @last_participation.permanence.end_time %>h00</p>
           </div>
         </div>
-      </div>
+      <% end %>
     <% end %>
 
     <!-- INFORMATIONS DU COMITÉ -->
