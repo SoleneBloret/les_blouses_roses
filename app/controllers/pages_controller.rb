@@ -9,7 +9,7 @@ class PagesController < ApplicationController
 
     @profile = current_user.profile
     load_participations_data
-    @substitute_count = Participation.where(user_id: nil, substitute: true).count
+    @substitute_count = Participation.where(user: nil).sorted_by_date_desc.count
   end
 
   private

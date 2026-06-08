@@ -221,6 +221,8 @@
 
 // ---- LAST PERM CARD ----
 .home-last-card {
+  display: block;
+  text-decoration: none;
   background-color: white;
   border-radius: 16px;
   border: 1.5px solid $lbr-rose;
