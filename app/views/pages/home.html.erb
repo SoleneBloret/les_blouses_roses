@@ -1,20 +1,6 @@
 <% content_for :hide_navbar, true %>
 
 
-<p></p>
-
-<div class="impact-card">
-  <p class="impact-card__title">Mon impact ce mois-ci</p>
-  <div class="impact-card__stats">
-    <div class="impact-card__stat">
-      <span class="impact-card__number"><%= @hours_this_month %></span>
-      <span class="impact-card__label">heures de<br>bénévolat</span>
-    </div>
-    <div class="impact-card__stat">
-      <span class="impact-card__number"><%= @patients_this_month %></span>
-      <span class="impact-card__label">patients<br>rencontrés</span>
-    </div>
-
 <div class="home-page">
 
   <!-- HERO -->
@@ -72,11 +58,11 @@
       <p class="home-impact-card__title">Mon impact ce mois-ci</p>
       <div class="home-impact-card__stats">
         <div class="home-stat home-stat--green">
-          <span class="home-stat__number">11</span>
+          <span class="home-stat__number"><%= @monthly_hours %></span>
           <span class="home-stat__label">heures de bénévolat</span>
         </div>
         <div class="home-stat home-stat--green">
-          <span class="home-stat__number">34</span>
+          <span class="home-stat__number"><%= @monthly_patients %></span>
           <span class="home-stat__label">patients rencontrés</span>
         </div>
       </div>
