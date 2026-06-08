@@ -1,5 +1,7 @@
 // ------- STYLES DES BOUTONS -------
 
+
+// -------- BOUTON ROSE --------
 .btn-rose-centre {
     display: block;
     width: 100%;
@@ -19,21 +21,89 @@
     }
   }
 
-  .btn-orange-centre {
-    display: block;
-    width: 100%;
-    background-color: $lbr-orange;
-    color: white;
-    border: none;
-    border-radius: 50rem;
-    padding: 14px;
-    font-weight: 700;
-    text-align: center;
-    margin-top: 24px;
-    text-decoration: none;
 
-    &:hover {
-      background-color: darken($lbr-orange, 10%);
-      color: white;
-    }
+
+// -------- BOUTON ORANGE --------
+.btn-orange-centre {
+  display: block;
+  width: 100%;
+  background-color: $lbr-orange;
+  color: white;
+  border: none;
+  border-radius: 50rem;
+  padding: 14px;
+  font-weight: 700;
+  text-align: center;
+  margin-top: 24px;
+  text-decoration: none;
+
+  &:hover {
+    background-color: darken($lbr-orange, 10%);
+    color: white;
   }
+}
+
+
+// -------- BOUTON ORANGE INVERSE --------
+  .btn-orange-inversé-centre {
+  display: block;
+  width: 100%;
+  background-color: white;
+  border-style: solid;
+  border-color: $lbr-orange;
+  color: $lbr-orange;
+  border-radius: 50rem;
+  padding: 14px;
+  font-weight: 700;
+  text-align: center;
+  margin-top: 24px;
+  text-decoration: none;
+
+  &:hover {
+    background-color: darken($lbr-orange, 10%);
+    color: white;
+  }
+}
+
+
+// -------- BOUTON VERT --------
+.btn-vert-centre {
+  display: block;
+  width: 100%;
+  background-color: $lbr-success;
+  color: white;
+  border: none;
+  border-radius: 50rem;
+  padding: 14px;
+  font-weight: 700;
+  text-align: center;
+  margin-top: 24px;
+  text-decoration: none;
+
+  &:hover {
+    background-color: darken($lbr-rose, 10%);
+    color: white;
+  }
+}
+
+
+// -------- BOUTON ROSE INVERSE--------
+  .btn-rose-inversé-centre {
+  display: block;
+  width: 100%;
+  background-color: white;
+  border-style: solid;
+  border-color: $lbr-rose;
+  color: $lbr-rose;
+  border-radius: 50rem;
+  padding: 14px;
+  font-weight: 700;
+  text-align: center;
+  margin-top: 24px;
+  text-decoration: none;
+
+  &:hover {
+    background-color: darken($lbr-rose, 10%);
+    color: white;
+  }
+}

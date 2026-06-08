@@ -1,0 +1,40 @@
+<%= content_for :head do %>
+  <link href="https://api.mapbox.com/mapbox-gl-js/v3.7.0/mapbox-gl.css" rel="stylesheet">
+<% end %>
+
+<div class="page-layout">
+
+  <div class="participation-show-card-orange">
+    <h2 class="participation-location"><%= @participation.permanence.location.name %></h2>
+
+    <div class="participation-section-orange">
+      <p class="participation-label-orange">Date</p>
+      <p class="participation-value-orange"><%= @participation.permanence.week_day %> <%= @participation.date.strftime("%d") %></p>
+      <p class="participation-value-orange"><%= @participation.permanence.start_time %>h00 – <%= @participation.permanence.end_time %>h00</p>
+    </div>
+
+    <div class="participation-section-orange">
+      <p class="participation-label-orange">Binôme</p>
+      <% binome = @participation.binome %>
+      <p class="participation-value-orange">
+        <%= binome ? "#{binome.first_name} #{binome.last_name}" : "🔎 Nous recherchons un/une remplaçant(e)" %>
+      </p>
+    </div>
+
+    <div class="participation-section-orange">
+      <p class="participation-label-orange">Adresse</p>
+      <p class="participation-value-orange"><%= @participation.permanence.location.address %></p>
+    </div>
+
+    <%= link_to "Voir sur la carte", map_participation_path(@participation), class: "btn-orange-inversé-centre " %>
+  </div>
+
+  <div class="mt-4 ps-5 pe-5">
+    <p class="fs-4 text-center">Souhaitez-vous prendre cette permanence ?</p>
+    <%= button_to "✅ Je m'engage", take_participation_path(@participation), method: :patch, class: "btn-vert-centre" %>
+    <%= link_to "❌ Je ne suis pas disponible", new_unavailability_path, class: "btn-rose-inversé-centre" %>
+
+  </div>
+
+
+</div>

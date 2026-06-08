@@ -1,5 +1,16 @@
-// CARDS DES PERMANENCES
-a.participation-index-card {
+// CARDS DES PERMANENCES ROSES
+a.participation-index-card-rose {
+  text-decoration: none;
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+    transition: box-shadow 0.2s ease;
+  }
+}
+
+// CARDS DES PERMANENCES ORANGES
+a.participation-index-card-orange {
   text-decoration: none;
   cursor: pointer;
 
@@ -11,8 +22,13 @@ a.participation-index-card {
 
 // ------------------------------ \\
 
+// -------------------------------------------------------------------------- \\
+// ------------------------------ ROSE VERSION ------------------------------ \\
+// -------------------------------------------------------------------------- \\
+
+
 // CARDS PARTICIPATION INDEX
-.participation-index-card {
+.participation-index-card-rose {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -24,7 +40,7 @@ a.participation-index-card {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 
   // BADGE AVEC LA DATE
-  .date-badge {
+  .date-badge-rose {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -35,14 +51,14 @@ a.participation-index-card {
     background-color: #f6c1e39b;
     border-radius: 14px;
 
-    .day-title {
+    .day-title-rose {
       font-size: 1.6rem;
       font-weight: 700;
       color: $lbr-rose;
       line-height: 1;
     }
 
-    .month-title {
+    .month-title-rose {
       font-size: 0.7rem;
       font-weight: 500;
       color: $lbr-rose;
@@ -52,21 +68,21 @@ a.participation-index-card {
   }
 
   // CONTENU TEXTE
-  .card-content {
+  .card-content-rose {
     display: flex;
     flex-direction: column;
     justify-content: center;
     padding-left: 16px;
     list-style: none;
 
-    .card-title {
+    .card-title-rose {
       font-size: 1rem;
       font-weight: 700;
       color: $lbr-text;
       margin-bottom: 3px;
     }
 
-    .card-subtitle {
+    .card-subtitle-rose {
       font-size: 0.85rem;
       color: $lbr-text2;
       margin-bottom: 0;
@@ -77,7 +93,7 @@ a.participation-index-card {
 // ------------------------------ \\
 
 // CARD PARTICIPATION SHOW
-.participation-show-card {
+.participation-show-card-rose {
   display: flex;
   flex-direction: column;
   background: white;
@@ -89,24 +105,131 @@ a.participation-index-card {
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
   align-items: start;
 
-  .participation-location {
+  .participation-location-rose {
     font-size: 1.1rem;
     font-weight: 700;
     color: #1a1a1a;
     margin-bottom: 20px;
   }
 
-  .participation-section {
+  .participation-section-rose {
     margin-bottom: 16px;
   }
 
-  .participation-label {
+  .participation-label-rose {
     color: $lbr-rose;
     font-weight: 700;
     margin-bottom: 2px;
   }
 
-  .participation-value {
+  .participation-value-rose {
+    color: $lbr-text2;
+    margin-bottom: 2px;
+  }
+}
+
+
+// -------------------------------------------------------------------------- \\
+// -------------------- ORANGE VERSION -------------------------------------------------------- \\
+// -------------------------------------------------------------------------- \\
+
+
+// CARDS PARTICIPATION INDEX
+.participation-index-card-orange {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: #ffffff;
+  border: 1px solid $lbr-orange;
+  border-radius: 16px;
+  padding: 12px 16px;
+  margin: 6px 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+
+  // BADGE AVEC LA DATE
+  .date-badge-orange {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 60px;
+    height: 65px;
+    background-color: #f19e3831;
+    border-radius: 14px;
+
+    .day-title-orange {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: $lbr-orange;
+      line-height: 1;
+    }
+
+    .month-title-orange {
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: $lbr-orange;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+  }
+
+  // CONTENU TEXTE
+  .card-content-orange {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 16px;
+    list-style: none;
+
+    .card-title-orange {
+      font-size: 1rem;
+      font-weight: 700;
+      color: $lbr-text;
+      margin-bottom: 3px;
+    }
+
+    .card-subtitle-orange {
+      font-size: 0.85rem;
+      color: $lbr-text2;
+      margin-bottom: 0;
+    }
+  }
+}
+
+// ------------------------------ \\
+
+// CARD PARTICIPATION SHOW
+.participation-show-card-orange {
+  display: flex;
+  flex-direction: column;
+  background: white;
+  border-radius: 16px;
+  border-left: 6px solid $lbr-orange;
+  padding: 24px;
+  width: 100%;
+  max-width: 480px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  align-items: start;
+
+  .participation-location-orange {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 20px;
+  }
+
+  .participation-section-orange {
+    margin-bottom: 16px;
+  }
+
+  .participation-label-orange {
+    color: $lbr-orange;
+    font-weight: 700;
+    margin-bottom: 2px;
+  }
+
+  .participation-value-orange {
     color: $lbr-text2;
     margin-bottom: 2px;
   }

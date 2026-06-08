@@ -24,7 +24,9 @@ Rails.application.routes.draw do
       get :available
     end
     member do
+      get :replacement
       get :map
+      patch :take
     end
     resources :reports, only: [:new, :create]
   end

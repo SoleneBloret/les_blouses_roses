@@ -4,26 +4,26 @@
 
 <div class="page-layout">
 
-  <div class="participation-show-card">
+  <div class="participation-show-card-rose">
     <h2 class="participation-location"><%= @participation.permanence.location.name %></h2>
 
-    <div class="participation-section">
-      <p class="participation-label">Date</p>
-      <p class="participation-value"><%= @participation.permanence.week_day %> <%= @participation.date.strftime("%d") %></p>
-      <p class="participation-value"><%= @participation.permanence.start_time %>h00 – <%= @participation.permanence.end_time %>h00</p>
+    <div class="participation-section-rose">
+      <p class="participation-label-rose">Date</p>
+      <p class="participation-value-rose"><%= @participation.permanence.week_day %> <%= @participation.date.strftime("%d") %></p>
+      <p class="participation-value-rose"><%= @participation.permanence.start_time %>h00 – <%= @participation.permanence.end_time %>h00</p>
     </div>
 
-    <div class="participation-section">
-      <p class="participation-label">Binôme</p>
+    <div class="participation-section-rose">
+      <p class="participation-label-rose">Binôme</p>
       <% binome = @participation.binome %>
-      <p class="participation-value">
+      <p class="participation-value-rose">
         <%= binome ? "#{binome.first_name} #{binome.last_name}" : "🔎 Nous recherchons un/une remplaçant(e)" %>
       </p>
     </div>
 
-    <div class="participation-section">
-      <p class="participation-label">Adresse</p>
-      <p class="participation-value"><%= @participation.permanence.location.address %></p>
+    <div class="participation-section-rose">
+      <p class="participation-label-rose">Adresse</p>
+      <p class="participation-value-rose"><%= @participation.permanence.location.address %></p>
     </div>
 
     <%= link_to "Voir sur la carte", map_participation_path(@participation), class: "btn-rose-centre" %>
