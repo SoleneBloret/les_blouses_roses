@@ -1,3 +1,12 @@
+<div class="report-page-bg">
+  <div class="container-sm py-3">
+    <div class="report-header px-3 mb-2">
+      <p class="section-label mb-1">COMPTE-RENDU DE PERMANENCE</p>
+      <p class="report-header-info mb-0">
+        <%= @participation.date.strftime("%d/%m/%Y") %> · <%= @permanence.location.name %>
+      </p>
+    </div>
+
 <%= simple_form_for [@participation, @report], html: { class: "p-3" } do |f| %>
   <div class="report-section">
     <p class="section-label">PATIENTS VISITÉS</p>
@@ -44,3 +53,5 @@
   <%= f.submit "Envoyer le compte-rendu", class: "btn btn-report-submit w-100 mt-3" %>
 
 <% end %>
+  </div>
+</div>

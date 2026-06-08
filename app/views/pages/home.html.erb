@@ -1,5 +1,20 @@
 <% content_for :hide_navbar, true %>
 
+
+<p></p>
+
+<div class="impact-card">
+  <p class="impact-card__title">Mon impact ce mois-ci</p>
+  <div class="impact-card__stats">
+    <div class="impact-card__stat">
+      <span class="impact-card__number"><%= @hours_this_month %></span>
+      <span class="impact-card__label">heures de<br>bénévolat</span>
+    </div>
+    <div class="impact-card__stat">
+      <span class="impact-card__number"><%= @patients_this_month %></span>
+      <span class="impact-card__label">patients<br>rencontrés</span>
+    </div>
+
 <div class="home-page">
 
   <!-- HERO -->

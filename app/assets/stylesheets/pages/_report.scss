@@ -1,3 +1,15 @@
+// --- Page background ---
+.report-page-bg {
+  background-color: $lbr-rose_pale;
+  min-height: 100vh;
+}
+
+.report-header-info {
+  font-size: 14px;
+  font-weight: 600;
+  color: $lbr-text;
+}
+
 // --- Sections ---
 .report-section {
   background-color: white;
@@ -90,7 +102,7 @@
 
 .feeling-card:has(input:checked) {
   border-color: $lbr-rose;
-  background-color: lighten($lbr-rose, 45%);
+  background-color: $lbr-rose_pale;
 
   .feeling-label {
     color: $lbr-rose;
@@ -124,7 +136,7 @@
   font-weight: 600;
 
   &:hover {
-    background-color: darken($lbr-rose, 8%);
+    background-color: #BD0068;
     color: white;
   }
 }
