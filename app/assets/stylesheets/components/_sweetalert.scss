@@ -1,0 +1,9 @@
+.swal-btn-outline {
+  background: transparent !important;
+  border: 1.5px solid #9B7FA0 !important;
+  color: #9B7FA0 !important;
+
+  &:hover {
+    background: rgba(#9B7FA0, 0.08) !important;
+  }
+}

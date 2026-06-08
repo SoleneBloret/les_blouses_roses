@@ -1,26 +1,24 @@
 <% content_for :hide_navbar, true %>
 
 
-<p></p>
-
-<div class="impact-card">
-  <p class="impact-card__title">Mon impact ce mois-ci</p>
-  <div class="impact-card__stats">
-    <div class="impact-card__stat">
-      <span class="impact-card__number"><%= @hours_this_month %></span>
-      <span class="impact-card__label">heures de<br>bénévolat</span>
-    </div>
-    <div class="impact-card__stat">
-      <span class="impact-card__number"><%= @patients_this_month %></span>
-      <span class="impact-card__label">patients<br>rencontrés</span>
-    </div>
-
 <div class="home-page">
 
   <!-- HERO -->
   <div class="home-hero">
     <div class="home-hero__header">
-      <div>
+      <!-- Avatar à gauche → lien profil -->
+      <% if @profile %>
+        <%= link_to profile_path(@profile), class: "home-hero__avatar" do %>
+          <%= "#{@profile.first_name[0]}#{@profile.last_name[0]}".upcase %>
+        <% end %>
+      <% else %>
+        <%= link_to new_profile_path, class: "home-hero__avatar" do %>
+          <i class="fa-solid fa-user"></i>
+        <% end %>
+      <% end %>
+
+      <!-- Identité au centre -->
+      <div class="home-hero__identity">
         <p class="home-hero__greeting">Bonjour 👋</p>
         <h1 class="home-hero__name">
           <%= @profile ? "#{@profile.first_name} #{@profile.last_name}" : current_user.email %>
@@ -30,24 +28,10 @@
         <% end %>
       </div>
 
-      <div class="dropdown">
-        <a href="#" class="home-hero__avatar" id="heroDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-          <% if @profile %>
-            <%= "#{@profile.first_name[0]}#{@profile.last_name[0]}".upcase %>
-          <% else %>
-            <i class="fa-solid fa-user"></i>
-          <% end %>
-        </a>
-        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="heroDropdown">
-          <% if @profile %>
-            <%= link_to "Mon profil", profile_path(@profile), class: "dropdown-item" %>
-          <% else %>
-            <%= link_to "Créer mon profil", new_profile_path, class: "dropdown-item" %>
-          <% end %>
-          <div class="dropdown-divider"></div>
-          <%= link_to "Déconnexion", destroy_user_session_path, data: { turbo_method: :delete }, class: "dropdown-item" %>
-        </div>
-      </div>
+      <!-- Bouton menu → lien vers la page menu -->
+      <%= link_to menu_path, class: "home-hero__menu-btn" do %>
+        <i class="fa-solid fa-bars"></i>
+      <% end %>
     </div>
 
     <% if @next_participation %>
@@ -72,50 +56,52 @@
       <p class="home-impact-card__title">Mon impact ce mois-ci</p>
       <div class="home-impact-card__stats">
         <div class="home-stat home-stat--green">
-          <span class="home-stat__number">11</span>
+          <span class="home-stat__number"><%= @monthly_hours %></span>
           <span class="home-stat__label">heures de bénévolat</span>
         </div>
+        <div class="home-impact-card__divider"></div>
         <div class="home-stat home-stat--green">
-          <span class="home-stat__number">34</span>
+          <span class="home-stat__number"><%= @monthly_patients %></span>
           <span class="home-stat__label">patients rencontrés</span>
         </div>
       </div>
     </div>
 
     <!-- DEMANDES DE REMPLACEMENT -->
-    <div class="home-substitute-card">
-      <p class="home-substitute-card__title">Demandes de remplacement</p>
-      <div class="home-substitute-card__body">
-        <div class="home-stat home-stat--orange">
-          <span class="home-stat__number"><%= @substitute_count %></span>
-          <span class="home-stat__label">demandes en attente</span>
-        </div>
-        <%= link_to "Voir plus", available_participations_path, class: "btn-home-outline-orange" %>
+    <%= link_to available_participations_path, class: "home-substitute-card" do %>
+      <div class="home-date-badge home-date-badge--orange">
+        <span class="home-date-badge__day"><%= @substitute_count.to_s.rjust(2, '0') %></span>
       </div>
-    </div>
+      <div class="home-card-text">
+        <p class="home-card-text__label">Demandes de remplacement</p>
+        <p class="home-card-text__title">Demandes en attente</p>
+      </div>
+    <% end %>
 
     <!-- DERNIÈRE PERMANENCE -->
     <% if @last_participation %>
       <%= link_to new_participation_report_path(@last_participation), class: "home-last-card" do %>
-        <p class="home-last-card__title">Dernière permanence : rédiger le compte-rendu</p>
-        <div class="home-last-card__perm">
-          <div class="home-date-badge">
-            <span class="home-date-badge__day"><%= @last_participation.date.strftime("%-d") %></span>
-            <span class="home-date-badge__month"><%= I18n.l(@last_participation.date, format: "%b").upcase %></span>
-          </div>
-          <div>
-            <p class="home-last-card__perm-title"><%= @last_participation.permanence.location.name %> – <%= @last_participation.permanence.service %></p>
-            <p class="home-last-card__perm-subtitle"><%= @last_participation.permanence.week_day %> · <%= @last_participation.permanence.start_time %>h00 – <%= @last_participation.permanence.end_time %>h00</p>
-          </div>
+        <div class="home-date-badge">
+          <span class="home-date-badge__day"><%= @last_participation.date.strftime("%-d") %></span>
+          <span class="home-date-badge__month"><%= I18n.l(@last_participation.date, format: "%b").upcase %></span>
+        </div>
+        <div class="home-card-text">
+          <p class="home-card-text__label">À compléter</p>
+          <p class="home-card-text__title">Compte-rendu</p>
         </div>
       <% end %>
     <% end %>
 
     <!-- INFORMATIONS DU COMITÉ -->
     <div class="home-info-card">
-      <p class="home-info-card__label">Informations du comité</p>
-      <p class="home-info-card__title">Réunion de fin d'année — 12 juin</p>
-      <p class="home-info-card__date">Publiée le 12 mai 2026</p>
+      <div class="home-date-badge home-date-badge--violet">
+        <span class="home-date-badge__day">12</span>
+        <span class="home-date-badge__month">JUI</span>
+      </div>
+      <div class="home-card-text">
+        <p class="home-card-text__label">Informations du comité</p>
+        <p class="home-card-text__title">Réunion de fin d'année</p>
+      </div>
     </div>
 
   </div>
