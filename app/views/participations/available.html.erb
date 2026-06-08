@@ -21,7 +21,7 @@
     </ul>
 
     <% if @participations.empty? %>
-        <p class="empty-available-list">Toutes les permanences sont assurées ! 🎉</p>
+        <p class="mauve-text-centered mt-5">Toutes les permanences sont assurées ! 🎉</p>
     <% else %>
     <% @participations.each do |participation| %>
       <%= link_to replacement_participation_path(participation),

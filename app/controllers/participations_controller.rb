@@ -8,8 +8,9 @@ class ParticipationsController < ApplicationController
   end
 
   def available
-    # TODO: charger ici les permanences disponibles (ex: Permanence.available_for(current_user))
-    @participations = Participation.all.where(user: nil).sorted_by_date_desc
+    unavailable_dates = current_user.unavailabilities.upcoming.flat_map { |u| (u.start_date..u.end_date).to_a }
+    @participations = Participation.where(user: nil).sorted_by_date_desc
+                                   .reject { |p| unavailable_dates.include?(p.date) }
   end
 
   def replacement

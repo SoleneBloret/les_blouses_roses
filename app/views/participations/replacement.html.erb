@@ -32,7 +32,7 @@
 
   <!-- BOUTONS POUR ACCEPTER OU NON LA PERMANENCE -->
   <div class="mt-4 ps-5 pe-5">
-    <p class="fs-4 text-center">Souhaitez-vous prendre cette permanence ?</p>
+    <p class="mauve-text-centered">Souhaitez-vous prendre cette permanence ?</p>
     <%= button_to "✅ Je m'engage", take_participation_path(@participation), method: :patch, class: "btn-vert-centre" %>
     <%= button_to "❌ Je ne suis pas disponible", unavailable_for_replacement_participation_path(@participation), method: :post, class: "btn-rose-inversé-centre" %>
 
