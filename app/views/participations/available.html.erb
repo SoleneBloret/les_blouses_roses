@@ -20,25 +20,27 @@
       </li>
     </ul>
 
+    <% if @participations.empty? %>
+        <p class="empty-available-list">Toutes les permanences sont assurées ! 🎉</p>
+    <% else %>
     <% @participations.each do |participation| %>
-        <%= link_to replacement_participation_path(participation),
-            class: "participation-index-card-orange row",
-            data: { turbo_frame: "_top", calendar_target: "card", participation_date: participation.date.iso8601 } do %>
+      <%= link_to replacement_participation_path(participation),
+          class: "participation-index-card-orange row",
+          data: { turbo_frame: "_top", calendar_target: "card", participation_date: participation.date.iso8601 } do %>
 
-          <!-- BADGE AVEC LA DATE-->
-          <li class="date-badge-orange col-1">
-            <span class="day-title-orange"><%= participation.date.strftime("%d") %></span>
-            <span class="month-title-orange"><%= participation.date.strftime("%b") %></span>
-          </li>
+        <!-- BADGE AVEC LA DATE-->
+        <li class="date-badge-orange col-1">
+          <span class="day-title-orange"><%= participation.date.strftime("%d") %></span>
+          <span class="month-title-orange"><%= participation.date.strftime("%b") %></span>
+        </li>
 
-          <!-- TITRE ET RESUME DE LA CARD-->
-          <li class="card-content-orange col">
-            <p class="card-title-orange"><%= participation.permanence.location.name %> – <%= participation.permanence.service %></p>
-            <p class="card-subtitle-orange"><%= participation.permanence.week_day %> · <%= participation.permanence.start_time %>h00 – <%= participation.permanence.end_time %>h00</p>
-          </li>
-
+        <!-- TITRE ET RESUME DE LA CARD-->
+        <li class="card-content-orange col">
+          <p class="card-title-orange"><%= participation.permanence.location.name %> – <%= participation.permanence.service %></p>
+          <p class="card-subtitle-orange"><%= participation.permanence.week_day %> · <%= participation.permanence.start_time %>h00 – <%= participation.permanence.end_time %>h00</p>
+        </li>
         <% end %>
-      <% end %>
+      <% end %> <!-- END du EACH PARTICIPATION-->
+    <% end %>
   <% end %>
-
 </div>

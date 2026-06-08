@@ -3,6 +3,9 @@
    Styles utilisés par :
    - participations/show
    - participations/index
+   - participations/map
+   - participations/available
+   - participations/replacement
 ================================================== */
 
 // ------------------------------ \\
@@ -225,4 +228,10 @@
   .nav-link:not(.active) {
     color: $lbr-text2;
   }
+  }
+
+  .empty-available-list {
+    text-align: center;
+    color: $lbr-text2;
+    margin-top: 50px;
   }
