@@ -27,6 +27,7 @@ Rails.application.routes.draw do
       get :replacement
       get :map
       patch :take
+      post :unavailable_for_replacement
     end
     resources :reports, only: [:new, :create]
   end

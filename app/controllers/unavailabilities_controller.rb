@@ -2,7 +2,7 @@ class UnavailabilitiesController < ApplicationController
   def new
     @upcoming = current_user.unavailabilities.upcoming
     @past = current_user.unavailabilities.past
-    @unavailability = Unavailability.new
+    @unavailability = Unavailability.new(start_date: params[:start_date])
   end
 
   def create
@@ -22,11 +22,9 @@ class UnavailabilitiesController < ApplicationController
     end
   end
 
-  # def destroy
-  #   @unavailability = current_user.unavailabilities.find(params[:id])
-  #   @unavailability.destroy
-  #   redirect_to unavailabilities_path, notice: "Indisponibilité supprimée."
-  # end
+  # ------------------------------------ #
+  # --------- METHODES PRIVEES --------- #
+  # ------------------------------------ #
 
   private
 

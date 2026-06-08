@@ -3,31 +3,51 @@
 <% end %>
 
 <div class="page-layout">
+  <% card_class = @participation.substitute ? "participation-show-card-vert" : "participation-show-card-rose" %>
+  <% label_class = @participation.substitute ? "participation-label-vert" : "participation-label-rose" %>
+  <% value_class = @participation.substitute ? "participation-value-vert" : "participation-value-rose" %>
 
-  <div class="participation-show-card-rose">
+
+   <!-- BOUTON RETOUR -->
+  <div class="btn--left mb-3">
+    <%= link_to participations_path, class: "map-action-btn map-action-btn--rose" do %>
+      <i class="fa-solid fa-arrow-left"></i>
+    <% end %>
+    <span class="map-btn-label">Retour</span>
+  </div>
+
+  <!-- CARD DE LA PARTICIPATION -->
+  <div class="<%= card_class %>">
     <h2 class="participation-location"><%= @participation.permanence.location.name %></h2>
 
     <div class="participation-section-rose">
-      <p class="participation-label-rose">Date</p>
-      <p class="participation-value-rose"><%= @participation.permanence.week_day %> <%= @participation.date.strftime("%d") %></p>
-      <p class="participation-value-rose"><%= @participation.permanence.start_time %>h00 – <%= @participation.permanence.end_time %>h00</p>
+      <p class="<%= label_class %>">Date</p>
+      <p class="<%= value_class %>"><%= @participation.permanence.week_day %> <%= @participation.date.strftime("%d") %></p>
+      <p class="<%= value_class %>"><%= @participation.permanence.start_time %>h00 – <%= @participation.permanence.end_time %>h00</p>
     </div>
 
     <div class="participation-section-rose">
-      <p class="participation-label-rose">Binôme</p>
+      <p class="<%= label_class %>">Binôme</p>
       <% binome = @participation.binome %>
-      <p class="participation-value-rose">
+      <p class="<%= value_class %>">
         <%= binome ? "#{binome.first_name} #{binome.last_name}" : "🔎 Nous recherchons un/une remplaçant(e)" %>
       </p>
     </div>
 
     <div class="participation-section-rose">
-      <p class="participation-label-rose">Adresse</p>
-      <p class="participation-value-rose"><%= @participation.permanence.location.address %></p>
+      <p class="<%= label_class %>">Adresse</p>
+      <p class="<%= value_class %>"><%= @participation.permanence.location.address %></p>
     </div>
 
-    <%= link_to "Voir sur la carte", map_participation_path(@participation), class: "btn-rose-centre" %>
-    <%= link_to "J'ai une indisponibilité", new_unavailability_path, class: "btn-orange-centre" %>
+    <!-- CONDITION D'AFFICHAGE  -->
+    <!-- Boutons différents si c'est en remplacement ou une permanence (participation) récurrente -->
+    <% if @participation.substitute == true %>
+      <%= link_to "Voir sur la carte", map_participation_path(@participation), class: "btn-vert-centre" %>
+    <% else %>
+      <%= link_to "Voir sur la carte", map_participation_path(@participation), class: "btn-rose-centre" %>
+      <%= link_to "J'ai une indisponibilité", new_unavailability_path(start_date: @participation.date), class: "btn-orange-centre" %>
+    <% end %>
+
   </div>
 
 </div>
