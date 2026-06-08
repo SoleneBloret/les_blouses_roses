@@ -29,12 +29,17 @@
     <%= link_to "Voir sur la carte", map_participation_path(@participation), class: "btn-orange-inversé-centre " %>
   </div>
 
-  <div class="mt-4 ps-5 pe-5">
+  <div class="mt-4 ps-5 pe-5"
+       data-controller="replacement"
+       data-replacement-location-value="<%= @participation.permanence.location.name %>"
+       data-replacement-date-value="<%= @participation.permanence.week_day %> <%= @participation.date.strftime("%d/%m/%Y") %>"
+       data-replacement-time-value="<%= @participation.permanence.start_time %>h00 – <%= @participation.permanence.end_time %>h00"
+       data-replacement-available-path-value="<%= available_participations_path %>">
     <p class="fs-4 text-center">Souhaitez-vous prendre cette permanence ?</p>
-    <%= button_to "✅ Je m'engage", take_participation_path(@participation), method: :patch, class: "btn-vert-centre" %>
-    <%= link_to "❌ Je ne suis pas disponible", new_unavailability_path, class: "btn-rose-inversé-centre" %>
-
+    <%= button_to "✅ Je m'engage", take_participation_path(@participation), method: :patch, class: "btn-vert-centre",
+        data: { action: "click->replacement#confirmEngage" } %>
+    <%= link_to "❌ Je ne suis pas disponible", new_unavailability_path, class: "btn-rose-inversé-centre",
+        data: { action: "click->replacement#confirmUnavailable" } %>
   </div>
-
 
 </div>

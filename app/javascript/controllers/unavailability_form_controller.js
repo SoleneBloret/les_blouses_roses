@@ -49,9 +49,8 @@ export default class extends Controller {
       showCancelButton: true,
       confirmButtonText: "Confirmer",
       cancelButtonText: "Annuler",
-      confirmButtonColor: "#E5007D",
-      cancelButtonColor: "#9B7FA0",
-      borderRadius: "16px",
+      confirmButtonColor: "#1AAB6D",
+      customClass: { cancelButton: "swal-btn-outline" },
     })
 
     if (result.isConfirmed) {
