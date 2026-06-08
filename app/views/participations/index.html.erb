@@ -38,19 +38,19 @@
       <!-- CARDS DES PERMANENCES -->
       <% @participations.each do |participation| %>
         <%= link_to participation_path(participation),
-            class: "participation-index-card row",
+            class: "participation-index-card-rose row",
             data: { turbo_frame: "_top", calendar_target: "card", participation_date: participation.date.iso8601 } do %>
 
           <!-- BADGE AVEC LA DATE-->
-          <li class="date-badge col-1">
-            <span class="day-title"><%= participation.date.strftime("%d") %></span>
-            <span class="month-title"><%= participation.date.strftime("%b") %></span>
+          <li class="date-badge-rose col-1">
+            <span class="day-title-rose"><%= participation.date.strftime("%d") %></span>
+            <span class="month-title-rose"><%= participation.date.strftime("%b") %></span>
           </li>
 
           <!-- TITRE ET RESUME DE LA CARD-->
-          <li class="card-content col">
-            <p class="card-title"><%= participation.permanence.location.name %> – <%= participation.permanence.service %></p>
-            <p class="card-subtitle"><%= participation.permanence.week_day %> · <%= participation.permanence.start_time %>h00 – <%= participation.permanence.end_time %>h00</p>
+          <li class="card-content-rose col">
+            <p class="card-title-rose"><%= participation.permanence.location.name %> – <%= participation.permanence.service %></p>
+            <p class="card-subtitle-rose"><%= participation.permanence.week_day %> · <%= participation.permanence.start_time %>h00 – <%= participation.permanence.end_time %>h00</p>
           </li>
 
         <% end %>
