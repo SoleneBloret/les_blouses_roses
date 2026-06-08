@@ -25,4 +25,20 @@ class ParticipationsController < ApplicationController
     @participation.update!(user: current_user)
     redirect_to participations_path, notice: "Tu es bien inscrit(e) à cette permanence !"
   end
+
+  def unavailable_for_replacement
+    @participation = Participation.find(params[:id])
+
+    unavailability = Unavailability.new(
+      user: current_user,
+      start_date: @participation.date,
+      end_date: @participation.date
+    )
+
+    if unavailability.save
+      redirect_to participations_path, notice: "Indisponibilité enregistrée."
+    else
+      redirect_to replacement_participation_path(@participation), alert: "Erreur lors de l'enregistrement."
+    end
+  end
 end

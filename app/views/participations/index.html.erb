@@ -13,7 +13,9 @@
       <!-- TAB 2 : inactif -->
       <li class="nav-item">
         <%= link_to "Permanences dispo", available_participations_path,
-            class: "nav-link rounded-pill" %>
+            class: "nav-link rounded-pill",
+            data: { turbo_frame: "_top" } %>
+            <!-- Permet l'affichage différent du header entre rose et orange selon page -->
       </li>
     </ul>
 

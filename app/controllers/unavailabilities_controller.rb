@@ -22,11 +22,9 @@ class UnavailabilitiesController < ApplicationController
     end
   end
 
-  # def destroy
-  #   @unavailability = current_user.unavailabilities.find(params[:id])
-  #   @unavailability.destroy
-  #   redirect_to unavailabilities_path, notice: "Indisponibilité supprimée."
-  # end
+  # ------------------------------------ #
+  # --------- METHODES PRIVEES --------- #
+  # ------------------------------------ #
 
   private
 
