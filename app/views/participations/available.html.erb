@@ -31,7 +31,7 @@
         <!-- BADGE AVEC LA DATE-->
         <li class="date-badge-orange col-1">
           <span class="day-title-orange"><%= participation.date.strftime("%d") %></span>
-          <span class="month-title-orange"><%= participation.date.strftime("%b") %></span>
+          <span class="month-title-orange"><%= I18n.l(participation.date, format: "%b") %></span>
         </li>
 
         <!-- TITRE ET RESUME DE LA CARD-->

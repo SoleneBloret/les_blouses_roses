@@ -17,7 +17,7 @@
 
     <div class="participation-section-orange">
       <p class="participation-label-orange">Date</p>
-      <p class="participation-value-orange"><%= @participation.permanence.week_day %> <%= @participation.date.strftime("%d") %></p>
+      <p class="participation-value-orange"><%= @participation.permanence.week_day %> <%= @participation.date.strftime("%d") %> <%= I18n.l(@participation.date, format: "%b") %></p>
       <p class="participation-value-orange"><%= @participation.permanence.start_time %>h00 – <%= @participation.permanence.end_time %>h00</p>
     </div>
 

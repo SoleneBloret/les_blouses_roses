@@ -36,7 +36,7 @@
         <div class="calendar-grid" data-calendar-target="grid"></div>
       </div>
 
-
+      <p data-calendar-target="sectionTitle" class="section-label">Mes 15 prochaines permanences</p>
       <!-- CARDS DES PERMANENCES -->
       <% @participations.each do |participation| %>
         <% if participation.substitute == true %>
@@ -45,16 +45,16 @@
               data: { turbo_frame: "_top", calendar_target: "card", participation_date: participation.date.iso8601 } do %>
 
             <!-- BADGE AVEC LA DATE-->
-            <li class="date-badge-vert col-1">
+            <div class="date-badge-vert col-1">
               <span class="day-title-vert"><%= participation.date.strftime("%d") %></span>
-              <span class="month-title-vert"><%= participation.date.strftime("%b") %></span>
-            </li>
+              <span class="month-title-vert"><%= I18n.l(participation.date, format: "%b") %></span>
+            </div>
 
             <!-- TITRE ET RESUME DE LA CARD-->
-            <li class="card-content-vert col">
+            <div class="card-content-vert col">
               <p class="card-title-vert"><%= participation.permanence.location.name %> – <%= participation.permanence.service %></p>
               <p class="card-subtitle-vert"><%= participation.permanence.week_day %> · <%= participation.permanence.start_time %>h00 – <%= participation.permanence.end_time %>h00</p>
-            </li>
+            </div>
           <% end %>
 
         <% else %>
@@ -63,16 +63,16 @@
               data: { turbo_frame: "_top", calendar_target: "card", participation_date: participation.date.iso8601 } do %>
 
             <!-- BADGE AVEC LA DATE-->
-            <li class="date-badge-rose col-1">
+            <div class="date-badge-rose col-1">
               <span class="day-title-rose"><%= participation.date.strftime("%d") %></span>
-              <span class="month-title-rose"><%= participation.date.strftime("%b") %></span>
-            </li>
+              <span class="month-title-rose"><%= I18n.l(participation.date, format: "%b") %></span>
+            </div>
 
             <!-- TITRE ET RESUME DE LA CARD-->
-            <li class="card-content-rose col">
+            <div class="card-content-rose col">
               <p class="card-title-rose"><%= participation.permanence.location.name %> – <%= participation.permanence.service %></p>
               <p class="card-subtitle-rose"><%= participation.permanence.week_day %> · <%= participation.permanence.start_time %>h00 – <%= participation.permanence.end_time %>h00</p>
-            </li>
+            </div>
           <% end %>
         <!-- FIN DU IF -->
         <% end %>

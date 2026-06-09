@@ -1,7 +1,7 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["grid", "title", "card"]
+  static targets = ["grid", "title", "card", "sectionTitle"]
   static values = { dates: Array }
 
   connect() {
@@ -9,10 +9,11 @@ export default class extends Controller {
     this.current = new Date(this.today.getFullYear(), this.today.getMonth(), 1)
     this.selectedDate = null
     this.render()
+    this.filterCards()
   }
 
   prev() {
-    this.current = new Date(this.current.getFullYear(), this.current.getMonth() - 1, 1)
+    this.current = new Date(this.current.getFullYear(), this.current.getWeek() - 1, 1)
     this.selectedDate = null
     this.filterCards()
     this.render()
@@ -89,10 +90,16 @@ export default class extends Controller {
   }
 
   filterCards() {
+
     this.cardTargets.forEach(card => {
-      const show = !this.selectedDate || card.dataset.participationDate === this.selectedDate
+      const cardDate = new Date(card.dataset.participationDate)
+      const in15Days = new Date(this.today)
+      in15Days.setDate(this.today.getDate() + 15)
+      const withinDefault = !this.selectedDate && cardDate <= in15Days
+      const show = withinDefault || card.dataset.participationDate === this.selectedDate
       card.style.display = show ? "" : "none"
     })
+    this.sectionTitleTarget.style.display = this.selectedDate ? "none" : ""
   }
 
   isoDate(date) {
