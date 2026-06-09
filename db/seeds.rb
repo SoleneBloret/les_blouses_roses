@@ -245,6 +245,13 @@ Unavailability.create!(user: demo_user3, start_date: Date.new(2026, 6, 23), end_
 # David : 30 juin (sem. 27)
 Unavailability.create!(user: demo_user4, start_date: Date.new(2026, 6, 30), end_date: Date.new(2026, 6, 30))
 
+# Libérer les participations concernées (même logique que UnavailabilitiesController#create)
+Unavailability.all.each do |unavailability|
+  unavailability.user.participations.where(week_number: unavailability.week_numbers).each do |participation|
+    participation.update!(user_id: nil, substitute: true)
+  end
+end
+
 puts ""
 puts "✅ Seed terminé !"
 puts "Utilisateurs : #{User.count}"
