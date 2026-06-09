@@ -5,7 +5,7 @@
      data-whatsapp-modal-target="overlay"
      data-action="click->whatsapp-modal#closeOnOverlay">
 
-  <div class="whatsapp-modal">
+  <div class="whatsapp-modal" role="dialog" aria-modal="true" aria-labelledby="whatsapp-modal-title">
     <button class="whatsapp-modal__close" data-action="click->whatsapp-modal#close" aria-label="Fermer">
       &times;
     </button>
@@ -14,7 +14,7 @@
       <%= image_tag "icons/whatsapp.png", alt: "WhatsApp", width: 48, height: 48 %>
     </div>
 
-    <h2 class="whatsapp-modal__title">Ouvrir WhatsApp</h2>
+    <h2 class="whatsapp-modal__title" id="whatsapp-modal-title">Ouvrir WhatsApp</h2>
     <p class="whatsapp-modal__subtitle">
       Groupe · <%= user_location&.name || "Votre hôpital" %>
     </p>

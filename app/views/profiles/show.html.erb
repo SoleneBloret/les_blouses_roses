@@ -2,7 +2,7 @@
 
     <!-- PHOTO DE PROFIL -->
    <% if @profile.photo.attached? %>
-    <%= image_tag @profile.photo, class: "profile-photo" %>
+    <%= image_tag @profile.photo, class: "profile-photo", alt: "Phtot de profil de #{@profile.first_name} #{@profile.last_name}" %>
   <% else %>
     <%= image_tag "photopro.jpeg", class: "profile-photo", alt: "photo de profil par défaut" %>
   <% end %>
@@ -16,11 +16,11 @@
 
   <!-- FORMULAIRE -->
   <ul class="list-group">
-    <li class="list-group-item"><%= @profile.first_name %></li>
-    <li class="list-group-item"><%= @profile.last_name %></li>
-    <li class="list-group-item"><%= @profile.phone_number %></li>
-    <li class="list-group-item"><%= @profile.address %></li>
-    <li class="list-group-item"><%= @profile.role %></li>
+    <li class="list-group-item"><strong>Prénom :</strong> <%= @profile.first_name %></li>
+    <li class="list-group-item"><strong>Nom :</strong> <%= @profile.last_name %></li>
+    <li class="list-group-item"><strong>Téléphone :</strong> <%= @profile.phone_number %></li>
+    <li class="list-group-item"><strong>Adresse :</strong> <%= @profile.address %></li>
+    <li class="list-group-item"><strong>Statut :</strong> <%= @profile.role %></li>
   </ul>
 
   <% if current_user.profile == @profile %>

@@ -5,8 +5,10 @@
 <div class="page-layout">
      <!-- BOUTON RETOUR -->
   <div class="btn--left mb-3">
-    <%= link_to participations_path, class: "map-action-btn map-action-btn--orange" do %>
-      <i class="fa-solid fa-arrow-left"></i>
+    <%= link_to participations_path,
+      class: "map-action-btn map-action-btn--orange",
+      aria: { label: "Retour aux permanences" } do %>
+      <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
     <% end %>
     <span class="map-btn-label">Retour</span>
   </div>
