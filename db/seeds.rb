@@ -1,12 +1,3 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
 require "faker"
 
 puts "🧹 Nettoyage de la base..."
@@ -22,47 +13,57 @@ Location.destroy_all
 puts "📍 Création des lieux..."
 
 locations = [
-  {
-    name: "CHU de Nantes",
-    address: "5 allée de l'Île Gloriette, Nantes",
-    latitude: 47.2109,
-    longitude: -1.5536
-  },
-  {
-    name: "Hôpital Saint-Jacques",
-    address: "85 rue Saint-Jacques, Nantes",
-    latitude: 47.1963,
-    longitude: -1.5328
-  },
-  {
-    name: "Hôpital Nord Laennec",
-    address: "Boulevard Jacques Monod, Saint-Herblain",
-    latitude: 47.2448,
-    longitude: -1.6408
-  },
-  {
-    name: "EHPAD Renoir",
-    address: "3 Rue Ernest Meissonnier, Nantes",
-    latitude: 47.2270,
-    longitude: -1.5600
-  },
-  {
-    name: "EHPAD Les Jardins de l'Erdre",
-    address: "12 Rue des Platanes, Vallons-de-l'Erdre",
-    latitude: 47.2450,
-    longitude: -1.5300
-  },
-  {
-    name: "EHPAD Notre-Dame du Chêne",
-    address: "13 Rue de la Brianderie,  Nantes",
-    latitude: 47.2700,
-    longitude: -1.6200
-  }
-].map do |attrs|
-  Location.create!(attrs)
-end
+  { name: "CHU de Nantes",                  address: "5 allée de l'Île Gloriette, Nantes",        latitude: 47.2109, longitude: -1.5536 },
+  { name: "Hôpital Saint-Jacques",           address: "85 rue Saint-Jacques, Nantes",              latitude: 47.1963, longitude: -1.5328 },
+  { name: "Hôpital Nord Laennec",            address: "Boulevard Jacques Monod, Saint-Herblain",   latitude: 47.2448, longitude: -1.6408 },
+  { name: "EHPAD Renoir",                    address: "3 Rue Ernest Meissonnier, Nantes",           latitude: 47.2270, longitude: -1.5600 },
+  { name: "EHPAD Les Jardins de l'Erdre",    address: "12 Rue des Platanes, Vallons-de-l'Erdre",   latitude: 47.2450, longitude: -1.5300 },
+  { name: "EHPAD Notre-Dame du Chêne",       address: "13 Rue de la Brianderie, Nantes",           latitude: 47.2700, longitude: -1.6200 }
+].map { |attrs| Location.create!(attrs) }
 
-puts "👥 Création des bénévoles..."
+puts "👥 Création des comptes de démonstration..."
+
+demo_user = User.create!(email: "solene@blousesroses.fr", password: "password123")
+Profile.create!(
+  user: demo_user,
+  first_name: "Solène",
+  last_name: "BLORET",
+  role: "🏥 Bénévole référent",
+  phone_number: "0612345678",
+  address: "10 Passage de la Poule Noire, 44000 Nantes"
+)
+
+demo_user2 = User.create!(email: "setty@blousesroses.fr", password: "password123")
+Profile.create!(
+  user: demo_user2,
+  first_name: "Setty",
+  last_name: "PON",
+  role: "🏥 Bénévole référent",
+  phone_number: "0615943320",
+  address: "11 avenue de la gare, 44000 Nantes"
+)
+
+demo_user3 = User.create!(email: "valentin@blousesroses.fr", password: "password123")
+Profile.create!(
+  user: demo_user3,
+  first_name: "Valentin",
+  last_name: "PIDOUX",
+  role: "bénévole confirmé",
+  phone_number: "0601020304",
+  address: "12 rue de l'Océan, 44380 Pornichet"
+)
+
+demo_user4 = User.create!(email: "david@blousesroses.fr", password: "password123")
+Profile.create!(
+  user: demo_user4,
+  first_name: "David",
+  last_name: "ROUSSEAU",
+  role: "bénévole référent",
+  phone_number: "0610172525",
+  address: "13 boulevard du terminus, 44000 Nantes"
+)
+
+puts "👥 Création des bénévoles aléatoires..."
 
 roles = (
   ["benevole en integration"] * 4 +
@@ -71,156 +72,111 @@ roles = (
   ["benevole référent"] * 2
 ).shuffle
 
-users = []
-
-# Compte de démonstration
-demo_user = User.create!(
-  email: "demo@blousesroses.fr",
-  password: "password123"
-)
-
-Profile.create!(
-  user: demo_user,
-  first_name: "Marie",
-  last_name: "Dupont",
-  role: "🏥 Bénévole référent",
-  phone_number: "0612345678",
-  address: "10 Passage de la Poule Noire, 44000 Nantes"
-)
-
-users << demo_user
+benevole_users = []
 
 4.times do |i|
-  first_name = Faker::Name.first_name
-  last_name = Faker::Name.last_name
-
-  user = User.create!(
-    email: "benevole#{i + 1}@blousesroses.fr",
-    password: "password123"
-  )
-
+  user = User.create!(email: "benevole#{i + 1}@blousesroses.fr", password: "password123")
   Profile.create!(
     user: user,
-    first_name: first_name,
-    last_name: last_name,
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
     role: roles.sample,
     phone_number: Faker::PhoneNumber.cell_phone,
     address: Faker::Address.street_address
   )
-
-  users << user
+  benevole_users << user
 end
 
-puts "📅 Création des permanences..."
+all_users = [demo_user, demo_user2, demo_user3, demo_user4] + benevole_users
+
+puts "📅 Création des permanences aléatoires..."
 
 services_by_location = {
-  "CHU de Nantes" => [
-    "Urgences pédiatriques",
-    "ORL",
-    "Service Mère-Enfant",
-    "Ophtalmologie",
-    "Stomatologie"
-  ],
-
-  "Hôpital Saint-Jacques" => [
-    "ORL",
-    "Ophtalmologie",
-    "Stomatologie"
-  ],
-
-  "Hôpital Nord Laennec" => [
-    "Hémodialyse",
-    "ORL",
-    "Ophtalmologie"
-  ],
-
-  "EHPAD Renoir" => [
-    "Animation EHPAD"
-  ],
-
-  "EHPAD Les Jardins de l'Erdre" => [
-    "Animation EHPAD"
-  ],
-
-  "EHPAD Notre-Dame du Chêne" => [
-    "Animation EHPAD"
-  ]
+  "CHU de Nantes"               => ["Urgences pédiatriques", "ORL", "Service Mère-Enfant", "Ophtalmologie", "Stomatologie"],
+  "Hôpital Saint-Jacques"       => ["ORL", "Ophtalmologie", "Stomatologie"],
+  "Hôpital Nord Laennec"        => ["Hémodialyse", "ORL", "Ophtalmologie"],
+  "EHPAD Renoir"                => ["Animation EHPAD"],
+  "EHPAD Les Jardins de l'Erdre"=> ["Animation EHPAD"],
+  "EHPAD Notre-Dame du Chêne"   => ["Animation EHPAD"]
 }
 
-week_days = [
-  "Lundi",
-  "Mardi",
-  "Mercredi",
-  "Jeudi",
-  "Vendredi"
-]
-
-creneaux = [
-  [14, 17],
-  [14, 18],
-  [15, 17],
-  [18, 20],
-  [9, 12]
-]
+week_days = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi"]
+creneaux  = [[14, 17], [14, 18], [15, 17], [18, 20], [9, 12]]
 
 permanences = []
 
-# Une permanence garantie par bénévole pour l'annuaire
-users.each do |user|
+all_users.each do |user|
   location = locations.sample
   start_time, end_time = creneaux.sample
-
   permanences << Permanence.create!(
-    user: user,
-    location: location,
+    user: user, location: location,
     service: services_by_location[location.name].sample,
     week_day: week_days.sample,
-    start_time: start_time,
-    end_time: end_time,
-    formation: [true, false, false].sample,
-    year: 2026
+    start_time: start_time, end_time: end_time,
+    formation: [true, false, false].sample, year: 2026
   )
 end
 
 4.times do
   location = locations.sample
   start_time, end_time = creneaux.sample
-
   permanences << Permanence.create!(
-    user: users.sample,
-    location: location,
+    user: all_users.sample, location: location,
     service: services_by_location[location.name].sample,
     week_day: week_days.sample,
-    start_time: start_time,
-    end_time: end_time,
-    formation: [true, false, false].sample,
-    year: 2026
+    start_time: start_time, end_time: end_time,
+    formation: [true, false, false].sample, year: 2026
   )
 end
 
+puts "📅 Création des permanences annuelles des comptes de démo..."
 
-puts "🔁 Création des permanences récurrentes..."
+chu           = locations.find { |l| l.name == "CHU de Nantes" }
+ehpad_nd_chene = locations.find { |l| l.name == "EHPAD Notre-Dame du Chêne" }
+
+# Solène + Setty : Urgences pédiatriques, vendredis 15h-17h
+perm_solene_setty = Permanence.create!(
+  user: demo_user, location: chu,
+  service: "Urgences pédiatriques",
+  week_day: "Vendredi", start_time: 15, end_time: 17,
+  formation: false, year: 2026
+)
+permanences << perm_solene_setty
+
+# Valentin + David : Animation EHPAD, mardis 10h-12h
+perm_valentin_david = Permanence.create!(
+  user: demo_user4, location: ehpad_nd_chene,
+  service: "Animation EHPAD",
+  week_day: "Mardi", start_time: 10, end_time: 12,
+  formation: false, year: 2026
+)
+permanences << perm_valentin_david
+
+puts "🙋 Création des participations annuelles (semaines 1-52)..."
+
+(1..52).each do |week|
+  Participation.create!(user: demo_user,  permanence: perm_solene_setty,   week_number: week, substitute: false)
+  Participation.create!(user: demo_user2, permanence: perm_solene_setty,   week_number: week, substitute: false)
+  Participation.create!(user: demo_user3, permanence: perm_valentin_david, week_number: week, substitute: false)
+  Participation.create!(user: demo_user4, permanence: perm_valentin_david, week_number: week, substitute: false)
+end
+
+puts "🔁 Création des permanences récurrentes (données démo génériques)..."
 
 recurring_perm_1 = Permanence.create!(
   user: demo_user,
   location: locations.find { |l| l.name == "CHU de Nantes" },
   service: "Service Mère-Enfant",
-  week_day: "Mercredi",
-  start_time: 14,
-  end_time: 17,
-  formation: false,
-  year: 2026
+  week_day: "Mercredi", start_time: 14, end_time: 17,
+  formation: false, year: 2026
 )
 
 recurring_perm_2 = Permanence.create!(
-  user: users[1],
+  user: benevole_users.first,
   location: locations.find { |l| l.name == "Hôpital Saint-Jacques" },
   service: "ORL",
-  week_day: "Vendredi",
-  start_time: 14,
-  end_time: 18,
-  formation: false,
-  year: 2026
+  week_day: "Vendredi", start_time: 14, end_time: 18,
+  formation: false, year: 2026
 )
 
 permanences.push(recurring_perm_1, recurring_perm_2)
@@ -228,8 +184,8 @@ permanences.push(recurring_perm_1, recurring_perm_2)
 puts "🙋 Création des participations récurrentes (semaines 20-28)..."
 
 (20..28).each do |week|
-  Participation.create!(user: demo_user, permanence: recurring_perm_1, week_number: week, substitute: false)
-  Participation.create!(user: users[1],  permanence: recurring_perm_2, week_number: week, substitute: false)
+  Participation.create!(user: demo_user,         permanence: recurring_perm_1, week_number: week, substitute: false)
+  Participation.create!(user: benevole_users.first, permanence: recurring_perm_2, week_number: week, substitute: false)
 end
 
 puts "📝 Rapports pour les semaines passées (20, 21, 22)..."
@@ -245,18 +201,18 @@ recurring_comments = [
   Report.create!(permanence: recurring_perm_2, week_number: week, patients_number: rand(5..20), comment: recurring_comments[i], feeling: rand(1..5))
 end
 
-puts "🙋 Création des participations..."
+puts "🙋 Création des participations aléatoires..."
 
 80.times do
   Participation.create!(
-    user: users.sample,
+    user: all_users.sample,
     permanence: permanences.sample,
     week_number: rand(1..52),
     substitute: [true, false, false, false].sample
   )
 end
 
-puts "📝 Création des rapports..."
+puts "📝 Création des rapports aléatoires..."
 
 comments = [
   "Animation lecture très appréciée des enfants.",
@@ -281,6 +237,14 @@ comments = [
   )
 end
 
+puts "🚫 Création des indisponibilités..."
+
+# Valentin : 16 juin (sem. 25) et 23 juin (sem. 26)
+Unavailability.create!(user: demo_user3, start_date: Date.new(2026, 6, 16), end_date: Date.new(2026, 6, 16))
+Unavailability.create!(user: demo_user3, start_date: Date.new(2026, 6, 23), end_date: Date.new(2026, 6, 23))
+# David : 30 juin (sem. 27)
+Unavailability.create!(user: demo_user4, start_date: Date.new(2026, 6, 30), end_date: Date.new(2026, 6, 30))
+
 puts ""
 puts "✅ Seed terminé !"
 puts "Utilisateurs : #{User.count}"
@@ -289,7 +253,10 @@ puts "Lieux : #{Location.count}"
 puts "Permanences : #{Permanence.count}"
 puts "Participations : #{Participation.count}"
 puts "Rapports : #{Report.count}"
+puts "Indisponibilités : #{Unavailability.count}"
 puts ""
-puts "Compte de démonstration :"
-puts "Email : demo@blousesroses.fr"
-puts "Mot de passe : password123"
+puts "Comptes de démonstration :"
+puts " solene@blousesroses.fr   / password123"
+puts " setty@blousesroses.fr  / password123"
+puts " valentin@blousesroses.fr  / password123"
+puts " david@blousesroses.fr  / password123"
