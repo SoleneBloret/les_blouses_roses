@@ -7,7 +7,7 @@ fr:
       send_instructions: "Vous allez recevoir un e-mail avec les instructions pour confirmer votre adresse dans quelques minutes."
       send_paranoid_instructions: "Si votre adresse e-mail existe dans notre base de données, vous recevrez un e-mail avec les instructions pour la confirmer dans quelques minutes."
     failure:
-      already_authenticated: "Vous êtes déjà connecté(e)."
+      already_authenticated: "Connexion réussie."
       inactive: "Votre compte n'est pas encore activé."
       invalid: "%{authentication_keys} ou mot de passe invalide."
       locked: "Votre compte est verrouillé."
@@ -34,7 +34,7 @@ fr:
       no_token: "Vous ne pouvez pas accéder à cette page sans venir d'un e-mail de réinitialisation de mot de passe. Si vous venez bien d'un tel e-mail, vérifiez que vous avez utilisé l'URL complète."
       send_instructions: "Vous allez recevoir un e-mail avec les instructions pour réinitialiser votre mot de passe dans quelques minutes."
       send_paranoid_instructions: "Si votre adresse e-mail existe dans notre base de données, vous recevrez un lien de réinitialisation dans quelques minutes."
-      updated: "Votre mot de passe a bien été modifié. Vous êtes maintenant connecté(e)."
+      updated: "Votre mot de passe a bien été modifié. Une session est déjà ouverte."
       updated_not_active: "Votre mot de passe a bien été modifié."
     registrations:
       destroyed: "Au revoir ! Votre compte a bien été supprimé."
@@ -55,11 +55,11 @@ fr:
       unlocked: "Votre compte a bien été déverrouillé. Veuillez vous connecter."
   errors:
     messages:
-      already_confirmed: "a déjà été confirmé(e), veuillez vous connecter"
-      confirmation_period_expired: "doit être confirmé(e) dans les %{period}, veuillez en faire la demande à nouveau"
-      expired: "a expiré, veuillez en faire la demande à nouveau"
-      not_found: "introuvable"
-      not_locked: "n'était pas verrouillé(e)"
+      already_confirmed: "Votre compte est confirmé, veuillez vous connecter"
+      confirmation_period_expired: "votre compte doit être confirmé dans les %{period}, veuillez en faire la demande à nouveau"
+      expired: "votre compte a expiré, veuillez en faire la demande à nouveau"
+      not_found: "votre compte est introuvable"
+      not_locked: "votre compte n'était pas verrouillé"
       not_saved:
-        one: "1 erreur a empêché la sauvegarde de %{resource} :"
+        one: "Une erreur a empêché la sauvegarde de %{resource} :"
         other: "%{count} erreurs ont empêché la sauvegarde de %{resource} :"
