@@ -25,7 +25,14 @@ class PagesController < ApplicationController
 
     @next_participation = all.find { |p| p.date >= today }
     @last_participation = past.last
+    @last_participation = nil if report_exists?(@last_participation)
     compute_monthly_impact(past.select { |p| p.date.year == today.year && p.date.month == today.month })
+  end
+
+  def report_exists?(participation)
+    return false unless participation
+
+    participation.permanence.reports.any? { |r| r.week_number == participation.week_number }
   end
 
   def compute_monthly_impact(this_month)
