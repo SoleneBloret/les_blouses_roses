@@ -20,11 +20,8 @@
       <!-- Identité au centre -->
       <div class="home-hero__identity">
         <p class="home-hero__greeting">Bonjour 👋</p>
-        <h1 class="home-hero__name">
-          <%= @profile ? "#{@profile.first_name} #{@profile.last_name}" : current_user.email %>
-        </h1>
         <% if @profile&.role.present? %>
-          <span class="home-hero__role-badge">✅ <%= @profile.role %></span>
+          <span class="home-hero__role-badge"><%= @profile.role %></span>
         <% end %>
       </div>
 

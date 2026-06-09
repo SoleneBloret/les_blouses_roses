@@ -1,19 +1,18 @@
 <%#
   NAVBAR / HEADER CARD
-  - Utilisateur connecté : affiche une carte rose avec le titre de la page (déterminé
-    automatiquement via controller_name + action_name), le nom complet de l'utilisateur
-    et un cercle avec ses initiales (cliquable → dropdown : Accueil, Mon profil, Déconnexion).
-  - Utilisateur non connecté : affiche une barre blanche simple avec un lien "Se connecter".
+  - Utilisateur connecté : avatar à gauche (dropdown), titre de page centré, bouton menu hamburger à droite.
+  - Utilisateur non connecté : barre blanche simple avec un lien "Se connecter".
   - Les styles associés sont dans app/assets/stylesheets/components/_navbar.scss (.header-card, etc.)
   - Pour ajouter un nouveau titre de page, compléter le hash `page_label` ci-dessous.
 %>
 <% if user_signed_in? %>
   <%
     page_label = {
-      "pages"         => { "home"   => "Accueil" },
+      "pages"         => { "home" => "Accueil", "menu" => "Menu" },
       "profiles"      => { "show"   => "Mon profil", "edit" => "Modifier mon profil", "new" => "Créer mon profil" },
-      "participations"      => { "index"  => "Mes permanences", "available" => "Permanences disponibles", "replacement" => "Remplacer une bénévole" },
-      "unavailabilities"    => { "index"  => "Absence" }
+      "participations"      => { "index" => "Agenda", "available" => "Permanences disponibles", "replacement" => "Remplacer une bénévole", "map" => "Map", "show" => "Agenda" },
+      "unavailabilities"    => { "index" => "Absence", "new" => "Absence", "create" => "Absence" },
+      "reports"             => { "new" => "Compte-rendu", "create" => "Compte-rendu" }
     }.dig(controller_name, action_name) || "Les Blouses Roses"
   %>
 
@@ -21,17 +20,7 @@
     <%= 'header-card--orange' if controller_name == 'unavailabilities' %>
     <%= 'header-card--orange' if controller_name == 'participations' && action_name == 'available' %>
     <%= 'header-card--orange' if controller_name == 'participations' && action_name == 'replacement' %>
-    ">
-    <div class="header-card-left">
-      <span class="header-page-label"><%= page_label %></span>
-      <span class="header-user-name">
-        <% if current_user.profile %>
-          <%= current_user.profile.first_name %> <%= current_user.profile.last_name %>
-        <% else %>
-          Les Blouses Roses
-        <% end %>
-      </span>
-    </div>
+">
 
     <div class="dropdown">
       <a href="#" class="header-avatar-btn" id="headerDropdown" data-bs-toggle="dropdown" aria-expanded="false">
@@ -41,7 +30,7 @@
           <i class="fa-solid fa-user"></i>
         <% end %>
       </a>
-      <div class="dropdown-menu dropdown-menu-end" aria-labelledby="headerDropdown">
+      <div class="dropdown-menu" aria-labelledby="headerDropdown">
         <%= link_to "Accueil", root_path, class: "dropdown-item" %>
         <% if current_user.profile %>
           <%= link_to "Mon profil", profile_path(current_user.profile), class: "dropdown-item" %>
@@ -52,6 +41,12 @@
         <%= link_to "Déconnexion", destroy_user_session_path, data: { turbo_method: :delete }, class: "dropdown-item" %>
       </div>
     </div>
+
+    <span class="header-page-label"><%= page_label %></span>
+
+    <%= link_to menu_path, class: "header-menu-btn" do %>
+      <i class="fa-solid fa-bars"></i>
+    <% end %>
   </div>
 
 <% else %>

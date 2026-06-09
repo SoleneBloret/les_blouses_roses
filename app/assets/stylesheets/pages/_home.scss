@@ -26,17 +26,9 @@
   }
 
   &__greeting {
-    font-size: 0.9rem;
+    font-size: 1.1rem;
     opacity: 0.85;
     margin-bottom: 2px;
-  }
-
-  &__name {
-    font-size: 1.6rem;
-    font-weight: 700;
-    color: white;
-    margin-bottom: 10px;
-    line-height: 1.2;
   }
 
   &__role-badge {
@@ -91,7 +83,7 @@
     font-weight: 600;
     color: rgba(255, 255, 255, 0.9);
     margin-bottom: 10px;
-    padding-left: 70px;
+    padding-left: 16px;
   }
 
   &__next-card {
