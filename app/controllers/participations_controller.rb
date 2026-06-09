@@ -9,8 +9,12 @@ class ParticipationsController < ApplicationController
 
   def available
     unavailable_dates = current_user.unavailabilities.upcoming.flat_map { |u| (u.start_date..u.end_date).to_a }
+
+    already_on = current_user.participations.pluck(:permanence_id, :week_number)
+
     @participations = Participation.where(user: nil).sorted_by_date_desc
                                    .reject { |p| unavailable_dates.include?(p.date) }
+                                   .reject { |p| already_on.include?([p.permanence_id, p.week_number]) }
   end
 
   def replacement

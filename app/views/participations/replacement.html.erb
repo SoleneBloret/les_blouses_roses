@@ -5,12 +5,11 @@
 <div class="page-layout">
      <!-- BOUTON RETOUR -->
   <div class="btn--left mb-3">
-    <%= link_to participations_path,
+    <%= link_to available_participations_path,
       class: "map-action-btn map-action-btn--orange",
-      aria: { label: "Retour aux permanences" } do %>
+      aria: { label: "Retour aux permanences disponibles" } do %>
       <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
     <% end %>
-    <span class="map-btn-label">Retour</span>
   </div>
 
   <div class="participation-show-card-orange">
@@ -40,10 +39,10 @@
   </div>
 
   <!-- BOUTONS POUR ACCEPTER OU NON LA PERMANENCE -->
-  <div class="mt-4 ps-5 pe-5">
+  <div class="mt-2 ps-5 pe-5">
     <p class="mauve-text-centered">Souhaitez-vous prendre cette permanence ?</p>
     <%= button_to "✅ Je m'engage", take_participation_path(@participation), method: :patch, class: "btn-vert-centre" %>
-    <%= button_to "❌ Je ne suis pas disponible", unavailable_for_replacement_participation_path(@participation), method: :post, class: "btn-rose-inversé-centre" %>
+    <%= button_to "❌ Je suis indisponible", unavailable_for_replacement_participation_path(@participation), method: :post, class: "btn-rose-inversé-centre" %>
 
   </div>
 
