@@ -30,7 +30,12 @@
 
     <%= f.input :role,
         label: "Mon statut de bénévole",
-        collection: ["🎓 En formation", "🎀 Bénévole confirmé", "🏥 Bénévole référent", "🔐 Administrateur"] %>
+        collection: [
+          "🎓 En formation",
+          "👚 Bénévole confirmé",
+          "🩷 Bénévole référent",
+          "🔐 Administrateur"
+        ] %>
 
     <%= f.submit "Enregistrer", class: "btn btn-primary" %>
 
