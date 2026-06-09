@@ -70,7 +70,7 @@
     <!-- DEMANDES DE REMPLACEMENT -->
     <%= link_to available_participations_path, class: "home-substitute-card" do %>
       <div class="home-date-badge home-date-badge--orange">
-        <span class="home-date-badge__day"><%= @substitute_count.to_s.rjust(2, '0') %></span>
+        <span class="home-date-badge__day"><%= @participations_unavailable.count %></span>
       </div>
       <div class="home-card-text">
         <p class="home-card-text__label">Demandes de remplacement</p>
