@@ -28,7 +28,7 @@ Profile.create!(
   user: demo_user,
   first_name: "Solène",
   last_name: "BLORET",
-  role: "🏥 Bénévole référent",
+  role: "🩷 Bénévole référent",
   phone_number: "0612345678",
   address: "10 Passage de la Poule Noire, 44000 Nantes"
 )
@@ -38,7 +38,7 @@ Profile.create!(
   user: demo_user2,
   first_name: "Setty",
   last_name: "PON",
-  role: "🏥 Bénévole référent",
+  role: "🩷 Bénévole référent",
   phone_number: "0615943320",
   address: "11 avenue de la gare, 44000 Nantes"
 )
@@ -48,7 +48,7 @@ Profile.create!(
   user: demo_user3,
   first_name: "Valentin",
   last_name: "PIDOUX",
-  role: "bénévole confirmé",
+  role: "👚 Bénévole confirmé",
   phone_number: "0601020304",
   address: "12 rue de l'Océan, 44380 Pornichet"
 )
@@ -58,7 +58,7 @@ Profile.create!(
   user: demo_user4,
   first_name: "David",
   last_name: "ROUSSEAU",
-  role: "bénévole référent",
+  role: "🩷 Bénévole référent",
   phone_number: "0610172525",
   address: "13 boulevard du terminus, 44000 Nantes"
 )
