@@ -124,6 +124,7 @@ a.participation-index-card-vert {
 
   .participation-section-rose {
     margin-bottom: 16px;
+    width: 100%;
   }
 
   .participation-label-rose {
@@ -135,6 +136,21 @@ a.participation-index-card-vert {
   .participation-value-rose {
     color: $lbr-text2;
     margin-bottom: 2px;
+  }
+
+  .participation-phone-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: $green;
+    color: white;
+    flex-shrink: 0;
+    &:hover {
+      opacity: 0.85;
+    }
   }
 }
 
@@ -338,6 +354,10 @@ a.participation-index-card-vert {
   // .participation-section-vert {
   //   margin-bottom: 16px;
   // }
+
+  .participation-section-rose {
+    width: 100%;
+  }
 
   .participation-label-vert {
     color: $lbr-success;
