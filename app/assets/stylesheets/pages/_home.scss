@@ -175,16 +175,16 @@
   min-width: 0;
 
   &__label {
-    font-size: 0.8rem;
-    font-weight: 600;
+    font-size: 1rem;
+    font-weight: 700;
     margin-bottom: 4px;
     line-height: 1;
   }
 
   &__title {
-    font-size: 1rem;
-    font-weight: 700;
-    color: $lbr-text;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: $lbr-text2;
     margin: 0;
   }
 }
