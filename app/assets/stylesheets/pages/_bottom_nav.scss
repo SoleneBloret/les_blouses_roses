@@ -11,18 +11,7 @@
   overflow: hidden;
   padding: 14px 8px calc(env(safe-area-inset-bottom, 0px) + 14px);
   z-index: 1000;
-  box-shadow: 0 -4px 20px rgba($lbr-text2, 0.12);
-
-  // Liseré dégradé rose → violet en haut de la barre
-  &::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: $lbr-text2;
-  }
+  box-shadow: 0 -8px 24px rgba($lbr-text2, 0.15);
 }
 
 .bottom-nav__item {
