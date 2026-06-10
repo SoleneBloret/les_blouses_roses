@@ -10,8 +10,8 @@
 
    <!-- BOUTON RETOUR -->
   <div class="btn--left mb-3">
-    <%= link_to participations_path, class: "map-action-btn map-action-btn--rose" do %>
-      <i class="fa-solid fa-arrow-left"></i>
+    <%= link_to participations_path, class: "map-action-btn map-action-btn--rose", aria: { label: "Retour aux permanences" } do %>
+      <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
     <% end %>
     <span class="map-btn-label">Retour</span>
   </div>
@@ -33,8 +33,8 @@
         <% if binome %>
           <%= binome.first_name %> <%= binome.last_name %>
           <% if binome.phone_number.present? %>
-            <%= link_to "tel: #{binome.phone_number}", class: "participation-phone-link" do %>
-              <i class="fa-solid fa-phone"></i>
+            <%= link_to "tel:#{binome.phone_number}", class: "participation-phone-link", aria: { label: "Appeler #{binome.first_name}" } do %>
+              <i class="fa-solid fa-phone" aria-hidden="true"></i>
             <% end %>
           <% end %>
         <% else %>

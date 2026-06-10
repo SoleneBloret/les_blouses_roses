@@ -27,8 +27,12 @@ export default class extends Controller {
   }
 
   selectDay(event) {
+    if (event.type === "keydown" && event.key === " ") {
+      event.preventDefault()
+    }
     const date = event.currentTarget.dataset.date
     this.selectedDate = this.selectedDate === date ? null : date
+    this.focusedDate = date
     this.filterCards()
     this.render()
   }

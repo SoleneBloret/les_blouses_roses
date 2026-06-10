@@ -11,14 +11,14 @@
   <div class="report-section">
     <p class="section-label">Patients visités</p>
     <div class="counter-wrapper" data-controller="counter">
-      <i class="fa-solid fa-user-group counter-icon"></i>
+      <i class="fa-solid fa-user-group counter-icon" aria-hidden="true"></i>
       <button type="button" class="counter-btn"
         aria-label="Diminuer le nombre de patients"
         data-action="click->counter#decrement">−</button>
       <span class="counter-value" data-counter-target="value" aria-live="polite" aria-atomic="true">0</span>
-      <button type="button" class="counter-btn"
+      <button type="button" class="counter-btn counter-btn--plus"
        aria-label="Augmenter le nombre de patients"
-       counter-btn--plus" data-action="click->counter#increment">+</button>
+       data-action="click->counter#increment">+</button>
       <%= f.hidden_field :patients_number, value: 0, data: { counter_target: "input" } %>
     </div>
   </div>

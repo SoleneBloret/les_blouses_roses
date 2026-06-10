@@ -2,7 +2,8 @@
 
 .home-page {
   background-color: $lbr-creme;
-  min-height: 100vh;
+  // Pas de navbar séparée (hide_navbar) : .home-hero fait office d'en-tête.
+  min-height: calc(100vh - #{$bottom-nav-height});
   padding: 0 0 100px;
 }
 
@@ -26,18 +27,27 @@
   }
 
   &__greeting {
-    font-size: 1.1rem;
-    opacity: 0.85;
+    font-size: 1.5rem;
+    font-weight: 700;
+    opacity: 0.9;
     margin-bottom: 2px;
+  }
+
+  &__name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 6px;
+    line-height: 1.2;
   }
 
   &__role-badge {
     display: inline-block;
-    background-color: white;
-    color: $lbr-text;
+    background-color: rgba(#fff, 0.15);
+    color: rgba(#fff, 0.85);
     border-radius: 50rem;
-    padding: 5px 14px;
-    font-size: 0.8rem;
+    padding: 3px 10px;
+    font-size: 0.9rem;
     font-weight: 500;
   }
 
@@ -45,8 +55,10 @@
     width: 56px;
     height: 56px;
     border-radius: 50%;
-    background-color: white;
-    color: $lbr-rose;
+    background-color: rgba(#fff, 0.25);
+    color: #fff;
+    border: 2px solid rgba(#fff, 0.6);
+    overflow: hidden;
     font-size: 1.05rem;
     font-weight: 700;
     display: inline-flex;
@@ -58,6 +70,12 @@
     &:hover {
       text-decoration: none;
       color: $lbr-rose;
+    }
+
+    &-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
   }
 
@@ -191,63 +209,65 @@
 
 // ---- IMPACT CARD ----
 .home-impact-card {
-  background-color: white;
-  border-radius: 0;
-  border-left: 4px solid $lbr-success;
-  padding: 16px;
+  background: $lbr-rose_pale;
+  border-radius: 20px;
+  padding: 18px 16px 16px;
 
   &__title {
-    color: $lbr-success;
-    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    color: $lbr-rose;
+    font-size: 0.78rem;
     font-weight: 700;
-    margin-bottom: 14px;
-    padding-left: 3px;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+
+    &::before {
+      content: "🩷";
+      font-size: 0.9rem;
+      letter-spacing: 0;
+    }
   }
 
   &__stats {
     display: flex;
-    align-items: center;
+    gap: 12px;
   }
 
-  &__divider {
-    width: 1px;
-    align-self: stretch;
-    background-color: rgba($lbr-success, 0.25);
-    flex-shrink: 0;
-    margin: 0 12px;
-  }
+  &__divider { display: none; }
 }
 
 // ---- STAT BLOCK ----
 .home-stat {
   flex: 1;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 12px;
+  gap: 6px;
+  background-color: white;
+  border-radius: 14px;
+  padding: 14px 10px;
+  box-shadow: 0 1px 4px rgba($lbr-rose, 0.08);
 
   &--green {
-    .home-stat__number {
-      background-color: $lbr-success_pale;
-      color: $lbr-success;
-    }
+    .home-stat__number { color: $lbr-rose; }
     .home-stat__label { color: $lbr-text2; }
   }
 
   &__number {
-    width: 54px;
-    height: 54px;
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.8rem;
-    font-weight: 700;
-    flex-shrink: 0;
+    font-size: 2rem;
+    font-weight: 800;
+    color: $lbr-rose;
+    line-height: 1;
   }
 
   &__label {
-    font-size: 0.9rem;
+    font-size: 0.75rem;
     line-height: 1.3;
+    text-align: center;
+    color: $lbr-text2;
   }
 }
 

@@ -1,7 +1,7 @@
 // --- Page background ---
 .report-page-bg {
   background-color: $lbr-creme;
-  min-height: 100vh;
+  min-height: calc(100vh - #{$header-card-height} - #{$bottom-nav-height});
 }
 
 .report-header-info {

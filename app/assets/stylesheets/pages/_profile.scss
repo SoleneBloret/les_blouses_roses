@@ -9,7 +9,7 @@
 
 /* ===== CONTENEUR PRINCIPAL ===== */
 .profile-container {
-  min-height: 100vh;
+  min-height: calc(100vh - #{$header-card-height} - #{$bottom-nav-height});
   background-color: #FFF8F5;
   padding: 24px;
   display: flex;
@@ -49,37 +49,87 @@
 
 /* ===== PHOTO DE PROFIL ===== */
 .profile-picture-section {
-  text-align: center;
-  margin-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 28px;
+}
+
+/* WRAPPER CLIQUABLE (label → ouvre le sélecteur de fichier) */
+.profile-avatar-wrap {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  margin-bottom: 10px;
+
+  &:hover .profile-avatar-badge {
+    background-color: darken($lbr-rose, 8%);
+  }
 }
 
 /* PHOTO UTILISATEUR */
 .profile-photo {
-  width: 120px;
-  height: 120px;
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
   object-fit: cover;
   display: block;
-  margin: 0 auto 12px;
   border: 3px solid #FDE8F3;
 }
 
-/* PHOTO PAR DÉFAUT SI AUCUNE PHOTO N'EST UPLOADÉE */
-.profile-photo-placeholder {
-  width: 120px;
-  height: 120px;
+/* INITIALES SI AUCUNE PHOTO */
+.profile-photo-placeholder,
+.profile-photo-initials {
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
-  background: #FDE8F3;
-  margin: 0 auto 12px;
+  background-color: $lbr-rose_pale;
+  border: 3px solid #FDE8F3;
+  color: $lbr-rose;
+  font-size: 1.8rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
 }
 
-/* LIEN AJOUTER / MODIFIER LA PHOTO */
-.change-photo-btn {
-  color: #E5007D;
-  font-weight: 600;
+/* BADGE CAMÉRA (coin bas-droit de l'avatar) */
+.profile-avatar-badge {
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-color: $lbr-rose;
+  color: white;
+  font-size: 0.65rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid white;
+  transition: background-color 0.2s ease;
+}
+
+/* BOUTON SUPPRIMER LA PHOTO */
+.remove-photo-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  color: $lbr-text2;
+  font-size: 0.8rem;
   cursor: pointer;
-  display: inline-block;
-  margin-top: 8px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  transition: background-color 0.15s ease, color 0.15s ease;
+
+  &:hover {
+    background-color: rgba(#dc3545, 0.08);
+    color: #dc3545;
+  }
 }
 
 /* MASQUE LE CHAMP "CHOISIR UN FICHIER" NATIF */
