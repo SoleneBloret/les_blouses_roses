@@ -42,6 +42,7 @@ export default class extends Controller {
         icon: "error",
         confirmButtonText: "OK",
         confirmButtonColor: "#E5007D",
+        customClass: { popup: "swal-lbr" },
       })
       return
     }
@@ -54,7 +55,7 @@ export default class extends Controller {
       confirmButtonText: "Confirmer",
       cancelButtonText: "Annuler",
       confirmButtonColor: "#1AAB6D",
-      customClass: { cancelButton: "swal-btn-outline" },
+      customClass: { popup: "swal-lbr", cancelButton: "swal-btn-outline" },
     })
 
     if (result.isConfirmed) {

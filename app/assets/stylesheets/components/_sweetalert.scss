@@ -1,3 +1,64 @@
+// ---- THÈME LBR POUR SWEETALERT2 ----
+
+.swal2-popup.swal-lbr {
+  background: #FFF8F5;
+  border-radius: 20px;
+  padding: 28px 24px 24px;
+  font-family: inherit;
+
+  // TITRE
+  .swal2-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #2D2D2D;
+    padding: 0;
+    margin-bottom: 6px;
+    line-height: 1.3;
+  }
+
+  // CONTENU
+  .swal2-html-container {
+    font-size: 0.88rem;
+    color: #9B7FA0;
+    padding: 0;
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  // ICÔNE — plus petite, couleurs app
+  .swal2-icon {
+    width: 52px;
+    height: 52px;
+    margin: 0 auto 18px;
+    border-width: 2px;
+
+    .swal2-icon-content { font-size: 1.5rem; }
+
+    &.swal2-question { border-color: #9B7FA0; color: #9B7FA0; }
+    &.swal2-info     { border-color: #E5007D; color: #E5007D; }
+    &.swal2-warning  { border-color: #E5007D; color: #E5007D; }
+    &.swal2-error    { border-color: #dc3545; }
+    &.swal2-success  { border-color: #1AAB6D; }
+  }
+
+  // BOUTONS
+  .swal2-actions {
+    gap: 10px;
+    margin-top: 22px;
+  }
+
+  .swal2-confirm,
+  .swal2-cancel {
+    border-radius: 50rem !important;
+    padding: 10px 28px !important;
+    font-size: 0.9rem;
+    font-weight: 700;
+    min-width: 110px;
+    box-shadow: none !important;
+  }
+}
+
+// BOUTON ANNULER OUTLINE
 .swal-btn-outline {
   background: transparent !important;
   border: 1.5px solid #9B7FA0 !important;
@@ -5,5 +66,6 @@
 
   &:hover {
     background: rgba(#9B7FA0, 0.08) !important;
+    color: #9B7FA0 !important;
   }
 }

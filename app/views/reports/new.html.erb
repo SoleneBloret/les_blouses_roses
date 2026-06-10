@@ -7,7 +7,7 @@
       </p>
     </div>
 
-<%= simple_form_for [@participation, @report], html: { class: "p-3" } do |f| %>
+<%= simple_form_for [@participation, @report], html: { class: "p-3", data: { controller: "report-form" } } do |f| %>
   <div class="report-section">
     <p class="section-label">PATIENTS VISITÉS</p>
     <div class="counter-wrapper" data-controller="counter">
@@ -19,7 +19,7 @@
       <button type="button" class="counter-btn counter-btn--plus"
        aria-label="Augmenter le nombre de patients"
        data-action="click->counter#increment">+</button>
-      <%= f.hidden_field :patients_number, value: 0, data: { counter_target: "input" } %>
+      <%= f.hidden_field :patients_number, value: 0, data: { counter_target: "input", report_form_target: "patientsInput" } %>
     </div>
   </div>
 
@@ -54,7 +54,8 @@
           rows: 4 %>
   </div>
 
-  <%= f.submit "Envoyer le compte-rendu", class: "btn btn-report-submit w-100 mt-3" %>
+  <%= f.submit "Envoyer le compte-rendu", class: "btn btn-report-submit w-100 mt-3",
+        data: { action: "click->report-form#confirmSubmit" } %>
 
 <% end %>
   </div>

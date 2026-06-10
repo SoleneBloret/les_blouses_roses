@@ -39,11 +39,22 @@
   </div>
 
   <!-- BOUTONS POUR ACCEPTER OU NON LA PERMANENCE -->
-  <div class="mt-2 ps-5 pe-5">
+  <%
+    perm       = @participation.permanence
+    date_label = "#{perm.week_day} #{@participation.date.strftime('%d')} #{I18n.l(@participation.date, format: '%b')}"
+    time_label = "#{perm.start_time}h00 – #{perm.end_time}h00"
+  %>
+  <div class="mt-2 ps-5 pe-5"
+       data-controller="replacement"
+       data-replacement-location-value="<%= perm.location.name %>"
+       data-replacement-date-value="<%= date_label %>"
+       data-replacement-time-value="<%= time_label %>"
+       data-replacement-available-path-value="<%= available_participations_path %>">
     <p class="mauve-text-centered">Souhaitez-vous prendre cette permanence ?</p>
-    <%= button_to "✅ Je m'engage", take_participation_path(@participation), method: :patch, class: "btn-vert-centre" %>
-    <%= button_to "❌ Je suis indisponible", unavailable_for_replacement_participation_path(@participation), method: :post, class: "btn-rose-inversé-centre" %>
-
+    <%= button_to "✅ Je m'engage", take_participation_path(@participation), method: :patch, class: "btn-vert-centre",
+          data: { action: "click->replacement#confirmEngage" } %>
+    <%= button_to "❌ Je suis indisponible", unavailable_for_replacement_participation_path(@participation), method: :post, class: "btn-rose-inversé-centre",
+          data: { action: "click->replacement#confirmUnavailable" } %>
   </div>
 
 </div>
