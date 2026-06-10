@@ -28,7 +28,7 @@ export default class extends Controller {
       confirmButtonText: "Je confirme",
       cancelButtonText: "Annuler",
       confirmButtonColor: "#1AAB6D",
-      customClass: { cancelButton: "swal-btn-outline" },
+      customClass: { popup: "swal-lbr", cancelButton: "swal-btn-outline" },
     })
 
     if (result.isConfirmed) {
@@ -54,7 +54,7 @@ export default class extends Controller {
       confirmButtonText: "OK",
       cancelButtonText: "Retour",
       confirmButtonColor: "#E5007D",
-      customClass: { cancelButton: "swal-btn-outline" },
+      customClass: { popup: "swal-lbr", cancelButton: "swal-btn-outline" },
     })
 
     if (result.isConfirmed) {
