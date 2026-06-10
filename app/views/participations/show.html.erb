@@ -54,7 +54,7 @@
       <%= link_to "Voir sur la carte", map_participation_path(@participation), class: "btn-orange-centre" %>
     <% else %>
       <%= link_to "Voir sur la carte", map_participation_path(@participation), class: "btn-rose-centre" %>
-      <%= link_to "J'ai une indisponibilité", new_unavailability_path(start_date: @participation.date), class: "btn-orange-centre" %>
+      <%= link_to "J'ai une indisponibilité", new_unavailability_path(start_date: @participation.date), class: "btn-orange-inversé-centre" %>
     <% end %>
 
   </div>
