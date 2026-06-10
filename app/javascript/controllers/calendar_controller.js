@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
   static targets = ["grid", "title", "card", "sectionTitle"]
-  static values = { dates: Array }
+  static values = { dates: Array, unavailabilities: Array }
 
   connect() {
     this.today = new Date()
@@ -13,7 +13,7 @@ export default class extends Controller {
   }
 
   prev() {
-    this.current = new Date(this.current.getFullYear(), this.current.getWeek() - 1, 1)
+    this.current = new Date(this.current.getFullYear(), this.current.getMonth() - 1, 1)
     this.selectedDate = null
     this.filterCards()
     this.render()
@@ -46,6 +46,12 @@ export default class extends Controller {
       if (d.substitute) dateMap[d.date].green = true
       else dateMap[d.date].rose = true
     })
+    const unavailSet = new Set(
+      this.unavailabilitiesValue.filter(dateStr => {
+        const dow = new Date(dateStr).getDay()
+        return dow !== 0 && dow !== 6
+      })
+    )
     const todayStr = this.isoDate(this.today)
 
     // ISO week starts Monday: JS getDay() is 0=Sun, so shift
@@ -65,8 +71,10 @@ export default class extends Controller {
       const hasEvent = !!dateMap[dateStr]
       const isSelected = dateStr === this.selectedDate
       const isWeekend = dow === 0 || dow === 6
+      const isUnavailable = unavailSet.has(dateStr)
 
       const classes = ["cal-day"]
+      if (isUnavailable) classes.push("cal-day--unavailable")
       if (isToday) classes.push("cal-day--today")
       if (isSelected && !isToday) classes.push("cal-day--selected")
       if (isWeekend) classes.push("cal-day--weekend")

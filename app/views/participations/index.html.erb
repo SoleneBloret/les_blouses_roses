@@ -21,8 +21,10 @@
 
 
     <!-- CALENDRIER DES PERMANENCES -->
+    <% unavailable_dates = @unavailabilities.flat_map { |u| (u.start_date..u.end_date).map(&:iso8601) }.uniq %>
     <div data-controller="calendar"
-         data-calendar-dates-value="<%= @participations.map { |p| { id: p.id, date: p.date.iso8601, substitute: p.substitute } }.to_json %>">
+         data-calendar-dates-value="<%= @participations.map { |p| { id: p.id, date: p.date.iso8601, substitute: p.substitute } }.to_json %>"
+         data-calendar-unavailabilities-value="<%= unavailable_dates.to_json %>">
 
       <div class="calendar-widget">
         <div class="calendar-header">
@@ -36,7 +38,7 @@
         <div class="calendar-grid" data-calendar-target="grid"></div>
       </div>
 
-      <p data-calendar-target="sectionTitle" class="section-label ps-2">Mes 15 prochaines permanences</p>
+      <p data-calendar-target="sectionTitle" class="section-label ps-2">Mes permanences des 15 prochains jours</p>
       <!-- CARDS DES PERMANENCES -->
       <% @participations.each do |participation| %>
         <% if participation.substitute == true %>

@@ -22,25 +22,15 @@
     <%= 'header-card--orange' if controller_name == 'participations' && action_name == 'replacement' %>
 ">
 
-    <div class="dropdown">
-      <a href="#" class="header-avatar-btn" id="headerDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-        <% if current_user.profile %>
-          <%= "#{current_user.profile.first_name[0]}#{current_user.profile.last_name[0]}".upcase %>
-        <% else %>
-          <i class="fa-solid fa-user"></i>
-        <% end %>
-      </a>
-      <div class="dropdown-menu" aria-labelledby="headerDropdown">
-        <%= link_to "Accueil", root_path, class: "dropdown-item" %>
-        <% if current_user.profile %>
-          <%= link_to "Mon profil", profile_path(current_user.profile), class: "dropdown-item" %>
-        <% else %>
-          <%= link_to "Créer mon profil", new_profile_path, class: "dropdown-item" %>
-        <% end %>
-        <div class="dropdown-divider"></div>
-        <%= link_to "Déconnexion", destroy_user_session_path, data: { turbo_method: :delete }, class: "dropdown-item" %>
-      </div>
-    </div>
+    <% if current_user.profile %>
+      <%= link_to profile_path(current_user.profile), class: "header-avatar-btn" do %>
+        <%= "#{current_user.profile.first_name[0]}#{current_user.profile.last_name[0]}".upcase %>
+      <% end %>
+    <% else %>
+      <%= link_to new_profile_path, class: "header-avatar-btn" do %>
+        <i class="fa-solid fa-user"></i>
+      <% end %>
+    <% end %>
 
     <span class="header-page-label"><%= page_label %></span>
 
