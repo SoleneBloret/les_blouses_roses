@@ -1,27 +1,56 @@
 <div class="profile-container container-sm">
 
-  <%# TITRE SUPPRIMÉ : LE NOM DE LA PAGE EST DÉJÀ AFFICHÉ DANS LE HEADER %>
-
   <%= simple_form_for(@profile, html: { multipart: true }) do |f| %>
 
-  <!-- PHOTO DE PROFIL PAR DÉFAUT -->
-  <div class="profile-picture-section">
+  <!-- PHOTO DE PROFIL -->
+  <div class="profile-picture-section" data-controller="profile-photo">
 
-    <%= image_tag "photopro.jpeg",
-          class: "profile-photo",
-          id: "photo-preview",
-          alt: "Photo de profil par défaut" %>
+    <!-- Avatar cliquable (ouvre le sélecteur de fichier) -->
+    <label for="photo-input" class="profile-avatar-wrap">
 
-    <!-- BOUTON POUR AJOUTER UNE PHOTO -->
-    <label for="photo-input" class="change-photo-btn">
-        Ajouter une photo
+      <!-- Photo si attachée -->
+      <% if @profile.photo.attached? %>
+        <%= image_tag url_for(@profile.photo),
+              class: "profile-photo",
+              data: { "profile-photo-target": "img" },
+              alt: "Photo de profil" %>
+      <% end %>
+
+      <!-- Initiales (cachées si photo présente) -->
+      <div class="profile-photo-initials"
+           data-profile-photo-target="initials"
+           style="<%= @profile.photo.attached? ? 'display: none;' : 'display: flex;' %>">
+        <%= "#{@profile.first_name[0]}#{@profile.last_name[0]}".upcase %>
+      </div>
+
+      <!-- Badge caméra -->
+      <span class="profile-avatar-badge">
+        <i class="fa-solid fa-camera"></i>
+      </span>
     </label>
 
-    <!-- CHAMP FICHIER MASQUÉ -->
-      <%= f.file_field :photo,
+    <!-- Bouton supprimer (visible uniquement si photo attachée) -->
+    <% if @profile.photo.attached? %>
+      <button type="button" class="remove-photo-btn"
+              data-profile-photo-target="removeBtn"
+              data-action="click->profile-photo#remove">
+        <i class="fa-solid fa-trash-can"></i> Supprimer la photo
+      </button>
+    <% end %>
+
+    <!-- Champ caché pour signaler la suppression -->
+    <input type="hidden" name="profile[remove_photo]" value="0"
+           data-profile-photo-target="removeField">
+
+    <!-- Champ fichier masqué -->
+    <%= f.file_field :photo,
           class: "hidden-file-input",
-          id: "photo-input" %>
-    </div>
+          id: "photo-input",
+          data: {
+            "profile-photo-target": "fileInput",
+            "action": "change->profile-photo#previewFile"
+          } %>
+  </div>
 
     <%= f.input :first_name, label: "Prénom" %>
     <%= f.input :last_name, label: "Nom" %>

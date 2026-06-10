@@ -1,11 +1,15 @@
 <div class="profile-container container-sm">
 
     <!-- PHOTO DE PROFIL -->
-   <% if @profile.photo.attached? %>
-    <%= image_tag @profile.photo, class: "profile-photo", alt: "Photo de profil de #{@profile.first_name} #{@profile.last_name}" %>
-  <% else %>
-    <%= image_tag "photopro.jpeg", class: "profile-photo", alt: "Photo de profil par défaut" %>
-  <% end %>
+  <div class="profile-picture-section">
+    <% if @profile.photo.attached? %>
+      <%= image_tag @profile.photo, class: "profile-photo", alt: "Photo de profil de #{@profile.first_name} #{@profile.last_name}" %>
+    <% else %>
+      <div class="profile-photo-initials">
+        <%= "#{@profile.first_name[0]}#{@profile.last_name[0]}".upcase %>
+      </div>
+    <% end %>
+  </div>
 
   <%# BOUTON RETOUR SUPPRIMÉ : LA NAVIGATION SE FAIT VIA LE HEADER %>
   <%#= link_to "Retour", root_path, class: "btn btn-secondary" %>
