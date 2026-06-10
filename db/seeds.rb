@@ -49,7 +49,7 @@ Profile.create!(
   first_name: "Valentin",
   last_name: "PIDOUX",
   role: "👚 Bénévole confirmé",
-  phone_number: "0601020304",
+  phone_number: "0770021637",
   address: "12 rue de l'Océan, 44380 Pornichet"
 )
 
