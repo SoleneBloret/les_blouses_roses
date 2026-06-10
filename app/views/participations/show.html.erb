@@ -3,9 +3,9 @@
 <% end %>
 
 <div class="page-layout">
-  <% card_class = @participation.substitute ? "participation-show-card-vert" : "participation-show-card-rose" %>
-  <% label_class = @participation.substitute ? "participation-label-vert" : "participation-label-rose" %>
-  <% value_class = @participation.substitute ? "participation-value-vert" : "participation-value-rose" %>
+  <% card_class = @participation.substitute ? "participation-show-card-orange" : "participation-show-card-rose" %>
+  <% label_class = @participation.substitute ? "participation-label-orange" : "participation-label-rose" %>
+  <% value_class = @participation.substitute ? "participation-value-orange" : "participation-value-rose" %>
 
 
    <!-- BOUTON RETOUR -->
@@ -31,9 +31,9 @@
       <% binome = @participation.binome %>
       <p class="<%= value_class %> d-flex justify-content-between align-items-center w-100">
         <% if binome %>
-          <%= "#{binome.first_name} #{binome.last_name}" %>
+          <%= binome.first_name %> <%= binome.last_name %>
           <% if binome.phone_number.present? %>
-            <%= link_to "tel:#{binome.phone_number}", class: "participation-phone-link" do %>
+            <%= link_to "tel: #{binome.phone_number}", class: "participation-phone-link" do %>
               <i class="fa-solid fa-phone"></i>
             <% end %>
           <% end %>
@@ -51,7 +51,7 @@
     <!-- CONDITION D'AFFICHAGE  -->
     <!-- Boutons différents si c'est en remplacement ou une permanence (participation) récurrente -->
     <% if @participation.substitute == true %>
-      <%= link_to "Voir sur la carte", map_participation_path(@participation), class: "btn-vert-centre" %>
+      <%= link_to "Voir sur la carte", map_participation_path(@participation), class: "btn-orange-centre" %>
     <% else %>
       <%= link_to "Voir sur la carte", map_participation_path(@participation), class: "btn-rose-centre" %>
       <%= link_to "J'ai une indisponibilité", new_unavailability_path(start_date: @participation.date), class: "btn-orange-centre" %>
