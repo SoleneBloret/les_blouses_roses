@@ -43,12 +43,12 @@
 
   &__role-badge {
     display: inline-block;
-    background-color: rgba(#fff, 0.15);
-    color: rgba(#fff, 0.85);
+    background-color: rgba(#fff, 0.25);
+    color: #fff;
     border-radius: 50rem;
-    padding: 3px 10px;
-    font-size: 0.9rem;
-    font-weight: 500;
+    padding: 3px 12px;
+    font-size: 0.82rem;
+    font-weight: 600;
   }
 
   &__avatar {
