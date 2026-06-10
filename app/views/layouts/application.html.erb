@@ -75,7 +75,7 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
+  <body class="<%= "has-bottom-nav" if current_user %>">
     <%= render "shared/navbar" unless content_for?(:hide_navbar) %>
     <%= render "shared/flashes" %>
 

@@ -44,10 +44,10 @@
       </div>
     </div>
 
-    <span class="header-page-label"><%= page_label %></span>
+    <h1 class="header-page-label"><%= page_label %></h1>
 
-    <%= link_to menu_path, class: "header-menu-btn" do %>
-      <i class="fa-solid fa-bars"></i>
+    <%= link_to menu_path, class: "header-menu-btn", aria: { label: "Ouvrir le menu" } do %>
+      <i class="fa-solid fa-bars" aria-hidden="true"></i>
     <% end %>
   </div>
 

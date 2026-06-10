@@ -2,7 +2,8 @@
 
 .home-page {
   background-color: $lbr-creme;
-  min-height: 100vh;
+  // Pas de navbar séparée (hide_navbar) : .home-hero fait office d'en-tête.
+  min-height: calc(100vh - #{$bottom-nav-height});
   padding: 0 0 100px;
 }
 

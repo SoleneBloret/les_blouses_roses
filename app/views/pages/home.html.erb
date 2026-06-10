@@ -16,8 +16,8 @@
           <% end %>
         <% end %>
       <% else %>
-        <%= link_to new_profile_path, class: "home-hero__avatar" do %>
-          <i class="fa-solid fa-user"></i>
+        <%= link_to new_profile_path, class: "home-hero__avatar", aria: { label: "Créer mon profil" } do %>
+          <i class="fa-solid fa-user" aria-hidden="true"></i>
         <% end %>
       <% end %>
 
@@ -30,8 +30,8 @@
       </div>
 
       <!-- Bouton menu → lien vers la page menu -->
-      <%= link_to menu_path, class: "home-hero__menu-btn" do %>
-        <i class="fa-solid fa-bars"></i>
+      <%= link_to menu_path, class: "home-hero__menu-btn", aria: { label: "Ouvrir le menu" } do %>
+        <i class="fa-solid fa-bars" aria-hidden="true"></i>
       <% end %>
     </div>
 

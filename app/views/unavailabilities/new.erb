@@ -4,13 +4,15 @@
     <%= f.error_notification message: "Merci de corriger les erreurs ci-dessous :" %>
 
     <!-- TOGGLE UNE SEULE DATE / PLUSIEURS JOURS -->
-    <div class="unavailability-toggle">
+    <div class="unavailability-toggle" role="group" aria-label="Type d'absence">
       <button type="button" class="unavailability-tab"
+              aria-pressed="true"
               data-unavailability-form-target="singleTab"
               data-action="click->unavailability-form#showSingle">
         Une seule date
       </button>
       <button type="button" class="unavailability-tab"
+              aria-pressed="false"
               data-unavailability-form-target="multiTab"
               data-action="click->unavailability-form#showMulti">
         Plusieurs jours
