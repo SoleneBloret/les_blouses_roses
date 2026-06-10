@@ -10,6 +10,19 @@
     <meta name="mobile-web-app-capable" content="yes">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <%# Open Graph / réseaux sociaux %>
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:title" content="<%= content_for(:title) || "Les Blouses Roses" %>">
+    <meta property="og:description" content="Plateforme de gestion du bénévolat pour les animateurs des Blouses Roses.">
+    <meta property="og:image" content="<%= image_url("og-lesblousesroses-1200x630.png") %>">
+    <meta property="og:url" content="<%= request.original_url %>">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="<%= content_for(:title) || "Les Blouses Roses" %>">
+    <meta name="twitter:description" content="Plateforme de gestion du bénévolat pour les animateurs des Blouses Roses.">
+    <meta name="twitter:image" content="<%= image_url("og-lesblousesroses-1200x630.png") %>">
+
 
     <%= yield :head %>
 
