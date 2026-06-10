@@ -38,8 +38,9 @@
   width: 56px;
   height: 56px;
   border-radius: 50%;
-  background-color: $lbr-creme;
-  color: $lbr-rose;
+  background-color: rgba(#fff, 0.25);
+  color: #fff;
+  border: 2px solid rgba(#fff, 0.6);
   font-size: 1.1rem;
   font-weight: 700;
   flex-shrink: 0;
@@ -58,7 +59,7 @@
   width: 56px;
   height: 56px;
   color: white;
-  font-size: 1.4rem;
+  font-size: 1.7rem;
   display: inline-flex;
   align-items: center;
   justify-content: center;

@@ -27,6 +27,7 @@ class ProfilesController < ApplicationController
 
   def update
     @profile = Profile.find(params[:id])
+    @profile.photo.purge if params.dig(:profile, :remove_photo) == "1"
     if @profile.update(profile_params)
       redirect_to profile_path(@profile), notice: "Votre profil a été mis à jour"
     else

@@ -37,26 +37,27 @@
   font-family: inherit;
   font-size: 11px;
   line-height: inherit;
-  color: $lbr-text2;
+  color: $lbr-rose;
   text-decoration: none;
-  font-size: 11px;
   font-weight: 500;
   padding: 6px 20px;
   border-radius: 14px;
-  transition: color 0.2s ease, background-color 0.2s ease;
+  transition: color 0.2s ease, filter 0.2s ease;
+
+  .bottom-nav__icon {
+    filter: brightness(0) saturate(100%) invert(10%) sepia(90%) saturate(5000%) hue-rotate(310deg) brightness(90%);
+  }
 
   &:hover {
-    color: $lbr-violet;
+    color: $lbr-rose;
+    background-color: $lbr-rose_pale;
     text-decoration: none;
   }
 
   &--active {
     color: $lbr-rose;
-    font-weight: 600;
-
-    .bottom-nav__icon {
-      filter: brightness(0) saturate(100%) invert(10%) sepia(90%) saturate(5000%) hue-rotate(310deg) brightness(90%);
-    }
+    background-color: $lbr-rose_pale;
+    font-weight: 700;
   }
 }
 

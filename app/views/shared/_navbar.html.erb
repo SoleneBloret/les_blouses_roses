@@ -24,7 +24,9 @@
 
     <div class="dropdown">
       <a href="#" class="header-avatar-btn" id="headerDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-        <% if current_user.profile %>
+        <% if current_user.profile&.photo&.attached? %>
+          <%= image_tag current_user.profile.photo, alt: "" %>
+        <% elsif current_user.profile %>
           <%= "#{current_user.profile.first_name[0]}#{current_user.profile.last_name[0]}".upcase %>
         <% else %>
           <i class="fa-solid fa-user"></i>

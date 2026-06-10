@@ -9,7 +9,11 @@
       <!-- Avatar à gauche → lien profil -->
       <% if @profile %>
         <%= link_to profile_path(@profile), class: "home-hero__avatar" do %>
-          <%= "#{@profile.first_name[0]}#{@profile.last_name[0]}".upcase %>
+          <% if @profile.photo.attached? %>
+            <%= image_tag @profile.photo, class: "home-hero__avatar-img", alt: "" %>
+          <% else %>
+            <%= "#{@profile.first_name[0]}#{@profile.last_name[0]}".upcase %>
+          <% end %>
         <% end %>
       <% else %>
         <%= link_to new_profile_path, class: "home-hero__avatar" do %>
