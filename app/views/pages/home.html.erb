@@ -38,7 +38,7 @@
     <% if @next_participation %>
       <p class="home-hero__next-title">Ma prochaine permanence</p>
       <%= link_to participation_path(@next_participation), class: "home-hero__next-card" do %>
-        <div class="home-date-badge home-date-badge--light">
+        <div class="home-date-badge <%= @next_participation.substitute ? 'home-date-badge--orange' : 'home-date-badge--light' %>">
           <span class="home-date-badge__day"><%= @next_participation.date.strftime("%-d") %></span>
           <span class="home-date-badge__month"><%= I18n.l(@next_participation.date, format: "%b").upcase %></span>
         </div>
