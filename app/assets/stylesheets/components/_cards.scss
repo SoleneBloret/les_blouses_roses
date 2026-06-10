@@ -167,7 +167,7 @@ a.participation-index-card-vert {
   flex-direction: row;
   align-items: center;
   background-color: #ffffff;
-  border: 1px solid $lbr-orange;
+  border: 1px solid $lbr-orange-clair;
   border-radius: 16px;
   padding: 12px 16px;
   margin: 6px 0;
@@ -344,17 +344,6 @@ a.participation-index-card-vert {
   max-width: 480px;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
   align-items: start;
-
-  // .participation-location-vert {
-  //   font-size: 1.1rem;
-  //   font-weight: 700;
-  //   color: #1a1a1a;
-  //   margin-bottom: 20px;
-  // }
-
-  // .participation-section-vert {
-  //   margin-bottom: 16px;
-  // }
 
   .participation-section-rose {
     width: 100%;
