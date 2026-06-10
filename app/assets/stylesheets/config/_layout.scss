@@ -1,0 +1,13 @@
+// Hauteurs des éléments fixes du layout, utilisées pour calculer le
+// min-height des conteneurs de page (cf. pages/_*.scss) afin qu'ils
+// occupent exactement la hauteur de viewport restante, sans scroll
+// excédentaire.
+
+// .header-card (utilisateur connecté) — components/_navbar.scss
+$header-card-height: 96px;
+
+// navbar simple (utilisateur non connecté) — components/_navbar.scss
+$navbar-guest-height: 56px;
+
+// .bottom-nav + padding réservé sur body.has-bottom-nav — pages/_bottom_nav.scss
+$bottom-nav-height: calc(90px + env(safe-area-inset-bottom, 0px));

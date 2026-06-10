@@ -181,7 +181,7 @@
 // ------------------------------ \\
 // AFFICHAGE GLOBAL DES PAGES PARTICIPATION
 .page-layout {
-  min-height: 100vh;
+  min-height: calc(100vh - #{$header-card-height} - #{$bottom-nav-height});
   background-color: #FFF8F5;
   padding: 20px 24px;
   display: flex;

@@ -5,7 +5,7 @@
 }
 
 .signup-container {
-  min-height: 100vh;
+  min-height: calc(100vh - #{$navbar-guest-height});
   background-color: #FFF8F5;
   padding: 40px 24px;
   display: flex;
