@@ -1,6 +1,7 @@
 class ParticipationsController < ApplicationController
   def index
     @participations = current_user.participations.all.sorted_by_date_desc
+    @unavailabilities = current_user.unavailabilities.upcoming
   end
 
   def show
