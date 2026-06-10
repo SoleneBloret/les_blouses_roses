@@ -10,14 +10,18 @@ export default class extends Controller {
 
   showSingle() {
     this.singleTabTarget.classList.add("active")
+    this.singleTabTarget.setAttribute("aria-pressed", "true")
     this.multiTabTarget.classList.remove("active")
+    this.multiTabTarget.setAttribute("aria-pressed", "false")
     this.endDateWrapperTarget.classList.add("d-none")
     this.syncEndDate()
   }
 
   showMulti() {
     this.multiTabTarget.classList.add("active")
+    this.multiTabTarget.setAttribute("aria-pressed", "true")
     this.singleTabTarget.classList.remove("active")
+    this.singleTabTarget.setAttribute("aria-pressed", "false")
     this.endDateWrapperTarget.classList.remove("d-none")
   }
 
