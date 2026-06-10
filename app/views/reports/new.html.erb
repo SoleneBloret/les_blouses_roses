@@ -3,7 +3,7 @@
     <div class="report-header px-3 mb-2">
       <p class="section-label mb-1">COMPTE-RENDU DE PERMANENCE</p>
       <p class="report-header-info mb-0">
-        <%= @participation.date.strftime("%d/%m/%Y") %> · <%= @permanence.location.name %>
+        <%= I18n.l(@participation.date, format: "%A %d").capitalize %> <%= I18n.l(@participation.date, format: "%B").capitalize %> · <%= @permanence.location.name %>
       </p>
     </div>
 
