@@ -1,6 +1,6 @@
 // --- Page background ---
 .report-page-bg {
-  background-color: $lbr-rose_pale;
+  background-color: $lbr-creme;
   min-height: 100vh;
 }
 
@@ -16,14 +16,15 @@
   border-radius: 12px;
   padding: 16px;
   margin-bottom: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
 .section-label {
-  font-size: 11px;
-  letter-spacing: 1px;
-  color: $lbr-text2;
+  font-size: 1rem;
+  color: $lbr-rose;
   font-weight: 600;
-  margin-bottom: 12px;
+  margin-bottom: 24px;
+  line-height: 1;
 }
 
 // --- Counter ---
@@ -83,7 +84,8 @@
   align-items: center;
   gap: 4px;
   padding: 10px 6px;
-  border: 2px solid #e0e0e0;
+  border: 1px solid $lbr-rose-transparent;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
   border-radius: 12px;
   cursor: pointer;
   width: 100%;
@@ -113,6 +115,8 @@
 // --- Textarea ---
 .report-textarea {
   border: 1px solid #e0e0e0;
+  background-color: white;
+  border-radius: 12px;
   resize: none;
 
   &::placeholder {
