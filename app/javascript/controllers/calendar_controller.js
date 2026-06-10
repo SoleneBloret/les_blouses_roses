@@ -42,8 +42,8 @@ export default class extends Controller {
 
     const dateMap = {}
     this.datesValue.forEach(d => {
-      if (!dateMap[d.date]) dateMap[d.date] = { rose: false, green: false }
-      if (d.substitute) dateMap[d.date].green = true
+      if (!dateMap[d.date]) dateMap[d.date] = { rose: false, orange: false }
+      if (d.substitute) dateMap[d.date].orange = true
       else dateMap[d.date].rose = true
     })
     const unavailSet = new Set(
@@ -85,10 +85,10 @@ export default class extends Controller {
       html += `<div class="${classes.join(" ")}" ${action}>`
       html += `<span class="cal-day__num">${day}</span>`
       if (hasEvent) {
-        const { rose, green } = dateMap[dateStr]
+        const { rose, orange } = dateMap[dateStr]
         html += `<span class="cal-day__dots">`
         if (rose) html += `<span class="cal-day__dot cal-day__dot--rose"></span>`
-        if (green) html += `<span class="cal-day__dot cal-day__dot--green"></span>`
+        if (orange) html += `<span class="cal-day__dot cal-day__dot--orange"></span>`
         html += `</span>`
       }
       html += `</div>`

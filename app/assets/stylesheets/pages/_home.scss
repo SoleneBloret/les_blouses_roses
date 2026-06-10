@@ -254,13 +254,15 @@
 // ---- SUBSTITUTE CARD ----
 .home-substitute-card {
   display: flex;
+  flex-direction: row;
   align-items: center;
   gap: 14px;
   text-decoration: none;
   background-color: white;
   border-radius: 16px;
-  border: 1.5px solid $lbr-orange;
+  border: 1.5px solid $lbr-orange-clair;
   padding: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 
   .home-card-text__label { color: $lbr-orange; }
 
@@ -270,12 +272,14 @@
 // ---- LAST PERM CARD ----
 .home-last-card {
   display: flex;
+  flex-direction: row;
   align-items: center;
   gap: 14px;
   text-decoration: none;
   background-color: white;
   border-radius: 16px;
-  border: 1.5px solid $lbr-rose;
+  border: 1px solid $lbr-rose-transparent;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
   padding: 16px;
 
   .home-card-text__label { color: $lbr-rose; }
@@ -286,11 +290,14 @@
 // ---- INFO CARD ----
 .home-info-card {
   display: flex;
+  flex-direction: row;
+  text-decoration: none;
   align-items: center;
   gap: 14px;
   background-color: white;
   border-radius: 16px;
-  border: 1.5px solid $lbr-bleu;
+  border: 1.5px solid $lbr-bleu-transparent;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
   padding: 16px;
 
   .home-card-text__label { color: $lbr-bleu; }

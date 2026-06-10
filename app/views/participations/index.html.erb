@@ -43,19 +43,19 @@
       <% @participations.each do |participation| %>
         <% if participation.substitute == true %>
           <%= link_to participation_path(participation),
-              class: "participation-index-card-vert row",
+              class: "participation-index-card-orange row",
               data: { turbo_frame: "_top", calendar_target: "card", participation_date: participation.date.iso8601 } do %>
 
             <!-- BADGE AVEC LA DATE-->
-            <div class="date-badge-vert col-1">
-              <span class="day-title-vert"><%= participation.date.strftime("%d") %></span>
-              <span class="month-title-vert"><%= I18n.l(participation.date, format: "%b") %></span>
+            <div class="date-badge-orange col-1">
+              <span class="day-title-orange"><%= participation.date.strftime("%d") %></span>
+              <span class="month-title-orange"><%= I18n.l(participation.date, format: "%b") %></span>
             </div>
 
             <!-- TITRE ET RESUME DE LA CARD-->
-            <div class="card-content-vert col">
-              <p class="card-title-vert"><%= participation.permanence.location.name %> – <%= participation.permanence.service %></p>
-              <p class="card-subtitle-vert"><%= participation.permanence.week_day %> · <%= participation.permanence.start_time %>h00 – <%= participation.permanence.end_time %>h00</p>
+            <div class="card-content-orange col">
+              <p class="card-title-orange"><%= participation.permanence.location.name %> – <%= participation.permanence.service %></p>
+              <p class="card-subtitle-orange"><%= participation.permanence.week_day %> · <%= participation.permanence.start_time %>h00 – <%= participation.permanence.end_time %>h00</p>
             </div>
           <% end %>
 
