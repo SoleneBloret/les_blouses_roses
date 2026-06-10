@@ -1,6 +1,6 @@
 // PAGE WRAPPER
 .unavailability-page {
-  min-height: 100vh;
+  min-height: calc(100vh - #{$header-card-height} - #{$bottom-nav-height});
   background-color: $lbr-creme;
   padding: 24px 20px 40px;
   display: flex;
