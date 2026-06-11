@@ -22,9 +22,11 @@
 .section-label {
   font-size: 1rem;
   color: $lbr-rose;
-  font-weight: 600;
-  margin-bottom: 24px;
+  font-weight: 700;
+  margin-bottom: 5px;
   line-height: 1;
+  flex: 1;
+  min-width: 0;
 }
 
 // --- Counter ---

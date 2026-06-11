@@ -49,6 +49,7 @@ gem "sassc-rails"
 
 # ------- GEMS AJOUTEES PAR EQUIPE -------
 gem "faker"
+gem "cloudinary"
 
 group :development, :test do
   gem "dotenv-rails"

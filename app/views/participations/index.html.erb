@@ -3,21 +3,25 @@
   <%= turbo_frame_tag "tab-content" do %>
 
     <!-- MENU TABS -->
-    <ul class="nav nav-pills nav-fill p-1 participations-tabs">
-      <!-- TAB 1 : actif -->
-      <li class="nav-item">
-        <%= link_to "Mes permanences", participations_path,
-            class: "nav-link active rounded-pill",
-            aria: { current: "page" } %>
-      </li>
-      <!-- TAB 2 : inactif -->
-      <li class="nav-item">
-        <%= link_to "Disponibles", available_participations_path,
-            class: "nav-link rounded-pill",
-            data: { turbo_frame: "_top" } %>
-            <!-- Permet l'affichage différent du header entre rose et orange selon page -->
-      </li>
-    </ul>
+    <div class="unavailability-toggle">
+      <div class="nav nav-pills nav-fill participations-tabs">
+        <!-- TAB 1 : actif -->
+        <div class="nav-item">
+          <%= link_to "Mes permanences", participations_path,
+              class: "nav-link active rounded-pill",
+              aria: { current: "page" },
+              data: { turbo_frame: "_top" } %>
+        </div>
+        <!-- TAB 2 : inactif -->
+        <div class="nav-item">
+          <%= link_to "Disponibles", available_participations_path,
+              class: "nav-link rounded-pill",
+              data: { turbo_frame: "_top" } %>
+              <!-- Permet l'affichage différent du header entre rose et orange selon page -->
+        </div>
+      </div>
+    </div>
+
 
 
     <!-- CALENDRIER DES PERMANENCES -->
@@ -38,7 +42,12 @@
         <div class="calendar-grid" data-calendar-target="grid"></div>
       </div>
 
-      <p data-calendar-target="sectionTitle" class="section-label ps-2">Mes permanences des 15 prochains jours</p>
+      <p data-calendar-target="sectionTitle" class="ps-2">
+        <span class="section-label">Mes permanences</span>
+        <span class="home-card-text__title">- 15 prochains jours</span>
+      </p>
+
+
       <!-- CARDS DES PERMANENCES -->
       <% @participations.each do |participation| %>
         <% if participation.substitute == true %>

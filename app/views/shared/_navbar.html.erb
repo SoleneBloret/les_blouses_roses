@@ -8,12 +8,13 @@
 <% if user_signed_in? %>
   <%
     page_label = {
-      "pages"         => { "home" => "Accueil", "menu" => "Menu" },
-      "profiles"      => { "show"   => "Mon profil", "edit" => "Modifier mon profil", "new" => "Créer mon profil" },
+      "pages"         => { "home" => "Accueil", "menu" => "Mon espace" },
+      "profiles"      => { "index" => "Annuaire", "show" => (@profile&.user == current_user ? "Mon profil" : "Contact"), "edit" => "Modifier mon profil", "new" => "Créer mon profil" },
       "participations"      => { "index" => "Agenda", "available" => "Permanences disponibles", "replacement" => "Remplacement", "map" => "Map", "show" => "Agenda" },
       "unavailabilities"    => { "index" => "Absence", "new" => "Absence", "create" => "Absence" },
       "reports"             => { "new" => "Compte-rendu", "create" => "Compte-rendu" }
     }.dig(controller_name, action_name) || "Les Blouses Roses"
+    on_my_profile = controller_name == "profiles" && action_name == "show" && @profile&.user == current_user
   %>
 
   <div class="header-card
@@ -34,8 +35,26 @@
 
     <h1 class="header-page-label"><%= page_label %></h1>
 
-    <%= link_to menu_path, class: "header-menu-btn", aria: { label: "Ouvrir le menu" } do %>
-      <i class="fa-solid fa-bars" aria-hidden="true"></i>
+    <% if on_my_profile %>
+      <%= link_to menu_path, class: "header-menu-btn", aria: { label: "Ouvrir le menu" } do %>
+        <i class="fa-solid fa-bars" aria-hidden="true"></i>
+      <% end %>
+    <% else %>
+      <div class="header-dropdown-wrapper" data-controller="dropdown">
+        <button class="header-menu-btn" data-action="click->dropdown#toggle" aria-label="Ouvrir le menu">
+          <i class="fa-solid fa-bars" aria-hidden="true"></i>
+        </button>
+        <div class="header-dropdown-menu" data-dropdown-target="menu">
+          <% unless controller_name == "pages" && action_name == "menu" %>
+            <%= link_to menu_path, class: "header-dropdown-item" do %>
+              <i class="fa-solid fa-circle-user me-2" aria-hidden="true"></i>Mon espace
+            <% end %>
+          <% end %>
+          <%= button_to destroy_user_session_path, method: :delete, class: "header-dropdown-item header-dropdown-item--logout", form: { "data-turbo": false } do %>
+            <i class="fa-solid fa-right-from-bracket me-2" aria-hidden="true"></i>Se déconnecter
+          <% end %>
+        </div>
+      </div>
     <% end %>
   </div>
 

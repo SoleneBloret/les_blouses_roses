@@ -256,22 +256,23 @@
 // ------------------------------ \\
 // MENU TABS EN HAUT DE LA PAGE
 .participations-tabs {
-  background-color: white;
+  background: transparent;
   border-radius: 50rem;
-  border-color: $lbr-rose;
-  margin-bottom: 15px;
-  flex-wrap: nowrap !important;
 
-  .nav-item {
-    flex: 1 1 0;
-    min-width: 0; // permet au flex item de rétrécir en dessous de son contenu
-  }
+  flex-wrap: nowrap !important;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  flex: 1;
+  border: none;
 
   .nav-link {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     text-align: center;
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 12px 18px !important;
   }
 
   // ONGLET ACTIF

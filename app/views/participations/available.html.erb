@@ -3,23 +3,26 @@
   <%= turbo_frame_tag "tab-content" do %>
 
     <!-- MENU TABS -->
-    <ul class="nav nav-pills nav-fill p-1 participations-tabs">
-      <!-- TAB 1 : inactif -->
-      <li class="nav-item">
-        <%= link_to "Mes permanences", participations_path,
-            class: "nav-link rounded-pill",
-            data: { turbo_frame: "_top" } %>
-            <!-- Permet l'affichage différent du header entre rose et orange selon page -->
-      </li>
-      <!-- TAB 2 : actif -->
-      <li class="nav-item">
-        <%= link_to "Disponibles", available_participations_path,
-            class: "nav-link active rounded-pill tab-available",
-            aria: { current: "page" },
-            data: { turbo_frame: "_top" } %>
-            <!-- Permet l'affichage différent du header entre rose et orange selon page -->
-      </li>
-    </ul>
+    <div class="unavailability-toggle">
+      <div class="nav nav-pills nav-fill participations-tabs">
+        <!-- TAB 1 : inactif -->
+        <div class="nav-item">
+          <%= link_to "Mes permanences", participations_path,
+              class: "nav-link rounded-pill",
+              data: { turbo_frame: "_top" } %>
+              <!-- Permet l'affichage différent du header entre rose et orange selon page -->
+        </div>
+        <!-- TAB 2 : actif -->
+        <div class="nav-item">
+          <%= link_to "Disponibles", available_participations_path,
+              class: "nav-link active rounded-pill tab-available",
+              aria: { current: "page" },
+              data: { turbo_frame: "_top" } %>
+              <!-- Permet l'affichage différent du header entre rose et orange selon page -->
+        </div>
+      </div>
+    </div>
+
 
     <% if @participations.empty? %>
         <p class="mauve-text-centered mt-5">Toutes les permanences sont assurées ! 🎉</p>
