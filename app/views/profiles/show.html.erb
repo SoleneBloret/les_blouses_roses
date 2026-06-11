@@ -20,20 +20,11 @@
 
   <!-- FORMULAIRE -->
   <ul class="list-group">
-    <li class="list-group-item"><strong>Prénom :</strong> <%= @profile.first_name %></li>
-    <li class="list-group-item"><strong>Nom :</strong> <%= @profile.last_name %></li>
-    <li class="list-group-item d-flex align-items-center justify-content-between">
-      <span><strong>Téléphone :</strong> <%= @profile.phone_number %></span>
-      <% if current_user.profile != @profile && @profile.phone_number.present? %>
-        <%= link_to "tel:#{@profile.phone_number}", class: "participation-phone-link", aria: { label: "Appeler #{@profile.first_name}" } do %>
-          <i class="fa-solid fa-phone" aria-hidden="true"></i>
-        <% end %>
-      <% end %>
-    </li>
-    <% if current_user.profile == @profile %>
-      <li class="list-group-item"><strong>Adresse :</strong> <%= @profile.address %></li>
-    <% end %>
-    <li class="list-group-item"><strong>Statut :</strong> <%= @profile.role %></li>
+    <li class="list-group-item"><strong>Prénom</strong> <span class="profile-value"><%= @profile.first_name %></span></li>
+    <li class="list-group-item"><strong>Nom</strong> <span class="profile-value"><%= @profile.last_name %></span></li>
+    <li class="list-group-item"><strong>Téléphone</strong> <span class="profile-value"><%= @profile.phone_number %></span></li>
+    <li class="list-group-item"><strong>Adresse</strong> <span class="profile-value"><%= @profile.address %></span></li>
+    <li class="list-group-item"><strong>Statut</strong> <span class="profile-value"><%= @profile.role %></span></li>
   </ul>
 
   <% if current_user.profile == @profile %>
