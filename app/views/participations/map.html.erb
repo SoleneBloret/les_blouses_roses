@@ -11,10 +11,11 @@
   <div class="participation-map-fullscreen" data-map-target="container"></div>
 
   <!-- BOUTON RETOUR -->
+  <% back_path = params[:from] == "replacement" ? replacement_participation_path(@participation) : participation_path(@participation) %>
   <div class="map-overlay-btn map-overlay-btn--left">
-    <%= link_to participation_path(@participation),
+    <%= link_to back_path,
       class: "map-action-btn map-action-btn--rose",
-      aria: { label: "Retour aux permanences" } do %>
+      aria: { label: "Retour" } do %>
       <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
     <% end %>
     <span class="map-btn-label">Retour</span>

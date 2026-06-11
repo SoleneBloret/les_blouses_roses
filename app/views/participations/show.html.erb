@@ -26,21 +26,21 @@
       <p class="<%= value_class %>"><%= @participation.permanence.start_time %>h00 – <%= @participation.permanence.end_time %>h00</p>
     </div>
 
-    <div class="participation-section-rose">
+    <div class="participation-section-rose w-100">
       <p class="<%= label_class %>">Binôme</p>
       <% binome = @participation.binome %>
-      <p class="<%= value_class %> d-flex justify-content-between align-items-center w-100">
-        <% if binome %>
-          <%= binome.first_name %> <%= binome.last_name %>
+      <% if binome %>
+        <div class="d-flex justify-content-between align-items-center w-100">
+          <span class="<%= value_class %>"><%= binome.first_name %> <%= binome.last_name %></span>
           <% if binome.phone_number.present? %>
             <%= link_to "tel:#{binome.phone_number}", class: "participation-phone-link", aria: { label: "Appeler #{binome.first_name}" } do %>
               <i class="fa-solid fa-phone" aria-hidden="true"></i>
             <% end %>
           <% end %>
-        <% else %>
-          🔎 Nous recherchons un/une remplaçant(e)
-        <% end %>
-      </p>
+        </div>
+      <% else %>
+        <p class="<%= value_class %>">🔎 Nous recherchons un/une remplaçant(e)</p>
+      <% end %>
     </div>
 
     <div class="participation-section-rose">
