@@ -9,7 +9,7 @@
     <div class="profile-picture-section">
 
       <!-- IMAGE PAR DÉFAUT -->
-      <%= image_tag "photopro.jpeg",
+      <%= image_tag "logo.PNG",
           class: "profile-photo",
           alt: "Photo de profil par défaut" %>
 
@@ -19,7 +19,8 @@
       </label>
 
       <!-- INPUT FICHIER MASQUÉ -->
-      <%= f.file_field :photo,
+      <%= f.input :photo,
+          as: :file,
           class: "hidden-file-input",
           id: "photo-input" %>
 
