@@ -29,10 +29,19 @@
         <% end %>
       </div>
 
-      <!-- Bouton menu → lien vers la page menu -->
-      <%= link_to menu_path, class: "home-hero__menu-btn", aria: { label: "Ouvrir le menu" } do %>
-        <i class="fa-solid fa-bars" aria-hidden="true"></i>
-      <% end %>
+      <div class="home-hero__menu-wrapper header-dropdown-wrapper" data-controller="dropdown">
+        <button class="home-hero__menu-btn" data-action="click->dropdown#toggle" aria-label="Ouvrir le menu">
+          <i class="fa-solid fa-bars" aria-hidden="true"></i>
+        </button>
+        <div class="header-dropdown-menu" data-dropdown-target="menu">
+          <%= link_to current_user.profile ? profile_path(current_user.profile) : new_profile_path, class: "header-dropdown-item" do %>
+            <i class="fa-solid fa-circle-user me-2" aria-hidden="true"></i>Mon espace
+          <% end %>
+          <%= button_to destroy_user_session_path, method: :delete, class: "header-dropdown-item header-dropdown-item--logout", form: { "data-turbo": false } do %>
+            <i class="fa-solid fa-right-from-bracket me-2" aria-hidden="true"></i>Se déconnecter
+          <% end %>
+        </div>
+      </div>
     </div>
 
     <% if @next_participation %>
