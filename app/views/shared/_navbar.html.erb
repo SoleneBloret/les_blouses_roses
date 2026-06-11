@@ -8,7 +8,7 @@
 <% if user_signed_in? %>
   <%
     page_label = {
-      "pages"         => { "home" => "Accueil", "menu" => "Menu" },
+      "pages"         => { "home" => "Accueil", "menu" => "Mon espace" },
       "profiles"      => { "index" => "Annuaire", "show" => (@profile&.user == current_user ? "Mon profil" : "Contact"), "edit" => "Modifier mon profil", "new" => "Créer mon profil" },
       "participations"      => { "index" => "Agenda", "available" => "Permanences disponibles", "replacement" => "Remplacement", "map" => "Map", "show" => "Agenda" },
       "unavailabilities"    => { "index" => "Absence", "new" => "Absence", "create" => "Absence" },
