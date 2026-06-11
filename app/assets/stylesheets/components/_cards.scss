@@ -138,20 +138,21 @@ a.participation-index-card-vert {
     margin-bottom: 2px;
   }
 
-  .participation-phone-link {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    background-color: $green;
-    color: white;
-    flex-shrink: 0;
-    text-decoration: none;
-    &:hover {
-      opacity: 0.85;
-    }
+}
+
+.participation-phone-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: $green;
+  color: white;
+  flex-shrink: 0;
+  text-decoration: none;
+  &:hover {
+    opacity: 0.85;
   }
 }
 
