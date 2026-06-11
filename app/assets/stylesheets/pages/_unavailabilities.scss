@@ -77,9 +77,9 @@
   font-weight: 500;
   color: $lbr-text;
   appearance: none;
-  display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: space-between;
   gap: 14px;
   text-decoration: none;
 
