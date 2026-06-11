@@ -45,8 +45,10 @@
           <i class="fa-solid fa-bars" aria-hidden="true"></i>
         </button>
         <div class="header-dropdown-menu" data-dropdown-target="menu">
-          <%= link_to current_user.profile ? profile_path(current_user.profile) : new_profile_path, class: "header-dropdown-item" do %>
-            <i class="fa-solid fa-circle-user me-2" aria-hidden="true"></i>Mon espace
+          <% unless controller_name == "pages" && action_name == "menu" %>
+            <%= link_to menu_path, class: "header-dropdown-item" do %>
+              <i class="fa-solid fa-circle-user me-2" aria-hidden="true"></i>Mon espace
+            <% end %>
           <% end %>
           <%= button_to destroy_user_session_path, method: :delete, class: "header-dropdown-item header-dropdown-item--logout", form: { "data-turbo": false } do %>
             <i class="fa-solid fa-right-from-bracket me-2" aria-hidden="true"></i>Se déconnecter
