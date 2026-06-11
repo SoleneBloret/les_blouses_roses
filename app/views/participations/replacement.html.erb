@@ -22,12 +22,21 @@
       <p class="participation-value-orange"><%= @participation.permanence.start_time %>h00 – <%= @participation.permanence.end_time %>h00</p>
     </div>
 
-    <div class="participation-section-orange">
+    <div class="participation-section-orange w-100">
       <p class="participation-label-orange">Binôme</p>
       <% binome = @participation.binome %>
-      <p class="participation-value-orange">
-        <%= binome ? "#{binome.first_name} #{binome.last_name}" : "🔎 Nous recherchons un/une remplaçant(e)" %>
-      </p>
+      <% if binome %>
+        <div class="d-flex justify-content-between align-items-center w-100">
+          <span class="participation-value-orange"><%= binome.first_name %> <%= binome.last_name %></span>
+          <% if binome.phone_number.present? %>
+            <%= link_to "tel:#{binome.phone_number}", class: "participation-phone-link", aria: { label: "Appeler #{binome.first_name}" } do %>
+              <i class="fa-solid fa-phone" aria-hidden="true"></i>
+            <% end %>
+          <% end %>
+        </div>
+      <% else %>
+        <p class="participation-value-orange">🔎 Nous recherchons un/une remplaçant(e)</p>
+      <% end %>
     </div>
 
     <div class="participation-section-orange">
@@ -35,7 +44,7 @@
       <p class="participation-value-orange"><%= @participation.permanence.location.address %></p>
     </div>
 
-    <%= link_to "Voir sur la carte", map_participation_path(@participation), class: "btn-orange-inversé-centre " %>
+    <%= link_to "Voir sur la carte", map_participation_path(@participation, from: "replacement"), class: "btn-orange-inversé-centre " %>
   </div>
 
   <!-- BOUTONS POUR ACCEPTER OU NON LA PERMANENCE -->
