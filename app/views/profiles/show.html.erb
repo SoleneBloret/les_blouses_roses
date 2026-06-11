@@ -20,11 +20,11 @@
 
   <!-- FORMULAIRE -->
   <ul class="list-group">
-    <li class="list-group-item"><strong>Prénom :</strong> <%= @profile.first_name %></li>
-    <li class="list-group-item"><strong>Nom :</strong> <%= @profile.last_name %></li>
-    <li class="list-group-item"><strong>Téléphone :</strong> <%= @profile.phone_number %></li>
-    <li class="list-group-item"><strong>Adresse :</strong> <%= @profile.address %></li>
-    <li class="list-group-item"><strong>Statut :</strong> <%= @profile.role %></li>
+    <li class="list-group-item"><strong>Prénom</strong> <span class="profile-value"><%= @profile.first_name %></span></li>
+    <li class="list-group-item"><strong>Nom</strong> <span class="profile-value"><%= @profile.last_name %></span></li>
+    <li class="list-group-item"><strong>Téléphone</strong> <span class="profile-value"><%= @profile.phone_number %></span></li>
+    <li class="list-group-item"><strong>Adresse</strong> <span class="profile-value"><%= @profile.address %></span></li>
+    <li class="list-group-item"><strong>Statut</strong> <span class="profile-value"><%= @profile.role %></span></li>
   </ul>
 
   <% if current_user.profile == @profile %>
