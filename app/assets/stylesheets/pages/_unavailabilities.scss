@@ -47,17 +47,18 @@
 .unavailability-field-group {
   width: 100%;
   max-width: 480px;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 
 .unavailability-field-label {
   display: block;
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  font-size: 1rem;
+  font-weight: 500;
   color: $lbr-orange;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
+  flex: 1;
+  min-width: 0;
+  line-height: 1;
 }
 
 // CHAMP DATE
@@ -68,13 +69,20 @@
 .unavailability-date-input {
   width: 100%;
   background: white;
-  border: 1.5px solid rgba($lbr-orange, 0.4);
-  border-radius: 12px;
+  border: 1.5px solid $lbr-orange-clair;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  border-radius: 16px;
   padding: 14px 16px;
   font-size: 1rem;
   font-weight: 500;
   color: $lbr-text;
   appearance: none;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  text-decoration: none;
+
 
   &:focus {
     outline: none;
@@ -87,12 +95,18 @@
 .unavailability-textarea {
   width: 100%;
   background: white;
-  border: 1.5px solid rgba($lbr-orange, 0.25);
-  border-radius: 12px;
+  border: 1.5px solid $lbr-orange-clair;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  border-radius: 16px;
   padding: 14px 16px;
   font-size: 0.95rem;
   color: $lbr-text;
   resize: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
 
   &::placeholder {
     color: $lbr-text2;
