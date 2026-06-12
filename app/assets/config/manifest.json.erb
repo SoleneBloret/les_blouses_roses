@@ -1,7 +1,9 @@
 {
   "background_color": "white",
   "description": "Application de gestion des permanences et bénévoles des Blouses Roses",
-  "display": "fullscreen",
+  "start_url": "/",
+  "display": "standalone",
+  "scope": "/",
   "name": "Les Blouses Roses",
   "icons": [
     <% files = Dir.entries(Rails.root.join("app/assets/images/icons/")).select {|f| !File.directory? f} %>
